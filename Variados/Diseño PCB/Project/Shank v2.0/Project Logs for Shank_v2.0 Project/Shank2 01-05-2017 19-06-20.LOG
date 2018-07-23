@@ -1,0 +1,8 @@
+Added Component: Designator=S1(Switche GP)
+Added Component: Designator=S2(Switche GP)
+Added Pin To Net: NetName=3.3V Pin=S1-1
+Added Pin To Net: NetName=S1 Pin=S1-2
+Added Pin To Net: NetName=3.3V Pin=S2-1
+Added Pin To Net: NetName=S2 Pin=S2-2
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component S1 TS-1143S-WP
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component S2 TS-1143S-WP

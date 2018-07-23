@@ -1,0 +1,30 @@
+---------------------------------------------------------------------------
+NCDrill File Report For: Shank2.0 PCB.PcbDoc   04/05/2017  6:32:26
+---------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII Plated RoundHoles File : Shank2.0 PCB-RoundHoles-Plated.TXT
+ASCII Non-Plated RoundHoles File : Shank2.0 PCB-RoundHoles-NonPlated.TXT
+ASCII Plated SlotHoles File : Shank2.0 PCB-SlotHoles-Plated.TXT
+ASCII Plated RectHoles File : Shank2.0 PCB-RectHoles-Plated.TXT
+EIA File   : Shank2.0 PCB.DRL
+
+Tool         Hole Size           Hole Type     Hole Count Plated       Tool Travel
+---------------------------------------------------------------------------
+T1        13.8mil (0.35052mm)      Round          6                1.54 Inch (39.07 mm)
+T2        14mil (0.3556mm)         Round          47               10.94 Inch (277.83 mm)
+T3        15.7mil (0.39878mm)      Round          1                0.00 Inch (0.00 mm)
+T4        20mil (0.508mm)          Round          8                3.55 Inch (90.27 mm)
+T5        23.6mil (0.59944mm)      Round          8                3.56 Inch (90.32 mm)
+T6        27.6mil (0.70104mm)      Slot           6                11.67 Inch (296.51 mm)
+T7        30mil (0.762mm)          Round          14               5.26 Inch (133.55 mm)
+T8        31.5mil (0.8001mm)       Round          16               6.37 Inch (161.80 mm)
+T9        31.5mil (0.8001mm)       Slot           4                1.51 Inch (38.32 mm)
+T10       31.5mil (0.8001mm)       Rectangle      2                0.68 Inch (17.22 mm)
+T11       35.4mil (0.89916mm)      Round          25               5.75 Inch (146.00 mm)
+T12       39.4mil (1.00076mm)      Round          2                0.53 Inch (13.44 mm)
+T14       118.1mil (2.99974mm)     Round          4         NPTH   5.79 Inch (147.00 mm)
+---------------------------------------------------------------------------
+Totals                                            143              57.14 Inch (1451.34 mm)
+
+Total Processing Time (hh:mm:ss) : 00:00:01

@@ -1,0 +1,5 @@
+Removed Pin From Net: NetName=FAULT Pin=MICRO-16
+Removed Pin From Net: NetName=FAULT Pin=RFLT-1
+Removed Pin From Net: NetName=3.3V Pin=RFLT-2
+Removed Member From Class: ClassName=Shank2.0 Schematic Member=RFLT
+Change Net Name : Old Net Name=FAULT New Net Name=GND

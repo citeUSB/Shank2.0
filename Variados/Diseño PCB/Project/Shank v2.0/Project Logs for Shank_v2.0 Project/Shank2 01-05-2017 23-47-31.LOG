@@ -1,0 +1,3 @@
+Change Component Footprint: Designator=D Old Footprint=Schottky New Footprint=DO-214AC
+Added Pin To Net: NetName=NetBAT_1 Pin=D-A
+Added Pin To Net: NetName=NetD_K Pin=D-K

@@ -1,0 +1,2 @@
+Change Component Footprint: Designator=X1 Old Footprint=xtal3 New Footprint=16Mhz
+Change Component Designator: OldDesignator=SC NewDesignator=Serial

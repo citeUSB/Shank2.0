@@ -1,0 +1,16 @@
+Removed Pin From Net: NetName=OSC0 Pin=Cx1-1
+Removed Pin From Net: NetName=GND Pin=Cx1-2
+Removed Pin From Net: NetName=OSC1 Pin=Cx2-1
+Removed Pin From Net: NetName=GND Pin=Cx2-2
+Removed Pin From Net: NetName=GND Pin=X1-1
+Removed Pin From Net: NetName=OSC0 Pin=X1-2
+Removed Pin From Net: NetName=GND Pin=X1-3
+Removed Pin From Net: NetName=OSC1 Pin=X1-4
+Added Pin To Net: NetName=GND Pin=Cx1-1
+Added Pin To Net: NetName=OSC0 Pin=Cx1-2
+Added Pin To Net: NetName=GND Pin=Cx2-1
+Added Pin To Net: NetName=OSC1 Pin=Cx2-2
+Added Pin To Net: NetName=OSC0 Pin=X1-1
+Added Pin To Net: NetName=GND Pin=X1-2
+Added Pin To Net: NetName=OSC1 Pin=X1-3
+Added Pin To Net: NetName=GND Pin=X1-4

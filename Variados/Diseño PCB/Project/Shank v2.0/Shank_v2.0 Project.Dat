@@ -1,0 +1,37 @@
+Field=Comment~String~Comment~100|Field=Description~String~Description~100|Field=Designator~String~Designator~100|Field=Footprint~String~Footprint~100|Field=LibRef~String~LibRef~100|Field=Quantity~Integer~Quantity~100|ReportField=Currency~<none>|ReportField=ProductionQuantity~1|ReportField=ProjectFileName~Shank_v2.0 Project.PrjPcb|ReportField=ProjectFullPath~C:\Users\victo\Documents\Altium\Projects\Shank v2.0\Shank_v2.0 Project.PrjPcb|ReportField=Title~Bill of Materials For Project [Shank_v2.0 Project.PrjPcb] (No PCB Document Selected)|ReportField=TotalQuantity~78|ReportField=ReportTime~18:22:22|ReportField=ReportDate~01/05/2017|ReportField=ReportDateTime~01/05/2017 18:22:22|ReportField=OutputName~Bill of Materials|ReportField=OutputType~BOM_PartType|ReportField=GeneratorName~BOM|ReportField=GeneratorDescription~Bill of Materials|ReportField=VariantName~None|ReportField=Address1~|ReportField=Address2~|ReportField=Address3~|ReportField=Address4~|ReportField=Application_BuildNumber~|ReportField=ApprovedBy~|ReportField=Author~|ReportField=CheckedBy~|ReportField=CompanyName~|ReportField=CurrentDate~|ReportField=CurrentTime~|ReportField=Date~|ReportField=DocumentFullPathAndName~|ReportField=DocumentName~|ReportField=DocumentNumber~|ReportField=DrawnBy~|ReportField=Engineer~|ReportField=ImagePath~|ReportField=ModifiedDate~|ReportField=Organization~|ReportField=ProjectName~|ReportField=Revision~|ReportField=Rule~|ReportField=SheetNumber~|ReportField=SheetTotal~|ReportField=Time~|ReportField=Title~|ReportField=DataSourceFileName~Shank_v2.0 Project.PrjPcb|ReportField=DataSourceFullPath~C:\Users\victo\Documents\Altium\Projects\Shank v2.0\Shank_v2.0 Project.PrjPcb
+Battery|Header, 2-Pin|Bttery|HDR1X2|Header 2|1
+Header 2|Header, 2-Pin|BZZ|SMT-0440|Header 2|1
+approved sub OK|Capacitor SMD Cer 10uF 10% 10V X5R 0805, Capacitor SMD Cer 10uF 10% 10V X5R 0805, Capacitor SMD Cer 10uF 10% 10V X5R 0805, Capacitor SMD Cer 10uF 10% 10V X5R 0805, Capacitor SMD Cer 10uF 10% 10V X5R 0805, Capacitor SMD Cer 10uF 10% 10V X5R 0805, Capacitor SMD Cer 10uF 10% 10V X5R 0805, Capacitor SMD Cer 10uF 10% 10V X5R 0805, Capacitor SMD Cer 10uF 10% 10V X5R 0805, Capacitor SMD Cer 1uF 10% 16V X7R 0805, Capacitor SMD Cer 10uF 10% 10V X5R 0805, Capacitor SMD Cer 2.2uF 10% 16V X7R 0805, Capacitor SMD Cer 10uF 10% 10V X5R 0805, Capacitor SMD Cer 10uF 10% 10V X5R 0805, Capacitor SMD Cer 10uF 10% 10V X5R 0805|C1, C2, C3, C4, C5, C6, C7, C8, C9, CCP, Ci, CNT, CVC, Cx1, Cx2|CAPC2012X135N|CAPC_10u_0805_10V, CAPC_10u_0805_10V, CAPC_10u_0805_10V, CAPC_10u_0805_10V, CAPC_10u_0805_10V, CAPC_10u_0805_10V, CAPC_10u_0805_10V, CAPC_10u_0805_10V, CAPC_10u_0805_10V, CAPC_1u_0805_X7R_16V_10%, CAPC_10u_0805_10V, CAPC_2u2_0805, CAPC_10u_0805_10V, CAPC_10u_0805_10V, CAPC_10u_0805_10V|15
+approved sub OK|Capacitor SMD Cer 10uF 10% 10V X5R 0805|Co|CAPC3216X180N|CAPC_10u_0805_10V|1
+10µ|Capacitor SMD Tantalum 10uF 20% 16V EIA 6032-28|CVM|CAPC3216X175N|CAPT_10u_6032_16V|1
+IR1|Typical RED GaAs LED|D1|LED-v3.0|LED1|1
+IR2|Typical RED GaAs LED|D2|LED-v3.0|LED1|1
+IR3|Typical RED GaAs LED|D3|LED-v3.0|LED1|1
+IR4|Typical RED GaAs LED|D4|LED-v3.0|LED1|1
+IR5|Typical RED GaAs LED|D5|LED-v3.0|LED1|1
+IR6|Typical RED GaAs LED|D6|LED-v3.0|LED1|1
+LED1|Typical INFRARED GaAs LED|D11|LED-1|LED0|1
+LED2|Typical INFRARED GaAs LED|D22|LED-1|LED0|1
+LED3|Typical INFRARED GaAs LED|D33|LED-1|LED0|1
+LED4|Typical INFRARED GaAs LED|D44|LED-1|LED0|1
+LED5|Typical INFRARED GaAs LED|D55|LED-1|LED0|1
+LED6|Typical INFRARED GaAs LED|D66|LED-1|LED0|1
+1N4148|Diode SMD small signal 0.2A SOD-523F|DBz|1N4148 SOD123|DIODE_1N4148_200mA_SOD523F|1
+USB Micro Type B (recommended if hand soldering)|Connector SMD-THD USB Micro Type B middle mount|DEBUG|USB_Micro-B_FCI_SMD|USB_Micro_TypeB_FCI|1
+DRV8833PWPR|Imported|DRV|PWP0016C_N|DRV8833PWPR|1
+Encoder 1|Header, 6-Pin|G B A V|Header Encoder|MHDR1X6|1
+Gyro|Header, 8-Pin|Gyro|Header Gyroscope|Header 8|1
+Inductor|Inductor|I1|6-0805_N|Inductor|1
+Thick Film|Resistor SMD chip 2.2k Ohm 0.125W 1% 0805, Resistor SMD chip 2.2k Ohm 0.125W 1% 0805, Resistor SMD chip 2.2k Ohm 0.125W 1% 0805, Resistor SMD chip 2.2k Ohm 0.125W 1% 0805, Resistor SMD chip 2.2k Ohm 0.125W 1% 0805, Resistor SMD chip 2.2k Ohm 0.125W 1% 0805, Resistor SMD chip 2.2k Ohm 0.125W 1% 0805, Resistor SMD chip 2.2k Ohm 0.125W 1% 0805, Resistor SMD chip 2.2k Ohm 0.125W 1% 0805, Resistor SMD chip 2.2k Ohm 0.125W 1% 0805, Resistor SMD chip 2.2k Ohm 0.125W 1% 0805, Resistor SMD chip 2.2k Ohm 0.125W 1% 0805, Resistor SMD chip 205k Ohm 0.125W 1% 0805, Resistor SMD chip 2.2k Ohm 0.125W 1% 0805, Resistor SMD chip 2.2k Ohm 0.125W 1% 0805|IR1, IR2, IR3, IR4, IR5, IR6, R1r, R2r, R3.3, R3r, RL1, RL2, Rrst, Rscl, Rsda|RESC2012N_ZERO|RES_2K2_0805_1%, RES_2K2_0805_1%, RES_2K2_0805_1%, RES_2K2_0805_1%, RES_2K2_0805_1%, RES_2K2_0805_1%, RES_2K2_0805_1%, RES_2K2_0805_1%, RES_2K2_0805_1%, RES_2K2_0805_1%, RES_2K2_0805_1%, RES_2K2_0805_1%, RES_205K_0805_1%, RES_2K2_0805_1%, RES_2K2_0805_1%|15
+Thick Film|Resistor SMD chip 2.2k Ohm 0.125W 1% 0805, Resistor SMD chip 2.2k Ohm 0.125W 1% 0805, Resistor SMD chip 2.2k Ohm 0.125W 1% 0805, Resistor SMD chip 2.2k Ohm 0.125W 1% 0805, Resistor SMD chip 2.2k Ohm 0.125W 1% 0805, Resistor SMD chip 2.2k Ohm 0.125W 1% 0805, Resistor SMD chip 1.5k Ohm 0.125W 1% 0805, Resistor SMD chip 1.5k Ohm 0.125W 1% 0805|IR11, IR22, IR33, IR44, IR55, IR66, RS1, RS2|RESC2012X70N|RES_2K2_0805_1%, RES_2K2_0805_1%, RES_2K2_0805_1%, RES_2K2_0805_1%, RES_2K2_0805_1%, RES_2K2_0805_1%, RES_1K5_0805_1%, RES_1K5_0805_1%|8
+Red|LED 0805 SMD Red 6mcd 621nm|L1, L2, LED ON|LED-0805-K|LED_SMD_Red_0805_6mcd|3
+Header 2|Header, 2-Pin|M1, M2, P2, P3|HDR1X2|Header 2|4
+TM4C123GH6PMT7R|Imported|MICRO|LQFP50P1200X1200X160-64|TM4C123GH6PMT7R|1
+Header 3|Header, 3-Pin|OFF ON|SW ON-ON|Header 3|1
+Reg3|Imported|REG3|DGK0008A_N|TPS62160DGKR|1
+TS-1143S-WP|Switch SMD Tact 4.3mm Stem|RESET, SW1, SW2|Switche|SW_SMD_PB_4.3mm|3
+SC|Header, 2-Pin|TX  RX|HDR1X2|Header 2|1
+ULN2003||ULN|TSSOP65P640X120-16N|Component_1|1
+Encoder 2|Header, 6-Pin|V A B G|Header Encoder|MHDR1X6|1
+Header 4X2|Header, 4-Pin, Dual row|WIFI|HDR2X4|Header 4X2|1
+Xtal||X1|16Mhz|Component_1|1

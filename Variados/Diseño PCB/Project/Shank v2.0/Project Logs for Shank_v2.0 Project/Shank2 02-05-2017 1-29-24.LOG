@@ -1,0 +1,7 @@
+Removed Pin From Net: NetName=VCC Pin=P3-2
+Added Component: Designator=DM(SOD523F)
+Added Pin To Net: NetName=VCC Pin=DM-K
+Added Pin To Net: NetName=NetDM_A Pin=DM-A
+Added Pin To Net: NetName=NetDM_A Pin=P3-2
+Added Net: Name=NetDM_A
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component DM Low Ir

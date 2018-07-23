@@ -1,0 +1,3 @@
+Removed Pin From Net: NetName=GND Pin=DRV-8
+Change Component Comment : Designator=CO Old Comment=100n New Comment=22u
+Change Component Comment : Designator=LR Old Comment=150n New Comment=470n

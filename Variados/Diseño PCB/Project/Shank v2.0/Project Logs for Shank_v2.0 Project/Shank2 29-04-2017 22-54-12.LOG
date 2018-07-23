@@ -1,0 +1,8 @@
+Change Component Designator: OldDesignator=Cvcp NewDesignator=CCP
+Change Component Designator: OldDesignator=Cvint NewDesignator=CNT
+Change Component Designator: OldDesignator=DBzz NewDesignator=DBz
+Change Component Designator: OldDesignator=RegCin NewDesignator=Ci
+Change Component Designator: OldDesignator=RegCout NewDesignator=Co
+Change Component Designator: OldDesignator=Rfault NewDesignator=RFLT
+Change Net Name : Old Net Name=NetCvcp_1 New Net Name=NetCCP_1
+Change Net Name : Old Net Name=NetCvint_1 New Net Name=NetCNT_1

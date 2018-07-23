@@ -1,0 +1,4 @@
+Change Component DesignItemId : Designator=BZZ Old DesignItemId=Buzzer New DesignItemId=Header 2
+Change Component Comment : Designator=BZZ Old Comment=Buzzer New Comment=Header 2
+Change Component Description : Designator=BZZ Old Description=Magnetic Transducer Buzzer New Description=Header, 2-Pin
+Change Component Library : Designator=BZZ Old Library=Miscellaneous Devices.IntLib New Library=Miscellaneous Connectors.IntLib

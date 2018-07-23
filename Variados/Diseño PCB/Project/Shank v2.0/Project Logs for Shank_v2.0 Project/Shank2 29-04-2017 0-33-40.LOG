@@ -1,0 +1,24 @@
+Change Component Designator: OldDesignator=L1 NewDesignator=I1
+Added Component: Designator=L1(LED-0805-K)
+Added Component: Designator=L2(LED-0805-K)
+Added Component: Designator=RL1(RESC2012N_ZERO)
+Added Component: Designator=RL2(RESC2012N_ZERO)
+Added Pin To Net: NetName=GND Pin=L1-K
+Added Pin To Net: NetName=GND Pin=L2-K
+Change Net Name : Old Net Name=NetL1_1 New Net Name=NetI1_1
+Added Pin To Net: NetName=L1 Pin=MICRO-19
+Added Pin To Net: NetName=L1 Pin=RL1-1
+Added Net: Name=L1
+Added Pin To Net: NetName=L2 Pin=MICRO-20
+Added Pin To Net: NetName=L2 Pin=RL2-1
+Added Net: Name=L2
+Added Pin To Net: NetName=NetL1_A Pin=L1-A
+Added Pin To Net: NetName=NetL1_A Pin=RL1-2
+Added Net: Name=NetL1_A
+Added Pin To Net: NetName=NetL2_A Pin=L2-A
+Added Pin To Net: NetName=NetL2_A Pin=RL2-2
+Added Net: Name=NetL2_A
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component L1 Red
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component L2 Red
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component RL1 Thick Film
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component RL2 Thick Film

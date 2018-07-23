@@ -1,0 +1,25 @@
+Change Component Designator: OldDesignator=16MHZ NewDesignator=X1
+Change Component Designator: OldDesignator=RESET NewDesignator=RST
+Added Component: Designator=BZZ(HDR1X2)
+Added Component: Designator=CVC(CAPC2012X135N)
+Added Component: Designator=LS1(ABSM-1574)
+Added Pin To Net: NetName=GND Pin=CVC-2
+Added Pin To Net: NetName=3.3V Pin=MICRO-2
+Added Pin To Net: NetName=BZ+ Pin=BZZ-2
+Added Pin To Net: NetName=BZ+ Pin=LS1-1
+Added Pin To Net: NetName=BZ+ Pin=LS1-1A
+Added Pin To Net: NetName=BZ+ Pin=ULN-16
+Added Net: Name=BZ+
+Added Pin To Net: NetName=BZ- Pin=BZZ-1
+Added Pin To Net: NetName=BZ- Pin=LS1-2
+Added Pin To Net: NetName=BZ- Pin=LS1-2A
+Added Net: Name=BZ-
+Added Pin To Net: NetName=NetCVC_1 Pin=CVC-1
+Added Pin To Net: NetName=NetCVC_1 Pin=MICRO-25
+Added Pin To Net: NetName=NetCVC_1 Pin=MICRO-56
+Added Net: Name=NetCVC_1
+Added Pin To Net: NetName=NETLABEL26 Pin=ULN-1
+Added Net: Name=NETLABEL26
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component BZZ Buzzer
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component CVC approved sub OK
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component LS1 Buzzer

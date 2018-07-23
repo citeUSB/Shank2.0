@@ -1,0 +1,3 @@
+Change Component Designator: OldDesignator=TP3v NewDesignator=3.3V
+Added Pin To Net: NetName=SLEEP Pin=DRV-1
+Added Net: Name=SLEEP

@@ -1,0 +1,8 @@
+Removed Pin From Net: NetName=VCC Pin=Bat-1
+Change Component Comment : Designator=Bat Old Comment=Bat New Comment=Battery
+Change Component Designator: OldDesignator=Bat NewDesignator=Bttery
+Added Pin To Net: NetName=NetBAT_1 Pin=Bat-1
+Added Pin To Net: NetName=NetBAT_1 Pin=Bttery-2
+Added Pin To Net: NetName=NetBAT_1 Pin=ON/OFF-2
+Added Net: Name=NetBAT_1
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component Bttery Battery

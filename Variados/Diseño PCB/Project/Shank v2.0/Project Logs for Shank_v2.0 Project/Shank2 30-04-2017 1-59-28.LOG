@@ -1,0 +1,23 @@
+Removed Pin From Net: NetName=TCK Pin=DEBUG-1
+Removed Pin From Net: NetName=TMS Pin=DEBUG-2
+Removed Pin From Net: NetName=TDI Pin=DEBUG-3
+Removed Pin From Net: NetName=TDO Pin=DEBUG-5
+Removed Pin From Net: NetName=GND Pin=DEBUG-SH
+Removed Pin From Net: NetName=GND Pin=DEBUG-SH
+Removed Pin From Net: NetName=GND Pin=DEBUG-SH
+Removed Pin From Net: NetName=GND Pin=DEBUG-SH
+Removed Pin From Net: NetName=GND Pin=DEBUG-SH
+Removed Pin From Net: NetName=GND Pin=DEBUG-SH
+Removed Member From Class: ClassName=Shank2.0 Schematic Member=DEBUG
+Added Component: Designator=USB1(USB_Micro-B_Molex_SMD)
+Added Pin To Net: NetName=TCK Pin=USB1-1
+Added Pin To Net: NetName=TMS Pin=USB1-2
+Added Pin To Net: NetName=TDI Pin=USB1-3
+Added Pin To Net: NetName=TDO Pin=USB1-5
+Added Pin To Net: NetName=GND Pin=USB1-SH
+Added Pin To Net: NetName=GND Pin=USB1-SH
+Added Pin To Net: NetName=GND Pin=USB1-SH
+Added Pin To Net: NetName=GND Pin=USB1-SH
+Added Pin To Net: NetName=GND Pin=USB1-SH
+Added Pin To Net: NetName=GND Pin=USB1-SH
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component USB1 USB Micro Type B

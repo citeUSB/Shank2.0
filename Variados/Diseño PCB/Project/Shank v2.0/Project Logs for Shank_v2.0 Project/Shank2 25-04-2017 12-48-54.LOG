@@ -1,0 +1,209 @@
+Removed Pin From Net: NetName=GND Pin=BuckConverter-3
+Removed Pin From Net: NetName=GND Pin=C7-1
+Removed Pin From Net: NetName=TCK Pin=JTAG-2
+Removed Pin From Net: NetName=TMS Pin=JTAG-3
+Removed Pin From Net: NetName=GND Pin=JTAG-4
+Removed Pin From Net: NetName=TDO Pin=JTAG-5
+Removed Pin From Net: NetName=TDI Pin=JTAG-6
+Removed Pin From Net: NetName=GND Pin=TSL260-1
+Removed Pin From Net: NetName=VLIGHT Pin=TSL260-3
+Removed Member From Class: ClassName=Shank2.0 Schematic Member=BuckConverter
+Removed Member From Class: ClassName=Shank2.0 Schematic Member=C7
+Removed Member From Class: ClassName=Shank2.0 Schematic Member=JTAG
+Removed Member From Class: ClassName=Shank2.0 Schematic Member=TSL260
+Change Component Comment : Designator=Bat Old Comment=Header 2 New Comment=Bat
+Change Component Comment : Designator=Gyro Old Comment=Header 8 New Comment=Gyro
+Change Component Comment : Designator=D11 Old Comment=LED0 New Comment=LED1
+Change Component Comment : Designator=D22 Old Comment=LED0 New Comment=LED2
+Change Component Comment : Designator=D33 Old Comment=LED0 New Comment=LED3
+Change Component Comment : Designator=D44 Old Comment=LED0 New Comment=LED4
+Change Component Comment : Designator=D55 Old Comment=LED0 New Comment=LED5
+Change Component Comment : Designator=D66 Old Comment=LED0 New Comment=LED6
+Change Component Comment : Designator=Encoder1 Old Comment=MHDR1X6 New Comment=Encoder 1
+Change Component Comment : Designator=Encoder2 Old Comment=MHDR1X6 New Comment=Encoder 2
+Change Component Comment : Designator=REG3 Old Comment=TPS62160DGKR New Comment=Reg3
+Added Component: Designator=C1(6-0805_N)
+Added Component: Designator=C2(6-0805_N)
+Added Component: Designator=C3(6-0805_N)
+Added Component: Designator=C4(6-0805_N)
+Added Component: Designator=C5(6-0805_N)
+Added Component: Designator=C6(6-0805_N)
+Added Component: Designator=Cvcp(6-0805_N)
+Added Component: Designator=Cvint(6-0805_N)
+Added Component: Designator=Cvm(6-0805_N)
+Added Component: Designator=Cx1(6-0805_N)
+Added Component: Designator=Cx2(6-0805_N)
+Added Component: Designator=IR1(6-0805_N)
+Added Component: Designator=IR2(6-0805_N)
+Added Component: Designator=IR3(6-0805_N)
+Added Component: Designator=IR4(6-0805_N)
+Added Component: Designator=IR5(6-0805_N)
+Added Component: Designator=IR6(6-0805_N)
+Added Component: Designator=IR11(RESC2012X70N)
+Added Component: Designator=IR22(RESC2012X70N)
+Added Component: Designator=IR33(RESC2012X70N)
+Added Component: Designator=IR44(RESC2012X70N)
+Added Component: Designator=IR55(RESC2012X70N)
+Added Component: Designator=IR66(RESC2012X70N)
+Added Component: Designator=LED3.3(LED-0805-K)
+Added Component: Designator=R1reg(RESC2012X70N)
+Added Component: Designator=R2reg(RESC2012X70N)
+Added Component: Designator=R3reg(RESC2012X70N)
+Added Component: Designator=RegCin(6-0805_N)
+Added Component: Designator=RegCout(CAPC2012X135N)
+Added Component: Designator=Rfault(RESC2012X70N)
+Added Component: Designator=Rrst(RESC2012X70N)
+Added Component: Designator=Rscl(RESC2012X70N)
+Added Component: Designator=Rsda(RESC2012X70N)
+Added Component: Designator=Rv+(RESC2012X70N)
+Added Component: Designator=SWrst(SWITCH_TACT-EVQPQXB55)
+Added Component: Designator=TP3v(THP_D46_T80_B80)
+Added Component: Designator=TPBat(THP_D46_T80_B80)
+Added Component: Designator=ULN(TSSOP65P640X120-16N)
+Added Pin To Net: NetName=GND Pin=C1-1
+Added Pin To Net: NetName=3.3V Pin=C1-2
+Added Pin To Net: NetName=GND Pin=C2-1
+Added Pin To Net: NetName=3.3V Pin=C2-2
+Added Pin To Net: NetName=GND Pin=C3-1
+Added Pin To Net: NetName=3.3V Pin=C3-2
+Added Pin To Net: NetName=GND Pin=C4-1
+Added Pin To Net: NetName=3.3V Pin=C4-2
+Added Pin To Net: NetName=GND Pin=C5-1
+Added Pin To Net: NetName=3.3V Pin=C5-2
+Added Pin To Net: NetName=GND Pin=C6-1
+Added Pin To Net: NetName=3.3V Pin=C6-2
+Added Pin To Net: NetName=NetCvcp_1 Pin=Cvcp-1
+Added Pin To Net: NetName=GND Pin=Cvcp-2
+Added Pin To Net: NetName=NetCvint_1 Pin=Cvint-1
+Added Pin To Net: NetName=GND Pin=Cvint-2
+Added Pin To Net: NetName=VCC Pin=Cvm-1
+Added Pin To Net: NetName=GND Pin=Cvm-2
+Added Pin To Net: NetName=OSC0 Pin=Cx1-1
+Added Pin To Net: NetName=GND Pin=Cx1-2
+Added Pin To Net: NetName=OSC1 Pin=Cx2-1
+Added Pin To Net: NetName=GND Pin=Cx2-2
+Added Pin To Net: NetName=3.3V Pin=D11-1
+Added Pin To Net: NetName=3.3V Pin=D22-1
+Added Pin To Net: NetName=3.3V Pin=D33-1
+Added Pin To Net: NetName=3.3V Pin=D44-1
+Added Pin To Net: NetName=3.3V Pin=D55-1
+Added Pin To Net: NetName=3.3V Pin=D66-1
+Added Pin To Net: NetName=GND Pin=DRV-3
+Added Pin To Net: NetName=GND Pin=DRV-6
+Added Pin To Net: NetName=VCC Pin=DRV-12
+Added Pin To Net: NetName=3.3V Pin=IR1-1
+Added Pin To Net: NetName=NetD1_1 Pin=IR1-2
+Added Pin To Net: NetName=3.3V Pin=IR2-1
+Added Pin To Net: NetName=NetD2_1 Pin=IR2-2
+Added Pin To Net: NetName=3.3V Pin=IR3-1
+Added Pin To Net: NetName=NetD3_1 Pin=IR3-2
+Added Pin To Net: NetName=3.3V Pin=IR4-1
+Added Pin To Net: NetName=NetD4_1 Pin=IR4-2
+Added Pin To Net: NetName=3.3V Pin=IR5-1
+Added Pin To Net: NetName=NetD5_1 Pin=IR5-2
+Added Pin To Net: NetName=3.3V Pin=IR6-1
+Added Pin To Net: NetName=NetD6_1 Pin=IR6-2
+Added Pin To Net: NetName=ADC1 Pin=IR11-1
+Added Pin To Net: NetName=GND Pin=IR11-2
+Added Pin To Net: NetName=ADC2 Pin=IR22-1
+Added Pin To Net: NetName=GND Pin=IR22-2
+Added Pin To Net: NetName=ADC3 Pin=IR33-1
+Added Pin To Net: NetName=GND Pin=IR33-2
+Added Pin To Net: NetName=ADC4 Pin=IR44-1
+Added Pin To Net: NetName=GND Pin=IR44-2
+Added Pin To Net: NetName=ADC5 Pin=IR55-1
+Added Pin To Net: NetName=GND Pin=IR55-2
+Added Pin To Net: NetName=ADC6 Pin=IR66-1
+Added Pin To Net: NetName=GND Pin=IR66-2
+Added Pin To Net: NetName=GND Pin=LED3.3-K
+Added Pin To Net: NetName=3.3V Pin=R1reg-1
+Added Pin To Net: NetName=NetR1reg_2 Pin=R1reg-2
+Added Pin To Net: NetName=NetR1reg_2 Pin=R2reg-1
+Added Pin To Net: NetName=GND Pin=R2reg-2
+Added Pin To Net: NetName=3.3V Pin=R3reg-1
+Added Pin To Net: NetName=NetR3reg_2 Pin=R3reg-2
+Added Pin To Net: NetName=VCC Pin=RegCin-1
+Added Pin To Net: NetName=GND Pin=RegCin-2
+Added Pin To Net: NetName=3.3V Pin=RegCout-1
+Added Pin To Net: NetName=GND Pin=RegCout-2
+Added Pin To Net: NetName=GND Pin=Rfault-1
+Added Pin To Net: NetName=3.3V Pin=Rfault-2
+Added Pin To Net: NetName=3.3V Pin=Rrst-1
+Added Pin To Net: NetName=NetMICRO_38 Pin=Rrst-2
+Added Pin To Net: NetName=3.3V Pin=Rscl-1
+Added Pin To Net: NetName=SCL Pin=Rscl-2
+Added Pin To Net: NetName=3.3V Pin=Rsda-1
+Added Pin To Net: NetName=SDA Pin=Rsda-2
+Added Pin To Net: NetName=3.3V Pin=Rv+-1
+Added Pin To Net: NetName=GND Pin=SWrst-1
+Added Pin To Net: NetName=GND Pin=SWrst-1
+Added Pin To Net: NetName=NetMICRO_38 Pin=SWrst-2
+Added Pin To Net: NetName=NetMICRO_38 Pin=SWrst-2
+Added Pin To Net: NetName=3.3V Pin=TP3v-1
+Added Pin To Net: NetName=VCC Pin=TPBat-1
+Added Pin To Net: NetName=IR1 Pin=ULN-2
+Added Pin To Net: NetName=IR2 Pin=ULN-3
+Added Pin To Net: NetName=IR3 Pin=ULN-4
+Added Pin To Net: NetName=IR4 Pin=ULN-5
+Added Pin To Net: NetName=IR5 Pin=ULN-6
+Added Pin To Net: NetName=IR6 Pin=ULN-7
+Added Pin To Net: NetName=GND Pin=ULN-8
+Added Pin To Net: NetName=LED_E1 Pin=D1-2
+Added Pin To Net: NetName=LED_E1 Pin=ULN-15
+Added Net: Name=LED_E1
+Added Pin To Net: NetName=LED_E2 Pin=D2-2
+Added Pin To Net: NetName=LED_E2 Pin=ULN-14
+Added Net: Name=LED_E2
+Added Pin To Net: NetName=LED_E3 Pin=D3-2
+Added Pin To Net: NetName=LED_E3 Pin=ULN-13
+Added Net: Name=LED_E3
+Added Pin To Net: NetName=LED_E4 Pin=D4-2
+Added Pin To Net: NetName=LED_E4 Pin=ULN-12
+Added Net: Name=LED_E4
+Added Pin To Net: NetName=LED_E5 Pin=D5-2
+Added Pin To Net: NetName=LED_E5 Pin=ULN-11
+Added Net: Name=LED_E5
+Added Pin To Net: NetName=LED_E6 Pin=D6-2
+Added Pin To Net: NetName=LED_E6 Pin=ULN-10
+Added Net: Name=LED_E6
+Added Pin To Net: NetName=NetLED3.3_A Pin=LED3.3-A
+Added Pin To Net: NetName=NetLED3.3_A Pin=Rv+-2
+Added Net: Name=NetLED3.3_A
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component C1 approved sub OK
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component C2 approved sub OK
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component C3 approved sub OK
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component C4 approved sub OK
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component C5 approved sub OK
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component C6 approved sub OK
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component Cvcp approved sub OK
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component Cvint approved sub OK
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component Cvm 10µ
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component Cx1 approved sub OK
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component Cx2 approved sub OK
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component IR1 Thick Film
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component IR2 Thick Film
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component IR3 Thick Film
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component IR4 Thick Film
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component IR5 Thick Film
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component IR6 Thick Film
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component IR11 Thick Film
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component IR22 Thick Film
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component IR33 Thick Film
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component IR44 Thick Film
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component IR55 Thick Film
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component IR66 Thick Film
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component LED3.3 Red
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component R1reg Thick Film
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component R2reg Thick Film
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component R3reg Thick Film
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component RegCin approved sub OK
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component RegCout approved sub OK
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component Rfault Thick Film
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component Rrst Thick Film
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component Rscl Thick Film
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component Rsda Thick Film
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component Rv+ Thick Film
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component SWrst EVQ-PQHB55
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component TP3v TESTPOINT_LEAD
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component TPBat TESTPOINT_LEAD
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component ULN ULN2003

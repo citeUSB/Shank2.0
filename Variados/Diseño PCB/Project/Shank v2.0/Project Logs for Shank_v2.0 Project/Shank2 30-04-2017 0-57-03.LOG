@@ -1,0 +1,9 @@
+Added Pin To Net: NetName=SLEEP Pin=MICRO-13
+Added Pin To Net: NetName=GND Pin=MICRO-16
+Change Net Name : Old Net Name=GND New Net Name=FAULT
+Added Pin To Net: NetName=WRX Pin=MICRO-43
+Added Pin To Net: NetName=WRX Pin=WIFI-8
+Added Net: Name=WRX
+Added Pin To Net: NetName=WTX Pin=MICRO-44
+Added Pin To Net: NetName=WTX Pin=WIFI-1
+Added Net: Name=WTX

@@ -1,0 +1,6 @@
+Removed Pin From Net: NetName=3.3V Pin=BZZ-1
+Removed Pin From Net: NetName=3.3V Pin=DBz-K
+Removed Pin From Net: NetName=BZON Pin=ULN-7
+Removed Member From Class: ClassName=Shank2.0 Schematic Member=BZZ
+Removed Member From Class: ClassName=Shank2.0 Schematic Member=DBz
+Change Component Footprint: Designator=DM Old Footprint=Schottky 2 New Footprint=Schottky

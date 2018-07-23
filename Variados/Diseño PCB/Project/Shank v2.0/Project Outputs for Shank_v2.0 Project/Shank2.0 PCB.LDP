@@ -1,0 +1,5 @@
+Layer Pairs Export File for PCB: C:\Users\victo\Documents\Altium\Projects\Shank v2.0\Shank2.0 PCB.PcbDoc
+LayersSetName=Top_Bot_Plated_Thru_Holes|DrillFile=shank2.0 pcb-roundholes-plated.txt|DrillLayers=gtl,gbl
+LayersSetName=Top_Bot_Plated_Slot_Holes|DrillFile=shank2.0 pcb-slotholes-plated.txt|DrillLayers=gtl,gbl
+LayersSetName=Top_Bot_Plated_Rect_Holes|DrillFile=shank2.0 pcb-rectholes-plated.txt|DrillLayers=gtl,gbl
+LayersSetName=Top_Bot_NonPlated_Thru_Holes|DrillFile=shank2.0 pcb-roundholes-nonplated.txt|DrillLayers=gtl,gbl

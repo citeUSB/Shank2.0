@@ -1,0 +1,19 @@
+Removed Pin From Net: NetName=ADC4 Pin=MICRO-6
+Removed Pin From Net: NetName=ADC3 Pin=MICRO-7
+Removed Pin From Net: NetName=ADC2 Pin=MICRO-8
+Removed Pin From Net: NetName=ADC1 Pin=MICRO-9
+Removed Pin From Net: NetName=PHB1 Pin=MICRO-14
+Removed Pin From Net: NetName=PHA1 Pin=MICRO-15
+Removed Pin From Net: NetName=PHA0 Pin=MICRO-28
+Removed Pin From Net: NetName=PHB0 Pin=MICRO-29
+Removed Pin From Net: NetName=ADC5 Pin=MICRO-59
+Removed Pin From Net: NetName=ADC6 Pin=MICRO-60
+Change Component Footprint: Designator=Encoder1 Old Footprint=MHDR1X6 New Footprint=Header Encoder
+Change Component Footprint: Designator=Encoder2 Old Footprint=MHDR1X6 New Footprint=Header Encoder
+Change Component Footprint: Designator=Gyro Old Footprint=PCBComponent_1 New Footprint=Header Gyroscope
+Added Component: Designator=Debug(USB_Micro-B_FCI_SMD)
+Added Pin To Net: NetName=TCK Pin=Debug-1
+Added Pin To Net: NetName=TMS Pin=Debug-2
+Added Pin To Net: NetName=TDI Pin=Debug-3
+Added Pin To Net: NetName=TDO Pin=Debug-5
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component Debug USB Micro Type B (recommended if hand soldering)

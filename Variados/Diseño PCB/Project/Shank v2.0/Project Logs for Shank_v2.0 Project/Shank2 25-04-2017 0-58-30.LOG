@@ -1,0 +1,58 @@
+Removed Pin From Net: NetName=GND Pin=Cx1-1
+Removed Pin From Net: NetName=OSC0 Pin=Cx1-2
+Removed Pin From Net: NetName=GND Pin=Cx2-1
+Removed Pin From Net: NetName=OSC1 Pin=Cx2-2
+Removed Pin From Net: NetName=VLIGHT Pin=MICRO-4
+Removed Pin From Net: NetName=ADC4 Pin=MICRO-5
+Removed Pin From Net: NetName=ADC5 Pin=MICRO-6
+Removed Pin From Net: NetName=ADC6 Pin=MICRO-7
+Removed Pin From Net: NetName=PHA1 Pin=MICRO-14
+Removed Pin From Net: NetName=PHB1 Pin=MICRO-15
+Removed Pin From Net: NetName=IR6 Pin=MICRO-23
+Removed Pin From Net: NetName=3.3V Pin=MICRO-25
+Removed Pin From Net: NetName=ADC1 Pin=MICRO-30
+Removed Pin From Net: NetName=ADC2 Pin=MICRO-31
+Removed Pin From Net: NetName=GND Pin=MICRO-32
+Removed Pin From Net: NetName=GND Pin=MICRO-34
+Removed Pin From Net: NetName=ADC3 Pin=MICRO-53
+Removed Pin From Net: NetName=3.3V Pin=MICRO-56
+Removed Pin From Net: NetName=IR1 Pin=MICRO-57
+Removed Pin From Net: NetName=IR2 Pin=MICRO-58
+Removed Pin From Net: NetName=IR3 Pin=MICRO-59
+Removed Pin From Net: NetName=IR4 Pin=MICRO-60
+Removed Pin From Net: NetName=IR5 Pin=MICRO-63
+Removed Pin From Net: NetName=IR6 Pin=MICRO-64
+Removed Pin From Net: NetName=GND Pin=RVdda-2
+Removed Pin From Net: NetName=3.3V Pin=SSI-1
+Removed Pin From Net: NetName=OSC0 Pin=X1-1
+Removed Pin From Net: NetName=GND Pin=X1-2
+Removed Pin From Net: NetName=OSC1 Pin=X1-3
+Removed Pin From Net: NetName=GND Pin=X1-4
+Removed Member From Class: ClassName=L v1.0 Member=RVdda
+Change Component Footprint: Designator=MICRO Old Footprint=LQFP50P1200X1200X160-64 New Footprint=PM0064A_L
+Added Pin To Net: NetName=OSC0 Pin=Cx1-1
+Added Pin To Net: NetName=GND Pin=Cx1-2
+Added Pin To Net: NetName=OSC1 Pin=Cx2-1
+Added Pin To Net: NetName=GND Pin=Cx2-2
+Added Pin To Net: NetName=ADC4 Pin=MICRO-6
+Added Pin To Net: NetName=ADC3 Pin=MICRO-7
+Added Pin To Net: NetName=ADC1 Pin=MICRO-9
+Added Pin To Net: NetName=PHB1 Pin=MICRO-14
+Added Pin To Net: NetName=PHA1 Pin=MICRO-15
+Added Pin To Net: NetName=ADC5 Pin=MICRO-59
+Added Pin To Net: NetName=ADC6 Pin=MICRO-60
+Added Pin To Net: NetName=VLIGHT Pin=MICRO-63
+Added Pin To Net: NetName=GND Pin=X1-1
+Added Pin To Net: NetName=OSC0 Pin=X1-2
+Added Pin To Net: NetName=GND Pin=X1-3
+Added Pin To Net: NetName=OSC1 Pin=X1-4
+Added Pin To Net: NetName=PB4 Pin=DRV-16
+Added Net: Name=PB4
+Added Pin To Net: NetName=PB5 Pin=DRV-15
+Added Net: Name=PB5
+Added Pin To Net: NetName=PB6 Pin=DRV-9
+Added Net: Name=PB6
+Added Pin To Net: NetName=PB7 Pin=DRV-10
+Added Net: Name=PB7
+Change Class Name : Old Net Name=L v1.0 New Net Name=Shank2.0 Schematic
+Added Room: Name=Shank2.0 Schematic

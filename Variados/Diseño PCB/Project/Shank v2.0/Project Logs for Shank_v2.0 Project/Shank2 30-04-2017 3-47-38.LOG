@@ -1,0 +1,4 @@
+Removed Pin From Net: NetName=ADC3 Pin=MICRO-62
+Removed Pin From Net: NetName=ADC1 Pin=MICRO-64
+Added Pin To Net: NetName=ADC1 Pin=MICRO-62
+Added Pin To Net: NetName=ADC3 Pin=MICRO-64

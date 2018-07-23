@@ -1,0 +1,4 @@
+Change Component Footprint: Designator=Cvm Old Footprint=CAPC2012X135N New Footprint=CAP_ELEC_5x5.7
+Change Component Footprint: Designator=RegCin Old Footprint=CAPC2012X135N New Footprint=CAP_ELEC_5x5.7
+Change Component Footprint: Designator=RegCout Old Footprint=CAPC2012X135N New Footprint=CAP_ELEC_5x5.7
+Added Room: Name=Shank2.0 Schematic

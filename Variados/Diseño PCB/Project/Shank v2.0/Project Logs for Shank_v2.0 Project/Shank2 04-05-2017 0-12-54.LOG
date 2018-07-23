@@ -1,0 +1,4 @@
+Removed Pin From Net: NetName=WRX Pin=MICRO-43
+Removed Pin From Net: NetName=WTX Pin=MICRO-44
+Added Pin To Net: NetName=WTX Pin=MICRO-43
+Added Pin To Net: NetName=WRX Pin=MICRO-44

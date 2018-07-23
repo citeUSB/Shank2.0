@@ -1,0 +1,17 @@
+Change Component Footprint: Designator=IR1 Old Footprint=6-0805_N New Footprint=RESC2012N_ZERO
+Change Component Footprint: Designator=IR2 Old Footprint=6-0805_N New Footprint=RESC2012N_ZERO
+Change Component Footprint: Designator=IR3 Old Footprint=6-0805_N New Footprint=RESC2012N_ZERO
+Change Component Footprint: Designator=IR4 Old Footprint=6-0805_N New Footprint=RESC2012N_ZERO
+Change Component Footprint: Designator=IR5 Old Footprint=6-0805_N New Footprint=RESC2012N_ZERO
+Change Component Footprint: Designator=IR6 Old Footprint=6-0805_N New Footprint=RESC2012N_ZERO
+Change Component Footprint: Designator=RegCin Old Footprint=6-0805_N New Footprint=RESC2012N_ZERO
+Change Component Footprint: Designator=RegCout Old Footprint=CAPC2012X135N New Footprint=RESC2012N_ZERO
+Change Component Footprint: Designator=R1reg Old Footprint=RESC2012X70N New Footprint=RESC2012N_ZERO
+Change Component Footprint: Designator=R2reg Old Footprint=RESC2012X70N New Footprint=RESC2012N_ZERO
+Change Component Footprint: Designator=R3reg Old Footprint=RESC2012X70N New Footprint=RESC2012N_ZERO
+Change Component Footprint: Designator=Rfault Old Footprint=RESC2012X70N New Footprint=RESC2012N_ZERO
+Change Component Footprint: Designator=Rrst Old Footprint=RESC2012X70N New Footprint=RESC2012N_ZERO
+Change Component Footprint: Designator=Rscl Old Footprint=RESC2012X70N New Footprint=RESC2012N_ZERO
+Change Component Footprint: Designator=Rsda Old Footprint=RESC2012X70N New Footprint=RESC2012N_ZERO
+Change Component Footprint: Designator=Rv+ Old Footprint=RESC2012X70N New Footprint=RESC2012N_ZERO
+Added Room: Name=Shank2.0 Schematic

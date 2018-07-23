@@ -1,0 +1,5 @@
+Added Pin To Net: NetName=PHB1 Pin=MICRO-14
+Added Pin To Net: NetName=PHA1 Pin=MICRO-15
+Added Pin To Net: NetName=PHA0 Pin=MICRO-28
+Added Pin To Net: NetName=PHB0 Pin=MICRO-29
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component P2 Header 2

@@ -1,0 +1,7 @@
+Removed Pin From Net: NetName=VCC Pin=ON  OFF-1
+Removed Pin From Net: NetName=NetBAT_1 Pin=ON  OFF-2
+Removed Member From Class: ClassName=Shank2.0 Schematic Member=ON  OFF
+Added Component: Designator=ON     OFF(HDR1X3)
+Added Pin To Net: NetName=VCC Pin=ON     OFF-2
+Added Pin To Net: NetName=NetBAT_1 Pin=ON     OFF-3
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component ON     OFF Header 3

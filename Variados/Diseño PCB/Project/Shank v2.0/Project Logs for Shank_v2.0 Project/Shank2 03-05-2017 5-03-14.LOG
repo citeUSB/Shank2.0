@@ -1,0 +1,4 @@
+Added Component: Designator=CO(CAPC3216X180N)
+Added Pin To Net: NetName=3.3V Pin=CO-1
+Added Pin To Net: NetName=GND Pin=CO-2
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component CO 100n

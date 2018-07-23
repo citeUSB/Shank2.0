@@ -1,0 +1,9 @@
+Removed Pin From Net: NetName=3.3V Pin=SW1-1
+Removed Pin From Net: NetName=3.3V Pin=SW1-1
+Removed Pin From Net: NetName=S1 Pin=SW1-2
+Removed Pin From Net: NetName=S1 Pin=SW1-2
+Removed Pin From Net: NetName=3.3V Pin=SW2-1
+Removed Pin From Net: NetName=3.3V Pin=SW2-1
+Removed Pin From Net: NetName=S2 Pin=SW2-2
+Removed Pin From Net: NetName=S2 Pin=SW2-2
+Removed Member From Class: ClassName=Shank2.0 Schematic Member=SW2

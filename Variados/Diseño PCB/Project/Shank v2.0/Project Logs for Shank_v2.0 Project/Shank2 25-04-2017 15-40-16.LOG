@@ -1,0 +1,12 @@
+Change Component Footprint: Designator=C1 Old Footprint=6-0805_N New Footprint=CAPC2012X135N
+Change Component Footprint: Designator=C2 Old Footprint=6-0805_N New Footprint=CAPC2012X135N
+Change Component Footprint: Designator=C3 Old Footprint=6-0805_N New Footprint=CAPC2012X135N
+Change Component Footprint: Designator=C4 Old Footprint=6-0805_N New Footprint=CAPC2012X135N
+Change Component Footprint: Designator=C5 Old Footprint=6-0805_N New Footprint=CAPC2012X135N
+Change Component Footprint: Designator=C6 Old Footprint=6-0805_N New Footprint=CAPC2012X135N
+Change Component Footprint: Designator=Cvcp Old Footprint=6-0805_N New Footprint=CAPC2012X135N
+Change Component Footprint: Designator=Cvint Old Footprint=6-0805_N New Footprint=CAPC2012X135N
+Change Component Footprint: Designator=Cvm Old Footprint=6-0805_N New Footprint=CAPC2012X135N
+Change Component Footprint: Designator=Cx1 Old Footprint=6-0805_N New Footprint=CAPC2012X135N
+Change Component Footprint: Designator=Cx2 Old Footprint=6-0805_N New Footprint=CAPC2012X135N
+Added Room: Name=Shank2.0 Schematic

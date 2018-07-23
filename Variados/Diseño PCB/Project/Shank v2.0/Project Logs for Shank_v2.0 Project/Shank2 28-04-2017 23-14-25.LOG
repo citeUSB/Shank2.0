@@ -1,0 +1,3 @@
+Change Component Designator: OldDesignator=ON NewDesignator=LED3.3
+Added Component: Designator=Bat(THP_D46_T80_B80)
+Added Pin To Net: NetName=VCC Pin=Bat-1

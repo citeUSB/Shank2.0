@@ -1,0 +1,8 @@
+Removed Pin From Net: NetName=NetBAT_1 Pin=D-A
+Removed Pin From Net: NetName=VDD Pin=OFF ON-2
+Change Component Footprint: Designator=D Old Footprint=DO-214AC New Footprint=Schottky
+Added Pin To Net: NetName=VDD Pin=D-K
+Added Pin To Net: NetName=NetBAT_1 Pin=OFF ON-3
+Added Pin To Net: NetName=NetD_A Pin=D-A
+Added Pin To Net: NetName=NetD_A Pin=OFF ON-2
+Added Net: Name=NetD_A

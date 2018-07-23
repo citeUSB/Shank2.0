@@ -1,0 +1,41 @@
+Change Component Footprint: Designator=D11 Old Footprint=LED-1 New Footprint=LED-0
+Change Component Footprint: Designator=D22 Old Footprint=LED-1 New Footprint=LED-0
+Change Component Footprint: Designator=D33 Old Footprint=LED-1 New Footprint=LED-0
+Change Component Footprint: Designator=D44 Old Footprint=LED-1 New Footprint=LED-0
+Change Component Footprint: Designator=D55 Old Footprint=LED-1 New Footprint=LED-0
+Change Component Footprint: Designator=D66 Old Footprint=LED-1 New Footprint=LED-0
+Change Component Footprint: Designator=D1 Old Footprint=LED-v3.0 New Footprint=LED-1
+Change Component Footprint: Designator=D2 Old Footprint=LED-v3.0 New Footprint=LED-1
+Change Component Footprint: Designator=D3 Old Footprint=LED-v3.0 New Footprint=LED-1
+Change Component Footprint: Designator=D4 Old Footprint=LED-v3.0 New Footprint=LED-1
+Change Component Footprint: Designator=D5 Old Footprint=LED-v3.0 New Footprint=LED-1
+Change Component Footprint: Designator=D6 Old Footprint=LED-v3.0 New Footprint=LED-1
+Change Component Footprint: Designator=R3.3 Old Footprint=RESC2012N_ZERO New Footprint=RESC2012X70N
+Change Component Footprint: Designator=R3r Old Footprint=RESC2012N_ZERO New Footprint=RESC2012X70N
+Change Component Footprint: Designator=RL1 Old Footprint=RESC2012N_ZERO New Footprint=RESC2012X70N
+Change Component Footprint: Designator=RL2 Old Footprint=RESC2012N_ZERO New Footprint=RESC2012X70N
+Change Component Footprint: Designator=Rrst Old Footprint=RESC2012N_ZERO New Footprint=RESC2012X70N
+Change Component Footprint: Designator=Rscl Old Footprint=RESC2012N_ZERO New Footprint=RESC2012X70N
+Change Component Footprint: Designator=Rsda Old Footprint=RESC2012N_ZERO New Footprint=RESC2012X70N
+Change Component Footprint: Designator=DM Old Footprint=Schottky New Footprint=SOD523F
+Change Component Footprint: Designator=RESET Old Footprint=Switche New Footprint=Switche GP
+Change Component Footprint: Designator=ULN Old Footprint=TSSOP65P640X120-16N New Footprint=TSSOP65P640X120-17N
+Change Component Comment : Designator=Bttery Old Comment=Battery New Comment=Header 2
+Change Component Comment : Designator=G B A V Old Comment=Encoder 1 New Comment=MHDR1X6
+Change Component Comment : Designator=V A B G Old Comment=Encoder 2 New Comment=MHDR1X6
+Change Component Comment : Designator=Gyro Old Comment=Gyro New Comment=Header 8
+Change Component Comment : Designator=D1 Old Comment=IR1 New Comment=LED1
+Change Component Comment : Designator=D2 Old Comment=IR2 New Comment=LED1
+Change Component Comment : Designator=D3 Old Comment=IR3 New Comment=LED1
+Change Component Comment : Designator=D4 Old Comment=IR4 New Comment=LED1
+Change Component Comment : Designator=D5 Old Comment=IR5 New Comment=LED1
+Change Component Comment : Designator=D6 Old Comment=IR6 New Comment=LED1
+Change Component Comment : Designator=D11 Old Comment=LED1 New Comment=LED0
+Change Component Comment : Designator=D22 Old Comment=LED2 New Comment=LED0
+Change Component Comment : Designator=D33 Old Comment=LED3 New Comment=LED0
+Change Component Comment : Designator=D44 Old Comment=LED4 New Comment=LED0
+Change Component Comment : Designator=D55 Old Comment=LED5 New Comment=LED0
+Change Component Comment : Designator=D66 Old Comment=LED6 New Comment=LED0
+Change Component Comment : Designator=TX  RX Old Comment=SC New Comment=Header 2
+Change Component Comment : Designator=ULN Old Comment=ULN2003 New Comment=Component_1
+Change Component Comment : Designator=16MHz Old Comment=Xtal New Comment=Component_1

@@ -1,0 +1,12 @@
+Removed Member From Class: ClassName=Shank2.0 Schematic Member=LS1
+Change Component Footprint: Designator=LS1 Old Footprint=ABSM-1574 New Footprint=SMT-0440
+Change Component Designator: OldDesignator=LS1 NewDesignator=BZZ
+Added Component: Designator=DBzz(SOD523F)
+Added Pin To Net: NetName=3.3V Pin=BZZ-1
+Added Pin To Net: NetName=3.3V Pin=DBzz-K
+Change Net Name : Old Net Name=NETLABEL26 New Net Name=BZON
+Added Pin To Net: NetName=BZ Pin=BZZ-2
+Added Pin To Net: NetName=BZ Pin=DBzz-A
+Added Pin To Net: NetName=BZ Pin=ULN-16
+Added Net: Name=BZ
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component DBzz 1N4148

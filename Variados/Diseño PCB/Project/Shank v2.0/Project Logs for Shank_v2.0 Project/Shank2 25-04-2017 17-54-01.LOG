@@ -1,0 +1,4 @@
+Added Component: Designator=U?(TSSOP65P640X120-8N)
+Added Component: Designator=U?(SOP65P490X109-8N)
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component U? TLV2702
+Added Room: Name=Shank2.0 Schematic

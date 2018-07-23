@@ -1,0 +1,12 @@
+Added Component: Designator=RST(Switche)
+Added Component: Designator=SW1(Switche)
+Added Component: Designator=SW2(Switche)
+Added Pin To Net: NetName=GND Pin=RST-1
+Added Pin To Net: NetName=NetMICRO_38 Pin=RST-2
+Added Pin To Net: NetName=3.3V Pin=SW1-1
+Added Pin To Net: NetName=S1 Pin=SW1-2
+Added Pin To Net: NetName=3.3V Pin=SW2-1
+Added Pin To Net: NetName=S2 Pin=SW2-2
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component RST TS-1143S-WP
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component SW1 TS-1143S-WP
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component SW2 TS-1143S-WP

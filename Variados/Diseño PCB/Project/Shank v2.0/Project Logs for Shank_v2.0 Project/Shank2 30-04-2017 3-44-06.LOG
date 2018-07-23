@@ -1,0 +1,12 @@
+Removed Pin From Net: NetName=LED_E1 Pin=ULN-11
+Removed Pin From Net: NetName=LED_E3 Pin=ULN-13
+Removed Pin From Net: NetName=LED_E4 Pin=ULN-14
+Removed Pin From Net: NetName=LED_E6 Pin=ULN-16
+Added Pin To Net: NetName=LED_E3 Pin=ULN-11
+Added Pin To Net: NetName=LED_E1 Pin=ULN-13
+Added Pin To Net: NetName=LED_E6 Pin=ULN-14
+Added Pin To Net: NetName=LED_E4 Pin=ULN-16
+Change Net Name : Old Net Name=IR1 New Net Name=IR3
+Change Net Name : Old Net Name=IR3 New Net Name=IR1
+Change Net Name : Old Net Name=IR4 New Net Name=IR6
+Change Net Name : Old Net Name=IR6 New Net Name=IR4

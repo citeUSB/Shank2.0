@@ -1,0 +1,13 @@
+Added Component: Designator=CRST(CAPC2012X135N)
+Added Component: Designator=RS(RESC2012X70N)
+Added Pin To Net: NetName=GND Pin=CRST-2
+Added Pin To Net: NetName=NetCRST_1 Pin=CRST-1
+Added Pin To Net: NetName=NetCRST_1 Pin=MICRO-38
+Added Pin To Net: NetName=NetCRST_1 Pin=Rrst-2
+Added Pin To Net: NetName=NetCRST_1 Pin=RS-2
+Added Net: Name=NetCRST_1
+Added Pin To Net: NetName=NetRESET_2 Pin=RESET-2
+Added Pin To Net: NetName=NetRESET_2 Pin=RS-1
+Added Net: Name=NetRESET_2
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component CRST approved sub OK
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component RS Thick Film

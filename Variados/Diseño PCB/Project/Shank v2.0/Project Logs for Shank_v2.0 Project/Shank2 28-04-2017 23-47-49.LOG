@@ -1,0 +1,18 @@
+Removed Pin From Net: NetName=GND Pin=SWrst-1
+Removed Pin From Net: NetName=GND Pin=SWrst-1
+Removed Pin From Net: NetName=NetMICRO_38 Pin=SWrst-2
+Removed Pin From Net: NetName=NetMICRO_38 Pin=SWrst-2
+Removed Member From Class: ClassName=Shank2.0 Schematic Member=SWrst
+Added Component: Designator=RS1(RESC2012X70N)
+Added Component: Designator=RS2(RESC2012X70N)
+Added Pin To Net: NetName=GND Pin=MICRO-21
+Added Pin To Net: NetName=GND Pin=MICRO-22
+Added Pin To Net: NetName=3.3V Pin=RS1-2
+Added Pin To Net: NetName=3.3V Pin=RS2-1
+Added Pin To Net: NetName=NetRS1_1 Pin=RS1-1
+Added Net: Name=NetRS1_1
+Added Pin To Net: NetName=NetRS2_2 Pin=RS2-2
+Added Net: Name=NetRS2_2
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component BAT TESTPOINT_LEAD
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component RS1 Thick Film
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component RS2 Thick Film

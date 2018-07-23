@@ -1,0 +1,7 @@
+Removed Pin From Net: NetName=VCC Pin=Bat-2
+Added Component: Designator=S?(SWITCH_SPDT_SLIDER)
+Added Pin To Net: NetName=VCC Pin=S?-1
+Added Pin To Net: NetName=NetBat_2 Pin=Bat-2
+Added Pin To Net: NetName=NetBat_2 Pin=S?-2
+Added Net: Name=NetBat_2
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component S? ON-ON

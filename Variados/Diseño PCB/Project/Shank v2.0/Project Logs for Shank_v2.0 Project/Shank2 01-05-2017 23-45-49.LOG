@@ -1,0 +1,5 @@
+Removed Pin From Net: NetName=NetBAT_1 Pin=OFF ON-3
+Added Component: Designator=D(Schottky)
+Added Pin To Net: NetName=NetD_K Pin=OFF ON-3
+Added Net: Name=NetD_K
+Added Member To Class: ClassName=Shank2.0 Schematic Member=Component D DIODE_SCHOTTKY_10MQ100NPBF

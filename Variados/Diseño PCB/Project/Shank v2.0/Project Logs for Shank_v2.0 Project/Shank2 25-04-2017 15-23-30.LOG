@@ -1,0 +1,4 @@
+Change Component DesignItemId : Designator=SWrst Old DesignItemId=SW_EVQ-PQHB55 New DesignItemId=SW_SMD_PB_4.3mm
+Change Component Footprint: Designator=SWrst Old Footprint=SWITCH_TACT-EVQPQXB55 New Footprint=TS-1143S
+Change Component Comment : Designator=SWrst Old Comment=EVQ-PQHB55 New Comment=TS-1143S-WP
+Added Room: Name=Shank2.0 Schematic

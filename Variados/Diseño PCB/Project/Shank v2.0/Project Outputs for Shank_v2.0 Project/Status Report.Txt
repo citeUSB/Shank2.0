@@ -1,0 +1,17 @@
+Output: NC Drill Files
+Type  : NC Drill
+From  : Project [Shank_v2.0 Project.PrjPcb]
+   Generated File[Shank2.0 PCB-RoundHoles-Plated.TXT]
+   Generated File[Shank2.0 PCB-RoundHoles-NonPlated.TXT]
+   Generated File[Shank2.0 PCB-SlotHoles-Plated.TXT]
+   Generated File[Shank2.0 PCB-RectHoles-Plated.TXT]
+   Generated File[Shank2.0 PCB.DRL]
+   Generated File[Shank2.0 PCB-BoardEdgeRout.TXT]
+   Generated File[Shank2.0 PCB.LDP]
+   Generated File[Shank2.0 PCB.DRR]
+
+
+Files Generated   : 8
+Documents Printed : 0
+
+Finished Output Generation At 6:32:27 On 04/05/2017
