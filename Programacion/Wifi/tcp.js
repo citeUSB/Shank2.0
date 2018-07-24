@@ -12,8 +12,8 @@ client.connect(9876, '192.168.0.1', function () {
 });
 
 client.on('data', function (data) {
-  medicion = (data[0]) | (data[1] << 8) | (data[2] << 16) || (data[3] << 24)
-  console.log(dictionary[parseInt(state)] + medicion)
+  medicion = (data[0]) | (data[1] << 8) | (data[2] << 16) || (data[3] << 24);
+  console.log(dictionary[parseInt(state)] + medicion);
 });
 
 let state = '1';
