@@ -1,94 +1,78 @@
-/* 
-  WiFiTelnetToSerial - Example Transparent UART to Telnet Server for esp8266
-
-  Copyright (c) 2015 Hristo Gochkov. All rights reserved.
-  This file is part of the ESP8266WiFi library for Arduino environment.
- 
-  This library is free software; you can redistribute it and/or
-  modify it under the terms of the GNU Lesser General Public
-  License as published by the Free Software Foundation; either
-  version 2.1 of the License, or (at your option) any later version.
-
-  This library is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-  Lesser General Public License for more details.
-
-  You should have received a copy of the GNU Lesser General Public
-  License along with this library; if not, write to the Free Software
-  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-*/
+// ESP8266 WiFi <-> UART Bridge
 #include <ESP8266WiFi.h>
 
-//how many clients should be able to telnet to this ESP8266
-#define MAX_SRV_CLIENTS 2
-const char* ssid = "ASUS";
-const char* password = "728597efea";
+// config: ////////////////////////////////////////////////////////////
 
-WiFiServer server(23);
-WiFiClient serverClients[MAX_SRV_CLIENTS];
+#define UART_BAUD 115200
+#define packTimeout 5 // ms (if nothing more on UART, then send packet)
+#define bufferSize 8192
+
+// For AP mode:
+const char *ssid = "ESP SHANK";  // You will connect your phone to this Access Point
+const char *pw = "123456cite"; // and this is the password
+IPAddress ip(192, 168, 0, 1); // From RoboRemo app, connect to this IP
+IPAddress netmask(255, 255, 255, 0);
+const int port = 9876; // and this port
+// You must connect the phone to this AP, then:
+// menu -> connect -> Internet(TCP) -> 192.168.0.1:9876
+//////////////////////////////////////////////////////////////////////////
+
+#include <WiFiClient.h>
+WiFiServer server(port);
+WiFiClient client;
+
+uint8_t buf1[bufferSize];
+uint8_t i1=0;
+
+uint8_t buf2[bufferSize];
+uint8_t i2=0;
 
 void setup() {
-  Serial1.begin(115200);
-  WiFi.mode(WIFI_STA);
-  WiFi.begin(ssid, password);
-  Serial1.print("\nConnecting to "); Serial1.println(ssid);
-  uint8_t i = 0;
-  while (WiFi.status() != WL_CONNECTED && i++ < 20) delay(500);
-  if(i == 21){
-    Serial1.print("Could not connect to"); Serial1.println(ssid);
-    while(1) delay(500);
-  }
-  //start UART and the server
-  Serial.begin(115200);
-  server.begin();
-  server.setNoDelay(true);
-  
-  Serial1.print("Ready! Use 'telnet ");
-  Serial1.print(WiFi.localIP());
-  Serial1.println(" 23' to connect");
+  Serial.begin(UART_BAUD);
+  //AP mode (phone connects directly to ESP) (no router)
+  WiFi.mode(WIFI_AP);
+  WiFi.softAPConfig(ip, ip, netmask); // configure ip address for softAP 
+  WiFi.softAP(ssid, pw); // configure ssid and password for softAP
+  server.begin(); // start TCP server
 }
 
+
 void loop() {
-  uint8_t i;
-  //check if there are any new clients
-  if (server.hasClient()){
-    for(i = 0; i < MAX_SRV_CLIENTS; i++){
-      //find free/disconnected spot
-      if (!serverClients[i] || !serverClients[i].connected()){
-        if(serverClients[i]) serverClients[i].stop();
-        serverClients[i] = server.available();
-        Serial1.print("New client: "); Serial1.print(i);
-        break;
-      }
-    }
-    //no free/disconnected spot so reject
-    if ( i == MAX_SRV_CLIENTS) {
-       WiFiClient serverClient = server.available();
-       serverClient.stop();
-        Serial1.println("Connection rejected ");
-    }
+
+  if(!client.connected()) { // if client not connected
+    client = server.available(); // wait for it to connect
+    return;
   }
-  //check clients for data
-  for(i = 0; i < MAX_SRV_CLIENTS; i++){
-    if (serverClients[i] && serverClients[i].connected()){
-      if(serverClients[i].available()){
-        //get data from the telnet client and push it to the UART
-        while(serverClients[i].available()) Serial.write(serverClients[i].read());
-      }
+
+  if(client.available()) {
+    while(client.available()) {
+      buf1[i1] = (uint8_t)client.read(); // read char from client (RoboRemo app)
+      if(i1<bufferSize-1) i1++;
     }
+    // now send to UART:
+    Serial.write(buf1, i1);
+    i1 = 0;
   }
-  //check UART for data
-  if(Serial.available()){
-    size_t len = Serial.available();
-    uint8_t sbuf[len];
-    Serial.readBytes(sbuf, len);
-    //push UART data to all connected telnet clients
-    for(i = 0; i < MAX_SRV_CLIENTS; i++){
-      if (serverClients[i] && serverClients[i].connected()){
-        serverClients[i].write(sbuf, len);
-        delay(1);
+
+  if(Serial.available()) {
+
+    // read the data until pause:
+    
+    while(1) {
+      if(Serial.available()) {
+        buf2[i2] = (char)Serial.read(); // read char from UART
+        if(i2<bufferSize-1) i2++;
+      } else {
+        //delayMicroseconds(packTimeoutMicros);
+        delay(packTimeout);
+        if(!Serial.available()) {
+          break;
+        }
       }
     }
+    
+    // now send to WiFi:
+    client.write((char*)buf2, i2);
+    i2 = 0;  
   }
 }
