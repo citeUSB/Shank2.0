@@ -21,10 +21,10 @@ int receptor3=PD_3;
 int receptor4=PE_2;
 int receptor6=PE_0;
 
-int calibracionFD=0;         //Constante definida para probar alinear
+int calibracionFD= 1569;         //Constante definida para probar alinear
 int calibracionLD = 1248;         // Calibracion lateral derecha
 int calibracionLI = 1327;         // Calibracion lateral izquierda
-int calibracionFI=0;         //Constante definida para probar alinear
+int calibracionFI= 1230;         //Constante definida para probar alinear
 int calibracionF=0;          //Constante calibracion frontal
 
 ////////////////////////////Variables de paredes ////////////////////////////
@@ -47,7 +47,7 @@ void setup() {
 
 void loop() {
   ////////Calibracion Constantes Pared //////////////////////////////////////////
-  int dato=(Medir(1));
+  int dato=(medir(6));
   
   enviarSerial(dato);
   if (dato>1000)
