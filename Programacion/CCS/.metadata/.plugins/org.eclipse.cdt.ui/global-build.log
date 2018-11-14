@@ -1,0 +1,880 @@
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_core ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+'Building file: "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/WMath.cpp"'
+'Invoking: GNU Compiler'
+"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -fno-exceptions -Dprintf=iprintf -DF_CPU=80000000L -DENERGIA_EK_TM4C123GXL -DENERGIA_ARCH_TIVAC -DENERGIA=21 -DARDUINO=10610 -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/variants/EK-TM4C123GXL" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/driverlib" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/inc" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac" -I"C:/Users/Andres/Documents/GitHub/Shank2.0/Programacion/CCS/tivac_EK-TM4C123GXL_core" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/arm-none-eabi/include" -Os -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -w -Wall -fno-threadsafe-statics --param max-inline-insns-single=500 -mabi=aapcs -MMD -MP -MF"src/core/WMath.d" -MT"src/core/WMath.o" -fno-rtti  -o"src/core/WMath.o" "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/WMath.cpp"
+'Finished building: "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/WMath.cpp"'
+ 
+'Building file: "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/MACAddress.cpp"'
+'Invoking: GNU Compiler'
+"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -fno-exceptions -Dprintf=iprintf -DF_CPU=80000000L -DENERGIA_EK_TM4C123GXL -DENERGIA_ARCH_TIVAC -DENERGIA=21 -DARDUINO=10610 -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/variants/EK-TM4C123GXL" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/driverlib" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/inc" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac" -I"C:/Users/Andres/Documents/GitHub/Shank2.0/Programacion/CCS/tivac_EK-TM4C123GXL_core" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/arm-none-eabi/include" -Os -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -w -Wall -fno-threadsafe-statics --param max-inline-insns-single=500 -mabi=aapcs -MMD -MP -MF"src/core/MACAddress.d" -MT"src/core/MACAddress.o" -fno-rtti  -o"src/core/MACAddress.o" "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/MACAddress.cpp"
+'Finished building: "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/MACAddress.cpp"'
+ 
+'Building file: "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/Tone.cpp"'
+'Invoking: GNU Compiler'
+"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -fno-exceptions -Dprintf=iprintf -DF_CPU=80000000L -DENERGIA_EK_TM4C123GXL -DENERGIA_ARCH_TIVAC -DENERGIA=21 -DARDUINO=10610 -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/variants/EK-TM4C123GXL" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/driverlib" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/inc" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac" -I"C:/Users/Andres/Documents/GitHub/Shank2.0/Programacion/CCS/tivac_EK-TM4C123GXL_core" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/arm-none-eabi/include" -Os -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -w -Wall -fno-threadsafe-statics --param max-inline-insns-single=500 -mabi=aapcs -MMD -MP -MF"src/core/Tone.d" -MT"src/core/Tone.o" -fno-rtti  -o"src/core/Tone.o" "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/Tone.cpp"
+'Finished building: "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/Tone.cpp"'
+ 
+'Building file: "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/IPAddress.cpp"'
+'Invoking: GNU Compiler'
+"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -fno-exceptions -Dprintf=iprintf -DF_CPU=80000000L -DENERGIA_EK_TM4C123GXL -DENERGIA_ARCH_TIVAC -DENERGIA=21 -DARDUINO=10610 -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/variants/EK-TM4C123GXL" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/driverlib" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/inc" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac" -I"C:/Users/Andres/Documents/GitHub/Shank2.0/Programacion/CCS/tivac_EK-TM4C123GXL_core" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/arm-none-eabi/include" -Os -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -w -Wall -fno-threadsafe-statics --param max-inline-insns-single=500 -mabi=aapcs -MMD -MP -MF"src/core/IPAddress.d" -MT"src/core/IPAddress.o" -fno-rtti  -o"src/core/IPAddress.o" "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/IPAddress.cpp"
+'Finished building: "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/IPAddress.cpp"'
+ 
+'Building file: "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/WInterrupts.c"'
+'Invoking: GNU Compiler'
+"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -fno-exceptions -Dprintf=iprintf -DF_CPU=80000000L -DENERGIA_EK_TM4C123GXL -DENERGIA_ARCH_TIVAC -DENERGIA=21 -DARDUINO=10610 -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/variants/EK-TM4C123GXL" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/driverlib" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/inc" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac" -I"C:/Users/Andres/Documents/GitHub/Shank2.0/Programacion/CCS/tivac_EK-TM4C123GXL_core" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/arm-none-eabi/include" -Os -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -w -Wall -fno-threadsafe-statics --param max-inline-insns-single=500 -mabi=aapcs -MMD -MP -MF"src/core/WInterrupts.d" -MT"src/core/WInterrupts.o"  -o"src/core/WInterrupts.o" "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/WInterrupts.c"
+'Finished building: "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/WInterrupts.c"'
+ 
+'Building file: "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/Print.cpp"'
+'Invoking: GNU Compiler'
+"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -fno-exceptions -Dprintf=iprintf -DF_CPU=80000000L -DENERGIA_EK_TM4C123GXL -DENERGIA_ARCH_TIVAC -DENERGIA=21 -DARDUINO=10610 -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/variants/EK-TM4C123GXL" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/driverlib" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/inc" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac" -I"C:/Users/Andres/Documents/GitHub/Shank2.0/Programacion/CCS/tivac_EK-TM4C123GXL_core" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/arm-none-eabi/include" -Os -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -w -Wall -fno-threadsafe-statics --param max-inline-insns-single=500 -mabi=aapcs -MMD -MP -MF"src/core/Print.d" -MT"src/core/Print.o" -fno-rtti  -o"src/core/Print.o" "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/Print.cpp"
+'Finished building: "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/Print.cpp"'
+ 
+'Building file: "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/Stream.cpp"'
+'Invoking: GNU Compiler'
+"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -fno-exceptions -Dprintf=iprintf -DF_CPU=80000000L -DENERGIA_EK_TM4C123GXL -DENERGIA_ARCH_TIVAC -DENERGIA=21 -DARDUINO=10610 -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/variants/EK-TM4C123GXL" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/driverlib" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/inc" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac" -I"C:/Users/Andres/Documents/GitHub/Shank2.0/Programacion/CCS/tivac_EK-TM4C123GXL_core" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/arm-none-eabi/include" -Os -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -w -Wall -fno-threadsafe-statics --param max-inline-insns-single=500 -mabi=aapcs -MMD -MP -MF"src/core/Stream.d" -MT"src/core/Stream.o" -fno-rtti  -o"src/core/Stream.o" "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/Stream.cpp"
+'Finished building: "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/Stream.cpp"'
+ 
+'Building file: "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/HardwareSerial.cpp"'
+'Invoking: GNU Compiler'
+"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -fno-exceptions -Dprintf=iprintf -DF_CPU=80000000L -DENERGIA_EK_TM4C123GXL -DENERGIA_ARCH_TIVAC -DENERGIA=21 -DARDUINO=10610 -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/variants/EK-TM4C123GXL" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/driverlib" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/inc" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac" -I"C:/Users/Andres/Documents/GitHub/Shank2.0/Programacion/CCS/tivac_EK-TM4C123GXL_core" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/arm-none-eabi/include" -Os -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -w -Wall -fno-threadsafe-statics --param max-inline-insns-single=500 -mabi=aapcs -MMD -MP -MF"src/core/HardwareSerial.d" -MT"src/core/HardwareSerial.o" -fno-rtti  -o"src/core/HardwareSerial.o" "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/HardwareSerial.cpp"
+'Finished building: "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/HardwareSerial.cpp"'
+ 
+'Building file: "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/itoa.c"'
+'Invoking: GNU Compiler'
+"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -fno-exceptions -Dprintf=iprintf -DF_CPU=80000000L -DENERGIA_EK_TM4C123GXL -DENERGIA_ARCH_TIVAC -DENERGIA=21 -DARDUINO=10610 -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/variants/EK-TM4C123GXL" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/driverlib" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/inc" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac" -I"C:/Users/Andres/Documents/GitHub/Shank2.0/Programacion/CCS/tivac_EK-TM4C123GXL_core" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/arm-none-eabi/include" -Os -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -w -Wall -fno-threadsafe-statics --param max-inline-insns-single=500 -mabi=aapcs -MMD -MP -MF"src/core/itoa.d" -MT"src/core/itoa.o"  -o"src/core/itoa.o" "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/itoa.c"
+'Finished building: "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/itoa.c"'
+ 
+'Building file: "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/random.c"'
+'Invoking: GNU Compiler'
+"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -fno-exceptions -Dprintf=iprintf -DF_CPU=80000000L -DENERGIA_EK_TM4C123GXL -DENERGIA_ARCH_TIVAC -DENERGIA=21 -DARDUINO=10610 -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/variants/EK-TM4C123GXL" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/driverlib" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/inc" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac" -I"C:/Users/Andres/Documents/GitHub/Shank2.0/Programacion/CCS/tivac_EK-TM4C123GXL_core" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/arm-none-eabi/include" -Os -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -w -Wall -fno-threadsafe-statics --param max-inline-insns-single=500 -mabi=aapcs -MMD -MP -MF"src/core/random.d" -MT"src/core/random.o"  -o"src/core/random.o" "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/random.c"
+'Finished building: "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/random.c"'
+ 
+'Building file: "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/new.cpp"'
+'Invoking: GNU Compiler'
+"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -fno-exceptions -Dprintf=iprintf -DF_CPU=80000000L -DENERGIA_EK_TM4C123GXL -DENERGIA_ARCH_TIVAC -DENERGIA=21 -DARDUINO=10610 -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/variants/EK-TM4C123GXL" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/driverlib" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/inc" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac" -I"C:/Users/Andres/Documents/GitHub/Shank2.0/Programacion/CCS/tivac_EK-TM4C123GXL_core" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/arm-none-eabi/include" -Os -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -w -Wall -fno-threadsafe-statics --param max-inline-insns-single=500 -mabi=aapcs -MMD -MP -MF"src/core/new.d" -MT"src/core/new.o" -fno-rtti  -o"src/core/new.o" "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/new.cpp"
+'Finished building: "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/new.cpp"'
+ 
+'Building file: "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/main.cpp"'
+'Invoking: GNU Compiler'
+"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -fno-exceptions -Dprintf=iprintf -DF_CPU=80000000L -DENERGIA_EK_TM4C123GXL -DENERGIA_ARCH_TIVAC -DENERGIA=21 -DARDUINO=10610 -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/variants/EK-TM4C123GXL" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/driverlib" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/inc" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac" -I"C:/Users/Andres/Documents/GitHub/Shank2.0/Programacion/CCS/tivac_EK-TM4C123GXL_core" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/arm-none-eabi/include" -Os -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -w -Wall -fno-threadsafe-statics --param max-inline-insns-single=500 -mabi=aapcs -MMD -MP -MF"src/core/main.d" -MT"src/core/main.o" -fno-rtti  -o"src/core/main.o" "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/main.cpp"
+'Finished building: "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/main.cpp"'
+ 
+'Building file: "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/startup_gcc.c"'
+'Invoking: GNU Compiler'
+"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -fno-exceptions -Dprintf=iprintf -DF_CPU=80000000L -DENERGIA_EK_TM4C123GXL -DENERGIA_ARCH_TIVAC -DENERGIA=21 -DARDUINO=10610 -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/variants/EK-TM4C123GXL" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/driverlib" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/inc" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac" -I"C:/Users/Andres/Documents/GitHub/Shank2.0/Programacion/CCS/tivac_EK-TM4C123GXL_core" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/arm-none-eabi/include" -Os -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -w -Wall -fno-threadsafe-statics --param max-inline-insns-single=500 -mabi=aapcs -MMD -MP -MF"src/core/startup_gcc.d" -MT"src/core/startup_gcc.o"  -o"src/core/startup_gcc.o" "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/startup_gcc.c"
+'Finished building: "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/startup_gcc.c"'
+ 
+'Building file: "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/wiring_analog.c"'
+'Invoking: GNU Compiler'
+"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -fno-exceptions -Dprintf=iprintf -DF_CPU=80000000L -DENERGIA_EK_TM4C123GXL -DENERGIA_ARCH_TIVAC -DENERGIA=21 -DARDUINO=10610 -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/variants/EK-TM4C123GXL" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/driverlib" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/inc" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac" -I"C:/Users/Andres/Documents/GitHub/Shank2.0/Programacion/CCS/tivac_EK-TM4C123GXL_core" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/arm-none-eabi/include" -Os -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -w -Wall -fno-threadsafe-statics --param max-inline-insns-single=500 -mabi=aapcs -MMD -MP -MF"src/core/wiring_analog.d" -MT"src/core/wiring_analog.o"  -o"src/core/wiring_analog.o" "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/wiring_analog.c"
+'Finished building: "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/wiring_analog.c"'
+ 
+'Building file: "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/wiring.c"'
+'Invoking: GNU Compiler'
+"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -fno-exceptions -Dprintf=iprintf -DF_CPU=80000000L -DENERGIA_EK_TM4C123GXL -DENERGIA_ARCH_TIVAC -DENERGIA=21 -DARDUINO=10610 -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/variants/EK-TM4C123GXL" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/driverlib" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/inc" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac" -I"C:/Users/Andres/Documents/GitHub/Shank2.0/Programacion/CCS/tivac_EK-TM4C123GXL_core" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/arm-none-eabi/include" -Os -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -w -Wall -fno-threadsafe-statics --param max-inline-insns-single=500 -mabi=aapcs -MMD -MP -MF"src/core/wiring.d" -MT"src/core/wiring.o"  -o"src/core/wiring.o" "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/wiring.c"
+'Finished building: "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/wiring.c"'
+ 
+'Building file: "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/WString.cpp"'
+'Invoking: GNU Compiler'
+"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -fno-exceptions -Dprintf=iprintf -DF_CPU=80000000L -DENERGIA_EK_TM4C123GXL -DENERGIA_ARCH_TIVAC -DENERGIA=21 -DARDUINO=10610 -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/variants/EK-TM4C123GXL" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/driverlib" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/inc" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac" -I"C:/Users/Andres/Documents/GitHub/Shank2.0/Programacion/CCS/tivac_EK-TM4C123GXL_core" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/arm-none-eabi/include" -Os -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -w -Wall -fno-threadsafe-statics --param max-inline-insns-single=500 -mabi=aapcs -MMD -MP -MF"src/core/WString.d" -MT"src/core/WString.o" -fno-rtti  -o"src/core/WString.o" "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/WString.cpp"
+'Finished building: "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/WString.cpp"'
+ 
+'Building file: "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/wiring_digital.c"'
+'Invoking: GNU Compiler'
+"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -fno-exceptions -Dprintf=iprintf -DF_CPU=80000000L -DENERGIA_EK_TM4C123GXL -DENERGIA_ARCH_TIVAC -DENERGIA=21 -DARDUINO=10610 -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/variants/EK-TM4C123GXL" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/driverlib" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/inc" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac" -I"C:/Users/Andres/Documents/GitHub/Shank2.0/Programacion/CCS/tivac_EK-TM4C123GXL_core" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/arm-none-eabi/include" -Os -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -w -Wall -fno-threadsafe-statics --param max-inline-insns-single=500 -mabi=aapcs -MMD -MP -MF"src/core/wiring_digital.d" -MT"src/core/wiring_digital.o"  -o"src/core/wiring_digital.o" "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/wiring_digital.c"
+'Finished building: "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/wiring_digital.c"'
+ 
+'Building file: "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/wiring_shift.c"'
+'Invoking: GNU Compiler'
+"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -fno-exceptions -Dprintf=iprintf -DF_CPU=80000000L -DENERGIA_EK_TM4C123GXL -DENERGIA_ARCH_TIVAC -DENERGIA=21 -DARDUINO=10610 -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/variants/EK-TM4C123GXL" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/driverlib" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/inc" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac" -I"C:/Users/Andres/Documents/GitHub/Shank2.0/Programacion/CCS/tivac_EK-TM4C123GXL_core" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/arm-none-eabi/include" -Os -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -w -Wall -fno-threadsafe-statics --param max-inline-insns-single=500 -mabi=aapcs -MMD -MP -MF"src/core/wiring_shift.d" -MT"src/core/wiring_shift.o"  -o"src/core/wiring_shift.o" "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/wiring_shift.c"
+'Finished building: "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/wiring_shift.c"'
+ 
+'Building file: "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/wiring_pulse.c"'
+'Invoking: GNU Compiler'
+"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -fno-exceptions -Dprintf=iprintf -DF_CPU=80000000L -DENERGIA_EK_TM4C123GXL -DENERGIA_ARCH_TIVAC -DENERGIA=21 -DARDUINO=10610 -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/variants/EK-TM4C123GXL" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/driverlib" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/inc" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac" -I"C:/Users/Andres/Documents/GitHub/Shank2.0/Programacion/CCS/tivac_EK-TM4C123GXL_core" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/arm-none-eabi/include" -Os -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -w -Wall -fno-threadsafe-statics --param max-inline-insns-single=500 -mabi=aapcs -MMD -MP -MF"src/core/wiring_pulse.d" -MT"src/core/wiring_pulse.o"  -o"src/core/wiring_pulse.o" "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/wiring_pulse.c"
+'Finished building: "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/wiring_pulse.c"'
+ 
+'Building file: "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/avr/dtostrf.c"'
+'Invoking: GNU Compiler'
+"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -fno-exceptions -Dprintf=iprintf -DF_CPU=80000000L -DENERGIA_EK_TM4C123GXL -DENERGIA_ARCH_TIVAC -DENERGIA=21 -DARDUINO=10610 -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/variants/EK-TM4C123GXL" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/driverlib" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/inc" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac" -I"C:/Users/Andres/Documents/GitHub/Shank2.0/Programacion/CCS/tivac_EK-TM4C123GXL_core" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/arm-none-eabi/include" -Os -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -w -Wall -fno-threadsafe-statics --param max-inline-insns-single=500 -mabi=aapcs -MMD -MP -MF"src/core/avr/dtostrf.d" -MT"src/core/avr/dtostrf.o"  -o"src/core/avr/dtostrf.o" "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/avr/dtostrf.c"
+'Finished building: "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac/avr/dtostrf.c"'
+ 
+'Building target: "libtivac_EK-TM4C123GXL_core.a"'
+'Invoking: GNU Librarian'
+"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/bin/arm-none-eabi-ar.exe" -r "libtivac_EK-TM4C123GXL_core.a" "./src/core/avr/dtostrf.o" "./src/core/itoa.o" "./src/core/random.o" "./src/core/startup_gcc.o" "./src/core/WInterrupts.o" "./src/core/wiring.o" "./src/core/wiring_analog.o" "./src/core/wiring_digital.o" "./src/core/wiring_pulse.o" "./src/core/wiring_shift.o" "./src/core/HardwareSerial.o" "./src/core/IPAddress.o" "./src/core/MACAddress.o" "./src/core/main.o" "./src/core/new.o" "./src/core/Print.o" "./src/core/Stream.o" "./src/core/Tone.o" "./src/core/WMath.o" "./src/core/WString.o" 
+C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/bin/arm-none-eabi-ar.exe: creating libtivac_EK-TM4C123GXL_core.a
+'Finished building target: "libtivac_EK-TM4C123GXL_core.a"'
+ 
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_L3G ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+'Building file: "C:/Users/Andres/Documents/Energia/libraries/L3G/L3G.cpp"'
+'Invoking: GNU Compiler'
+"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -fno-exceptions -Dprintf=iprintf -DF_CPU=80000000L -DENERGIA_EK_TM4C123GXL -DENERGIA_ARCH_TIVAC -DENERGIA=21 -DARDUINO=10610 -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/variants/EK-TM4C123GXL" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/driverlib" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/inc" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac" -I"C:/Users/Andres/Documents/GitHub/Shank2.0/Programacion/CCS/tivac_EK-TM4C123GXL_L3G" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/libraries/Wire" -I"C:/Users/Andres/Documents/Energia/libraries/L3G" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/arm-none-eabi/include" -Os -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -w -Wall -fno-threadsafe-statics --param max-inline-insns-single=500 -mabi=aapcs -MMD -MP -MF"L3G.d" -MT"L3G.o" -fno-rtti  -o"L3G.o" "C:/Users/Andres/Documents/Energia/libraries/L3G/L3G.cpp"
+'Finished building: "C:/Users/Andres/Documents/Energia/libraries/L3G/L3G.cpp"'
+ 
+'Building target: "libtivac_EK-TM4C123GXL_L3G.a"'
+'Invoking: GNU Librarian'
+"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/bin/arm-none-eabi-ar.exe" -r "libtivac_EK-TM4C123GXL_L3G.a" "./L3G.o" 
+C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/bin/arm-none-eabi-ar.exe: creating libtivac_EK-TM4C123GXL_L3G.a
+'Finished building target: "libtivac_EK-TM4C123GXL_L3G.a"'
+ 
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_Wire ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+'Building file: "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/libraries/Wire/Wire.cpp"'
+'Invoking: GNU Compiler'
+"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -fno-exceptions -Dprintf=iprintf -DF_CPU=80000000L -DENERGIA_EK_TM4C123GXL -DENERGIA_ARCH_TIVAC -DENERGIA=21 -DARDUINO=10610 -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/variants/EK-TM4C123GXL" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/driverlib" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/inc" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac" -I"C:/Users/Andres/Documents/GitHub/Shank2.0/Programacion/CCS/tivac_EK-TM4C123GXL_Wire" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/libraries/Wire" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/arm-none-eabi/include" -Os -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -w -Wall -fno-threadsafe-statics --param max-inline-insns-single=500 -mabi=aapcs -MMD -MP -MF"Wire.d" -MT"Wire.o" -fno-rtti  -o"Wire.o" "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/libraries/Wire/Wire.cpp"
+'Finished building: "C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/libraries/Wire/Wire.cpp"'
+ 
+'Building target: "libtivac_EK-TM4C123GXL_Wire.a"'
+'Invoking: GNU Librarian'
+"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/bin/arm-none-eabi-ar.exe" -r "libtivac_EK-TM4C123GXL_Wire.a" "./Wire.o" 
+C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/bin/arm-none-eabi-ar.exe: creating libtivac_EK-TM4C123GXL_Wire.a
+'Finished building target: "libtivac_EK-TM4C123GXL_Wire.a"'
+ 
+
+**** Build Finished ****
+
+**** Clean-only build of configuration Debug for project gyro ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 clean -O 
+ 
+gmake: *** No rule to make target 'clean'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project gyro ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+'Building file: "gyro.cpp"'
+'Invoking: GNU Compiler'
+"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -fno-exceptions -Dprintf=iprintf -DF_CPU=80000000L -DENERGIA_EK_TM4C123GXL -DENERGIA_ARCH_TIVAC -DENERGIA=21 -DARDUINO=10610 -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/variants/EK-TM4C123GXL" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/driverlib" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/inc" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac" -I"C:/Users/Andres/Documents/GitHub/Shank2.0/Programacion/CCS/gyro" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/libraries/Wire" -I"C:/Users/Andres/Documents/Energia/libraries/L3G" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/arm-none-eabi/include" -Os -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -w -Wall -fno-threadsafe-statics --param max-inline-insns-single=500 -mabi=aapcs -MMD -MP -MF"gyro.d" -MT"gyro.o" -fno-rtti  -o"gyro.o" "gyro.cpp"
+'Finished building: "gyro.cpp"'
+ 
+'Building target: "gyro.out"'
+'Invoking: GNU Linker'
+"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/bin/arm-none-eabi-gcc.exe" -fno-exceptions -Dprintf=iprintf -DF_CPU=80000000L -DENERGIA_EK_TM4C123GXL -DENERGIA_ARCH_TIVAC -DENERGIA=21 -DARDUINO=10610 -Os -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -w -Wall -fno-threadsafe-statics --param max-inline-insns-single=500 -mabi=aapcs -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Wl,-Map,"gyro.map" --entry ResetISR -nostartfiles -nostdlib -Wl,--gc-sections -L"C:/Users/Andres/Documents/GitHub/Shank2.0/Programacion/CCS/tivac_EK-TM4C123GXL_L3G/Debug" -L"C:/Users/Andres/Documents/GitHub/Shank2.0/Programacion/CCS/tivac_EK-TM4C123GXL_Wire/Debug" -L"C:/Users/Andres/Documents/GitHub/Shank2.0/Programacion/CCS/tivac_EK-TM4C123GXL_core/Debug" -L"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/driverlib" -Os -specs=nano.specs -specs=rdimon.specs -specs=nosys.specs -Wl,--check-sections -Wl,--unresolved-symbols=report-all -Wl,--warn-common -fsingle-precision-constant -o"gyro.out" "./gyro.o"  -Wl,--start-group -Wl,-T"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/variants/EK-TM4C123GXL/lm4fcpp_blizzard.ld" -ltivac_EK-TM4C123GXL_L3G -ltivac_EK-TM4C123GXL_Wire -ltivac_EK-TM4C123GXL_core -ldriverlib -lm -lc -lgcc -Wl,--end-group 
+'Finished building target: "gyro.out"'
+ 
+'Building files: "gyro.out"'
+'Invoking: GNU Objcopy Utility'
+"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/bin/arm-none-eabi-objcopy.exe" -O binary  "gyro.out"  "gyro.bin"
+'Finished building: "gyro.out"'
+ 
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_L3G ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_Wire ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_core ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_core ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_L3G ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_Wire ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project gyro ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake[1]: 'gyro.out' is up to date.
+gmake[1]: Nothing to be done for 'secondary-outputs'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_L3G ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_Wire ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_core ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_core ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_L3G ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_Wire ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project gyro ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake[1]: 'gyro.out' is up to date.
+gmake[1]: Nothing to be done for 'secondary-outputs'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_L3G ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_Wire ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_core ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_core ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_L3G ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_Wire ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project gyro ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake[1]: 'gyro.out' is up to date.
+gmake[1]: Nothing to be done for 'secondary-outputs'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_L3G ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_Wire ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_core ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_core ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_L3G ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_Wire ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project gyro ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake[1]: 'gyro.out' is up to date.
+gmake[1]: Nothing to be done for 'secondary-outputs'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_core ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_L3G ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_Wire ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project gyro ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+'Building file: "gyro.cpp"'
+'Invoking: GNU Compiler'
+"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -fno-exceptions -Dprintf=iprintf -DF_CPU=80000000L -DENERGIA_EK_TM4C123GXL -DENERGIA_ARCH_TIVAC -DENERGIA=21 -DARDUINO=10610 -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/variants/EK-TM4C123GXL" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/driverlib" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/inc" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac" -I"C:/Users/Andres/Documents/GitHub/Shank2.0/Programacion/CCS/gyro" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/libraries/Wire" -I"C:/Users/Andres/Documents/Energia/libraries/L3G" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/arm-none-eabi/include" -Os -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -w -Wall -fno-threadsafe-statics --param max-inline-insns-single=500 -mabi=aapcs -MMD -MP -MF"gyro.d" -MT"gyro.o" -fno-rtti  -o"gyro.o" "gyro.cpp"
+'Finished building: "gyro.cpp"'
+ 
+'Building target: "gyro.out"'
+'Invoking: GNU Linker'
+"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/bin/arm-none-eabi-gcc.exe" -fno-exceptions -Dprintf=iprintf -DF_CPU=80000000L -DENERGIA_EK_TM4C123GXL -DENERGIA_ARCH_TIVAC -DENERGIA=21 -DARDUINO=10610 -Os -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -w -Wall -fno-threadsafe-statics --param max-inline-insns-single=500 -mabi=aapcs -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Wl,-Map,"gyro.map" --entry ResetISR -nostartfiles -nostdlib -Wl,--gc-sections -L"C:/Users/Andres/Documents/GitHub/Shank2.0/Programacion/CCS/tivac_EK-TM4C123GXL_L3G/Debug" -L"C:/Users/Andres/Documents/GitHub/Shank2.0/Programacion/CCS/tivac_EK-TM4C123GXL_Wire/Debug" -L"C:/Users/Andres/Documents/GitHub/Shank2.0/Programacion/CCS/tivac_EK-TM4C123GXL_core/Debug" -L"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/driverlib" -Os -specs=nano.specs -specs=rdimon.specs -specs=nosys.specs -Wl,--check-sections -Wl,--unresolved-symbols=report-all -Wl,--warn-common -fsingle-precision-constant -o"gyro.out" "./gyro.o"  -Wl,--start-group -Wl,-T"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/variants/EK-TM4C123GXL/lm4fcpp_blizzard.ld" -ltivac_EK-TM4C123GXL_L3G -ltivac_EK-TM4C123GXL_Wire -ltivac_EK-TM4C123GXL_core -ldriverlib -lm -lc -lgcc -Wl,--end-group 
+'Finished building target: "gyro.out"'
+ 
+'Building files: "gyro.out"'
+'Invoking: GNU Objcopy Utility'
+"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/bin/arm-none-eabi-objcopy.exe" -O binary  "gyro.out"  "gyro.bin"
+'Finished building: "gyro.out"'
+ 
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_L3G ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_Wire ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_core ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_core ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_L3G ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_Wire ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project gyro ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake[1]: 'gyro.out' is up to date.
+gmake[1]: Nothing to be done for 'secondary-outputs'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_core ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_L3G ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_Wire ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project gyro ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+'Building file: "gyro.cpp"'
+'Invoking: GNU Compiler'
+"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -fno-exceptions -Dprintf=iprintf -DF_CPU=80000000L -DENERGIA_EK_TM4C123GXL -DENERGIA_ARCH_TIVAC -DENERGIA=21 -DARDUINO=10610 -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/variants/EK-TM4C123GXL" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/driverlib" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/inc" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac" -I"C:/Users/Andres/Documents/GitHub/Shank2.0/Programacion/CCS/gyro" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/libraries/Wire" -I"C:/Users/Andres/Documents/Energia/libraries/L3G" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/arm-none-eabi/include" -Os -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -w -Wall -fno-threadsafe-statics --param max-inline-insns-single=500 -mabi=aapcs -MMD -MP -MF"gyro.d" -MT"gyro.o" -fno-rtti  -o"gyro.o" "gyro.cpp"
+'Finished building: "gyro.cpp"'
+ 
+'Building target: "gyro.out"'
+'Invoking: GNU Linker'
+"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/bin/arm-none-eabi-gcc.exe" -fno-exceptions -Dprintf=iprintf -DF_CPU=80000000L -DENERGIA_EK_TM4C123GXL -DENERGIA_ARCH_TIVAC -DENERGIA=21 -DARDUINO=10610 -Os -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -w -Wall -fno-threadsafe-statics --param max-inline-insns-single=500 -mabi=aapcs -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Wl,-Map,"gyro.map" --entry ResetISR -nostartfiles -nostdlib -Wl,--gc-sections -L"C:/Users/Andres/Documents/GitHub/Shank2.0/Programacion/CCS/tivac_EK-TM4C123GXL_L3G/Debug" -L"C:/Users/Andres/Documents/GitHub/Shank2.0/Programacion/CCS/tivac_EK-TM4C123GXL_Wire/Debug" -L"C:/Users/Andres/Documents/GitHub/Shank2.0/Programacion/CCS/tivac_EK-TM4C123GXL_core/Debug" -L"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/driverlib" -Os -specs=nano.specs -specs=rdimon.specs -specs=nosys.specs -Wl,--check-sections -Wl,--unresolved-symbols=report-all -Wl,--warn-common -fsingle-precision-constant -o"gyro.out" "./gyro.o"  -Wl,--start-group -Wl,-T"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/variants/EK-TM4C123GXL/lm4fcpp_blizzard.ld" -ltivac_EK-TM4C123GXL_L3G -ltivac_EK-TM4C123GXL_Wire -ltivac_EK-TM4C123GXL_core -ldriverlib -lm -lc -lgcc -Wl,--end-group 
+'Finished building target: "gyro.out"'
+ 
+'Building files: "gyro.out"'
+'Invoking: GNU Objcopy Utility'
+"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/bin/arm-none-eabi-objcopy.exe" -O binary  "gyro.out"  "gyro.bin"
+'Finished building: "gyro.out"'
+ 
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_L3G ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_Wire ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_core ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_core ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_L3G ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_Wire ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project gyro ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake[1]: 'gyro.out' is up to date.
+gmake[1]: Nothing to be done for 'secondary-outputs'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_L3G ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_Wire ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_core ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_core ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_L3G ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_Wire ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project gyro ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+'Building file: "gyro.cpp"'
+'Invoking: GNU Compiler'
+"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -fno-exceptions -Dprintf=iprintf -DF_CPU=80000000L -DENERGIA_EK_TM4C123GXL -DENERGIA_ARCH_TIVAC -DENERGIA=21 -DARDUINO=10610 -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/variants/EK-TM4C123GXL" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/driverlib" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/inc" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac" -I"C:/Users/Andres/Documents/GitHub/Shank2.0/Programacion/CCS/gyro" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/libraries/Wire" -I"C:/Users/Andres/Documents/Energia/libraries/L3G" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/arm-none-eabi/include" -Os -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -w -Wall -fno-threadsafe-statics --param max-inline-insns-single=500 -mabi=aapcs -MMD -MP -MF"gyro.d" -MT"gyro.o" -fno-rtti  -o"gyro.o" "gyro.cpp"
+'Finished building: "gyro.cpp"'
+ 
+'Building target: "gyro.out"'
+'Invoking: GNU Linker'
+"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/bin/arm-none-eabi-gcc.exe" -fno-exceptions -Dprintf=iprintf -DF_CPU=80000000L -DENERGIA_EK_TM4C123GXL -DENERGIA_ARCH_TIVAC -DENERGIA=21 -DARDUINO=10610 -Os -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -w -Wall -fno-threadsafe-statics --param max-inline-insns-single=500 -mabi=aapcs -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Wl,-Map,"gyro.map" --entry ResetISR -nostartfiles -nostdlib -Wl,--gc-sections -L"C:/Users/Andres/Documents/GitHub/Shank2.0/Programacion/CCS/tivac_EK-TM4C123GXL_L3G/Debug" -L"C:/Users/Andres/Documents/GitHub/Shank2.0/Programacion/CCS/tivac_EK-TM4C123GXL_Wire/Debug" -L"C:/Users/Andres/Documents/GitHub/Shank2.0/Programacion/CCS/tivac_EK-TM4C123GXL_core/Debug" -L"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/driverlib" -Os -specs=nano.specs -specs=rdimon.specs -specs=nosys.specs -Wl,--check-sections -Wl,--unresolved-symbols=report-all -Wl,--warn-common -fsingle-precision-constant -o"gyro.out" "./gyro.o"  -Wl,--start-group -Wl,-T"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/variants/EK-TM4C123GXL/lm4fcpp_blizzard.ld" -ltivac_EK-TM4C123GXL_L3G -ltivac_EK-TM4C123GXL_Wire -ltivac_EK-TM4C123GXL_core -ldriverlib -lm -lc -lgcc -Wl,--end-group 
+'Finished building target: "gyro.out"'
+ 
+'Building files: "gyro.out"'
+'Invoking: GNU Objcopy Utility'
+"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/bin/arm-none-eabi-objcopy.exe" -O binary  "gyro.out"  "gyro.bin"
+'Finished building: "gyro.out"'
+ 
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_L3G ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_Wire ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_core ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_core ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_L3G ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_Wire ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project gyro ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+'Building file: "gyro.cpp"'
+'Invoking: GNU Compiler'
+"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -fno-exceptions -Dprintf=iprintf -DF_CPU=80000000L -DENERGIA_EK_TM4C123GXL -DENERGIA_ARCH_TIVAC -DENERGIA=21 -DARDUINO=10610 -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/variants/EK-TM4C123GXL" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/driverlib" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/inc" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac" -I"C:/Users/Andres/Documents/GitHub/Shank2.0/Programacion/CCS/gyro" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/libraries/Wire" -I"C:/Users/Andres/Documents/Energia/libraries/L3G" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/arm-none-eabi/include" -Os -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -w -Wall -fno-threadsafe-statics --param max-inline-insns-single=500 -mabi=aapcs -MMD -MP -MF"gyro.d" -MT"gyro.o" -fno-rtti  -o"gyro.o" "gyro.cpp"
+'Finished building: "gyro.cpp"'
+ 
+'Building target: "gyro.out"'
+'Invoking: GNU Linker'
+"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/bin/arm-none-eabi-gcc.exe" -fno-exceptions -Dprintf=iprintf -DF_CPU=80000000L -DENERGIA_EK_TM4C123GXL -DENERGIA_ARCH_TIVAC -DENERGIA=21 -DARDUINO=10610 -Os -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -w -Wall -fno-threadsafe-statics --param max-inline-insns-single=500 -mabi=aapcs -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Wl,-Map,"gyro.map" --entry ResetISR -nostartfiles -nostdlib -Wl,--gc-sections -L"C:/Users/Andres/Documents/GitHub/Shank2.0/Programacion/CCS/tivac_EK-TM4C123GXL_L3G/Debug" -L"C:/Users/Andres/Documents/GitHub/Shank2.0/Programacion/CCS/tivac_EK-TM4C123GXL_Wire/Debug" -L"C:/Users/Andres/Documents/GitHub/Shank2.0/Programacion/CCS/tivac_EK-TM4C123GXL_core/Debug" -L"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/driverlib" -Os -specs=nano.specs -specs=rdimon.specs -specs=nosys.specs -Wl,--check-sections -Wl,--unresolved-symbols=report-all -Wl,--warn-common -fsingle-precision-constant -o"gyro.out" "./gyro.o"  -Wl,--start-group -Wl,-T"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/variants/EK-TM4C123GXL/lm4fcpp_blizzard.ld" -ltivac_EK-TM4C123GXL_L3G -ltivac_EK-TM4C123GXL_Wire -ltivac_EK-TM4C123GXL_core -ldriverlib -lm -lc -lgcc -Wl,--end-group 
+'Finished building target: "gyro.out"'
+ 
+'Building files: "gyro.out"'
+'Invoking: GNU Objcopy Utility'
+"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/bin/arm-none-eabi-objcopy.exe" -O binary  "gyro.out"  "gyro.bin"
+'Finished building: "gyro.out"'
+ 
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_L3G ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_Wire ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_core ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_core ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_L3G ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_Wire ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project gyro ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake[1]: 'gyro.out' is up to date.
+gmake[1]: Nothing to be done for 'secondary-outputs'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_L3G ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_Wire ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_core ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_core ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_L3G ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tivac_EK-TM4C123GXL_Wire ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project gyro ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+'Building file: "gyro.cpp"'
+'Invoking: GNU Compiler'
+"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -fno-exceptions -Dprintf=iprintf -DF_CPU=80000000L -DENERGIA_EK_TM4C123GXL -DENERGIA_ARCH_TIVAC -DENERGIA=21 -DARDUINO=10610 -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/variants/EK-TM4C123GXL" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/driverlib" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/inc" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/cores/tivac" -I"C:/Users/Andres/Documents/GitHub/Shank2.0/Programacion/CCS/gyro" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/libraries/Wire" -I"C:/Users/Andres/Documents/Energia/libraries/L3G" -I"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/arm-none-eabi/include" -Os -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -w -Wall -fno-threadsafe-statics --param max-inline-insns-single=500 -mabi=aapcs -MMD -MP -MF"gyro.d" -MT"gyro.o" -fno-rtti  -o"gyro.o" "gyro.cpp"
+'Finished building: "gyro.cpp"'
+ 
+'Building target: "gyro.out"'
+'Invoking: GNU Linker'
+"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/bin/arm-none-eabi-gcc.exe" -fno-exceptions -Dprintf=iprintf -DF_CPU=80000000L -DENERGIA_EK_TM4C123GXL -DENERGIA_ARCH_TIVAC -DENERGIA=21 -DARDUINO=10610 -Os -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -w -Wall -fno-threadsafe-statics --param max-inline-insns-single=500 -mabi=aapcs -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Wl,-Map,"gyro.map" --entry ResetISR -nostartfiles -nostdlib -Wl,--gc-sections -L"C:/Users/Andres/Documents/GitHub/Shank2.0/Programacion/CCS/tivac_EK-TM4C123GXL_L3G/Debug" -L"C:/Users/Andres/Documents/GitHub/Shank2.0/Programacion/CCS/tivac_EK-TM4C123GXL_Wire/Debug" -L"C:/Users/Andres/Documents/GitHub/Shank2.0/Programacion/CCS/tivac_EK-TM4C123GXL_core/Debug" -L"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/system/driverlib" -Os -specs=nano.specs -specs=rdimon.specs -specs=nosys.specs -Wl,--check-sections -Wl,--unresolved-symbols=report-all -Wl,--warn-common -fsingle-precision-constant -o"gyro.out" "./gyro.o"  -Wl,--start-group -Wl,-T"C:/Users/Andres/AppData/Local/Energia15/packages/energia/hardware/tivac/1.0.3/variants/EK-TM4C123GXL/lm4fcpp_blizzard.ld" -ltivac_EK-TM4C123GXL_L3G -ltivac_EK-TM4C123GXL_Wire -ltivac_EK-TM4C123GXL_core -ldriverlib -lm -lc -lgcc -Wl,--end-group 
+'Finished building target: "gyro.out"'
+ 
+'Building files: "gyro.out"'
+'Invoking: GNU Objcopy Utility'
+"C:/Users/Andres/AppData/Local/Energia15/packages/energia/tools/arm-none-eabi-gcc/6.3.1-20170620/bin/arm-none-eabi-objcopy.exe" -O binary  "gyro.out"  "gyro.bin"
+'Finished building: "gyro.out"'
+ 
+
+**** Build Finished ****
