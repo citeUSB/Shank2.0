@@ -70,6 +70,17 @@ int prev_rate = 0;
 double angle = 0;
 int temp;
 
+
+/////////////////////////// Variables ACELEROMETRO /////////////////////////////////
+LSM303 compass;
+LSM303::vector<int16_t> running_min = {32767, 32767, 32767}, running_max = {-32768, -32768, -32768};
+
+//--------------------------- Setup ACELEROMETRO -----------------------------------
+void acelConfig(){
+  compass.init();
+  compass.enableDefault();
+  }
+
 ////////////////////////////// VARIABLES MOTORES ///////////////////////////////////////
 #define GPIO_PF2_M1PWM6         0x00050805
 #define GPIO_PF3_M1PWM7         0x00050C05
@@ -96,8 +107,8 @@ void setup() {
   Wire.setModule(0);
   ledsConfig();
   gyroConfig();
-  motorConfig();
   encodersConfig();
+  acelConfig();
   pinMode(LED1,OUTPUT);
   pinMode(LED2,OUTPUT);
   pinMode(SW1,INPUT);
@@ -112,19 +123,8 @@ void loop() {
   enviarSerial(selectorDato(selector - 48),6);
   enviarSerial(selectorDato(selector - 48),1);
   leergyro();
-  if(digitalRead(encA)||digitalRead(SW1)){
-      digitalWrite(LED1,HIGH);
-  }
-  else{
-      digitalWrite(LED1,LOW);
-  }
-  if(digitalRead(encB)||digitalRead(SW2)){
-      digitalWrite(LED2,HIGH);
-  }
-  else{
-      digitalWrite(LED2,LOW);
-  }
-  
+  compass.read();
+    
   delay(10);
 }
 //********************************** Setup IR *******************
@@ -164,7 +164,6 @@ void encodersConfig() {
   attachInterrupt(encA, encSumaA, CHANGE);    // Interrupcion del canal derecho fase A
   
 }
-
 int medir(int n){
   int medicion=0;
   int E, R;
@@ -189,13 +188,14 @@ int medir(int n){
 int selectorDato(int selector){
   int dato=0;
   switch(selector){
-    case 1: dato=medir(1); break; 
-    case 3: dato=medir(3); break;
-    case 4: dato=medir(4); break;
-    case 6: dato=medir(6); break;
+    case 1: dato=compass.a.x; break;
+    case 3: dato=compass.a.z; break;
+    case 4: dato=compass.a.y; break;
+    //case 5: dato=compass.a.x; break;
     case 7: dato=(int)angle;     break;
     case 8: dato=(int)ticksEncA; break;
     case 9: dato=(int)ticksEncB; break;
+    
     default: dato=13; break;
     //case 7: dato=gyro;                 //Gyro
     //case 8: dato=paredes;              //Actualizar paredes
@@ -218,83 +218,7 @@ void leergyro(){
     angle -= 360;
 }
 
-// Las primeras dos funciones controlan un motor, el primer paramatro recibido es la
-//velocidad y el segundo es el sentido en el que se desea mover: 1 DELANTE, 0 ATRAS
-void PWM_D(int velocidadD, int sentidoD) {
-  if(velocidadD != 0){
-    if (sentidoD == 0) {
-      GEN_PWM(PWM_GEN_1,PWM_OUT_2,PWM_OUT_2_BIT,velocidadD);
-      GEN_PWM(PWM_GEN_1,PWM_OUT_3,PWM_OUT_3_BIT,0);
-    }
-    else {
-      GEN_PWM(PWM_GEN_1,PWM_OUT_2,PWM_OUT_2_BIT,0);
-      GEN_PWM(PWM_GEN_1,PWM_OUT_3,PWM_OUT_3_BIT,velocidadD);
-    }
-  }
-  else {
-    GEN_PWM(PWM_GEN_1,PWM_OUT_2,PWM_OUT_2_BIT,0);
-    GEN_PWM(PWM_GEN_1,PWM_OUT_3,PWM_OUT_3_BIT,0);
-  }
-}
 
-void PWM_I(int velocidadI, int sentidoI) {
-  if(velocidadI != 0){
-    if (sentidoI == 0) {
-      GEN_PWM(PWM_GEN_3,PWM_OUT_6,PWM_OUT_6_BIT,velocidadI);
-      GEN_PWM(PWM_GEN_3,PWM_OUT_7,PWM_OUT_7_BIT,0);
-    }
-    else {
-      GEN_PWM(PWM_GEN_3,PWM_OUT_6,PWM_OUT_6_BIT,0);
-      GEN_PWM(PWM_GEN_3,PWM_OUT_7,PWM_OUT_7_BIT,velocidadI);
-    }
-  }
-  else {
-    GEN_PWM(PWM_GEN_3,PWM_OUT_6,PWM_OUT_6_BIT,0);
-    GEN_PWM(PWM_GEN_3,PWM_OUT_7,PWM_OUT_7_BIT,0);
-  }
-}
-
-//****************************** SETUP MOTORES ****************************************
-void motorConfig() {
-  //pinMode(BIN2, OUTPUT);
-  //pinMode(AIN2, OUTPUT);
-  pinMode(NSLEEP, OUTPUT);
-  digitalWrite(NSLEEP, HIGH);
-
-  SysCtlPWMClockSet(SYSCTL_PWMDIV_1);
-  SysCtlPeripheralEnable(SYSCTL_PERIPH_PWM1);
-  while (!SysCtlPeripheralReady(SYSCTL_PERIPH_PWM1)) {}
-
-  SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
-  SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
-
-  GPIOPinConfigure(GPIO_PF2_M1PWM6);
-  GPIOPinConfigure(GPIO_PF3_M1PWM7);
-  GPIOPinConfigure(GPIO_PA6_M1PWM2);
-  GPIOPinConfigure(GPIO_PA7_M1PWM3);
-
-
-  GPIOPinTypePWM(GPIO_PORTA_BASE, GPIO_PIN_6);
-  GPIOPinTypePWM(GPIO_PORTA_BASE, GPIO_PIN_7);
-  GPIOPinTypePWM(GPIO_PORTF_BASE, GPIO_PIN_2);
-  GPIOPinTypePWM(GPIO_PORTF_BASE, GPIO_PIN_3);
-
-  PWMGenConfigure(PWM1_BASE, PWM_GEN_1, PWM_GEN_MODE_UP_DOWN |
-                  PWM_GEN_MODE_NO_SYNC);
-  PWMGenPeriodSet(PWM1_BASE, PWM_GEN_1, 2500);
-
-  PWMGenConfigure(PWM1_BASE, PWM_GEN_3, PWM_GEN_MODE_UP_DOWN |
-                  PWM_GEN_MODE_NO_SYNC);
-  PWMGenPeriodSet(PWM1_BASE, PWM_GEN_3, 2500);
-}
-
-
-
-void GEN_PWM(int GEN, int OUT,int OUT_BITS, int vel){
-  PWMGenEnable(PWM1_BASE, GEN);
-  PWMPulseWidthSet(PWM1_BASE, OUT, vel);
-  PWMOutputState(PWM1_BASE, OUT_BITS, true);
-}
 //------------------------------- ENCODERS ---------------------------------------------
 void encSumaA() {
   ticksEncA ++;
