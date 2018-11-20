@@ -44,8 +44,8 @@ int calibracionFI= 1230;         //Constante definida para probar alinear
 int calibracionF=0;          //Constante calibracion frontal
 
 ////////////////////////////// VARIABLES ENCODERS ///////////////////////////////////////
-#define encA PC_5                            //Encoder izquierdo fase A
-#define encB PC_6                            //Encoder izquierdo fase B
+#define encA PC_6                            //Encoder izquierdo fase A
+#define encB PC_5                            //Encoder izquierdo fase B
 volatile long ticksEncA = 0;                //Ticks de la fase A del encoder izquierdo 
 volatile long ticksEncB = 0;                //Ticks de la fase B del encoder izquierdo
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -106,6 +106,13 @@ void loop() {
   enviarSerial(selectorDato(selector - 48),6);
   enviarSerial(selectorDato(selector - 48),1);
   leergyro();
+  if(digitalRead(encA)){
+      digitalWrite(LED1,HIGH);
+
+  }
+  else{
+      digitalWrite(LED1,LOW);
+  }
   
   delay(10);
 }

@@ -1,8 +1,0 @@
-
-**** Build of configuration Debug for project tivac_EK-TM4C123GXL_Wire ****
-
-"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
- 
-gmake: Nothing to be done for 'all'.
-
-**** Build Finished ****
