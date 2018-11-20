@@ -125,9 +125,9 @@ void loop() {
   enviarSerial(selectorDato(selector - 48),6);
   enviarSerial(selectorDato(selector - 48),1);
   leergyro();
-  //fowardNPasos(0,350);
-  PWM_I(pwmI_baseM,FORWARD);
-  PWM_D(pwmD_baseM,FORWARD);
+  fowardNPasos(1,540);
+  //PWM_I(pwmI_baseM,FORWARD);
+  //PWM_D(pwmD_baseM,FORWARD);
   
   delay(10);
 }
