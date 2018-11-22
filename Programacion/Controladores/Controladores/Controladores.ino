@@ -23,7 +23,6 @@ int serial;
 int prueba_leds;
 int RESET = 0;    
 int i;
-int N;
 ////////////////////////// VARIABLES SENSORES INFRAROJOS ////////////////////////////////
 //emisores
 int emisor1=PB_4;
@@ -37,14 +36,11 @@ int receptor3=PD_3;
 int receptor4=PE_2;
 int receptor6=PE_0;
 
-int calibracionFD= 1569;         //Constante definida para probar alinear
-int calibracionLD = 1248;         // Calibracion lateral derecha
-int calibracionLI = 1327;         // Calibracion lateral izquierda
-int calibracionFI= 1230;         //Constante definida para probar alinear
-int calibracionF=0;          //Constante calibracion frontal
 
 int medidaD;
 int medidaI;
+int medidaDelanteraI;
+int medidaDelanteraD;
 
 ////////////////////////////// VARIABLES ENCODERS ///////////////////////////////////////
 #define encA PC_6                            //Encoder izquierdo fase A
@@ -60,11 +56,13 @@ int Pared_De;
 int Pared_DiD;
 int Pared_DiI;
 
-#define wallDetectD 1500
-#define wallDetectI 1400
-#define calOffsetD 0
-#define calOffsetI 0
-#define calOffsetID 0
+int wallDetectD = 1700;
+int wallDetectI = 1300;
+int calOffsetD = 2690;
+int calOffsetI = 2200;
+int calOffsetID = 590;
+int wallDetectDelanteraD = 950;
+int wallDetectDelanteraI = 600;
 
 /////////////////////////// Variables GYRO /////////////////////////////////
 L3G gyro;
@@ -88,13 +86,13 @@ int temp;
 #define FORWARD 1
 #define BACKWARD 0
 
-#define pwmI_baseM 880
-#define pwmD_baseM 580
+#define pwmI_baseM 1080
+#define pwmD_baseM 780
 
 //////////////////////////////// VARIABLES CONTROLADORES ////////////////////////////////
-double KpForward = 3.5; /*constante posicional*/
-double KdForward = 0.3; /*constante integradora*/
-int errorPForward, errorDForward, oldErrorForward;
+double KpForward = 0.5; /*constante propocional*/
+double KdForward = 0.5; /*constante integradora*/
+float errorPForward, errorDForward, oldErrorForward;
 float errorTotalForward;
 /////////////////////////////////////////////////////////////////////////////////////////
 
@@ -111,23 +109,35 @@ void setup() {
   Wire.begin();
   Wire.setModule(0);
   ledsConfig();
-  gyroConfig();
+  //gyroConfig();
   motorConfig();
   pinMode(LED1,OUTPUT);
   pinMode(LED2,OUTPUT);
+
+  calOffsetD = medir(3);
+  calOffsetI = medir(4);
+  calOffsetID = calOffsetD - calOffsetI;
+  
 }
 
 void loop() {
-  while (Serial6.available() > 0) {
+ while (Serial6.available() > 0) {
     // read the incoming byte:
     selector =  Serial6.read();
   }
   enviarSerial(selectorDato(selector - 48),6);
   enviarSerial(selectorDato(selector - 48),1);
-  leergyro();
-  fowardNPasos(1,540);
-  //PWM_I(pwmI_baseM,FORWARD);
-  //PWM_D(pwmD_baseM,FORWARD);
+  //leergyro();
+  
+  medidaDelanteraI = medir(6);
+  medidaDelanteraD = medir(1);
+
+  if(medidaDelanteraI > wallDetectDelanteraI && medidaDelanteraD > wallDetectDelanteraD ){
+      frenar();
+      while(true);
+    }else{
+      fowardNPasos(0,0);
+    }
   
   delay(10);
 }
@@ -191,7 +201,7 @@ int selectorDato(int selector){
     case 4: dato=medir(4); break;
     case 6: dato=medir(6); break;
     case 7: dato=(int)angle;     break;
-    case 8: dato=(int)ticksEncA; break;
+    case 8: dato=(int)errorPForward; break;
     case 9: dato=(int)ticksEncB; break;
     default: dato=13; break;
     //case 7: dato=gyro;                 //Gyro
@@ -313,31 +323,41 @@ void enviarSerial(int dato, int serial){
 void fowardNPasos(int cantidadPasos, int baseVel){
   //while(Ticks_Enc_Der_A <= ((cantidadPasos * Dist_casilla)/mmxticks)){
     medidaD = medir(3);
-    medidaI = medir(4);
+    medidaI = medir(4); 
     forwardPID(baseVel);
   //}
 }
 
 void forwardPID(int base){  
     //CASO 0: HAY DOS PAREDES
-    if (medidaD < wallDetectD && medidaI < wallDetectI ){
-       errorPForward = medidaI - medidaD - calOffsetID;
+    if (medidaD > wallDetectD && medidaI > wallDetectI ){
+       errorPForward = medidaD - medidaI - calOffsetID;
        errorDForward = errorPForward - oldErrorForward;
     }
     //CASO 1: NO HAY PARED DERECHA
-    else if ( medidaD > wallDetectD ){
-       errorPForward = 2*(medidaI - calOffsetI);
+    else if ( medidaD < wallDetectD ){
+       errorPForward = 2*(calOffsetI - medidaI);
        errorDForward = errorPForward - oldErrorForward;
     }
     //CASO 2: NO HAY PARED IZQUIERDA
-    else if ( medidaI > wallDetectI ){
-       errorPForward = 2*(calOffsetD - medidaD);
+    else if ( medidaI < wallDetectI ){
+       errorPForward = 2*(medidaD - calOffsetD);
        errorDForward = errorPForward - oldErrorForward;
     }
     // CASO 3: NO HAY PAREDES
     
     errorTotalForward = KpForward * errorPForward + KdForward * errorDForward;
     oldErrorForward = errorPForward;
-    PWM_I(pwmI_baseM - base - (int)errorTotalForward,0);
-    PWM_D(pwmD_baseM - base + (int)errorTotalForward,0);
+    PWM_I(pwmI_baseM - base - (int)errorTotalForward,FORWARD);
+    PWM_D(pwmD_baseM - base + (int)errorTotalForward,FORWARD);
+}
+
+void frenar(){
+  PWM_I(pwmI_baseM + 300,BACKWARD);
+  PWM_D(pwmD_baseM + 300,BACKWARD);
+  delay(200);
+  PWM_I(0,FORWARD);
+  PWM_D(0,FORWARD);
+  
+    
 }
