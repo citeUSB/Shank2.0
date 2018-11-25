@@ -73,9 +73,9 @@ unsigned long time;
 int sampleTime = 10;
 int rate;
 int prev_rate = 0;
-double angle = 0;
+double angulo = 0;
 int temp;
-
+int anguloDeseado = 0;
 ////////////////////////////// VARIABLES MOTORES ///////////////////////////////////////
 #define GPIO_PF2_M1PWM6         0x00050805
 #define GPIO_PF3_M1PWM7         0x00050C05
@@ -90,10 +90,17 @@ int temp;
 #define pwmD_baseM 780
 
 //////////////////////////////// VARIABLES CONTROLADORES ////////////////////////////////
-double KpForward = 0.5; /*constante propocional*/
-double KdForward = 0.5; /*constante integradora*/
+double KpForward = 0.8; /*constante propocional 0.9*/ 
+double KdForward = 1; /*constante integradora 0.4*/
 float errorPForward, errorDForward, oldErrorForward;
 float errorTotalForward;
+
+float KpCruce = 1;
+float KdCruce = 0;
+float errorDcruce = 0;
+float errorPcruce = 0;
+float errorTotalCruce = 0;
+float oldErrorPcruce = 0;
 /////////////////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////// Otras Variables//////////////////////////////
@@ -109,37 +116,76 @@ void setup() {
   Wire.begin();
   Wire.setModule(0);
   ledsConfig();
-  //gyroConfig();
+  gyroConfig();
   motorConfig();
   pinMode(LED1,OUTPUT);
   pinMode(LED2,OUTPUT);
 
-  calOffsetD = medir(3);
-  calOffsetI = medir(4);
-  calOffsetID = calOffsetD - calOffsetI;
+  leergyro();
+  anguloDeseado = angulo + 90; 
+  // Mantener el angulo entre 0-359 grados
+  if (anguloDeseado < 0)
+    anguloDeseado += 360;
+  else if (anguloDeseado >= 360)
+     anguloDeseado -= 360;
   
+  digitalWrite(LED1,HIGH);
+  delay(1000);
+  digitalWrite(LED1,LOW);
+  delay(1000);  
 }
 
 void loop() {
- while (Serial6.available() > 0) {
-    // read the incoming byte:
-    selector =  Serial6.read();
+  leergyro();
+  errorPcruce = anguloDeseado - angulo;
+  enviarWifi();
+  if(errorPcruce > 180)
+    errorPcruce -= 360;
+  else if(errorPcruce < -180)
+    errorPcruce += 360;
+    
+  errorDcruce = errorPcruce - oldErrorPcruce;
+    
+  errorTotalCruce = KpCruce * errorPcruce + KdCruce * errorDcruce;
+  oldErrorPcruce = errorPcruce;   
+  PWM_I(pwmI_baseM - (int)errorTotalCruce,0);
+  PWM_D(pwmD_baseM - 100 + (int)errorTotalCruce,1);
+  if(errorPcruce < 1){
+    PWM_I(0,0);
+    PWM_D(0,1);
+    digitalWrite(LED2,HIGH);
+    delay(400);
+    digitalWrite(LED2,LOW);
+    while(1){
+      medidaDelanteraI = medir(6);
+      medidaDelanteraD = medir(1);
+      if(medidaDelanteraI > wallDetectDelanteraI && medidaDelanteraD > wallDetectDelanteraD ){
+        frenar();
+        while(1);
+      }
+      else{
+        fowardNPasos(0,100);
+      }
+    }
   }
-  enviarSerial(selectorDato(selector - 48),6);
-  enviarSerial(selectorDato(selector - 48),1);
-  //leergyro();
-  
-  medidaDelanteraI = medir(6);
+
+  digitalWrite(LED1,HIGH);
+  delay(50);
+  digitalWrite(LED1,LOW);
+  delay(50);
+ /*medidaDelanteraI = medir(6);
   medidaDelanteraD = medir(1);
 
   if(medidaDelanteraI > wallDetectDelanteraI && medidaDelanteraD > wallDetectDelanteraD ){
-      frenar();
-      while(true);
-    }else{
-      fowardNPasos(0,0);
-    }
-  
-  delay(10);
+    frenar();
+    while(true);
+  }else{
+    fowardNPasos(0,100);
+  }*/
+ 
+  //cruceSuave(0);
+  //cruceSuave(1);
+  //delay(2000);
 }
 //********************************** Setup IR *******************
 void ledsConfig(){
@@ -148,6 +194,9 @@ void ledsConfig(){
   pinMode(emisor3, OUTPUT);
   pinMode(emisor4, OUTPUT);
   pinMode(emisor6, OUTPUT);
+  calOffsetD = medir(3);
+  calOffsetI = medir(4);
+  calOffsetID = calOffsetD - calOffsetI;
 }
 
 //************************ Setup Gyro ***********************
@@ -200,9 +249,9 @@ int selectorDato(int selector){
     case 3: dato=medir(3); break;
     case 4: dato=medir(4); break;
     case 6: dato=medir(6); break;
-    case 7: dato=(int)angle;     break;
-    case 8: dato=(int)errorPForward; break;
-    case 9: dato=(int)ticksEncB; break;
+    case 7: dato=(int)angulo;     break;
+    case 8: dato=(int)errorPcruce; break;
+    case 9: dato=(int)errorPcruce; break;
     default: dato=13; break;
     //case 7: dato=gyro;                 //Gyro
     //case 8: dato=paredes;              //Actualizar paredes
@@ -216,13 +265,13 @@ void leergyro(){
   gyro.read();
   rate=((int)gyro.g.x-dc_offset)/100;
 
-  if(rate >= noise || rate <= -noise) angle += ((double)(prev_rate + rate) * sampleTime) / 2000;
+  if(rate >= noise || rate <= -noise) angulo += ((double)(prev_rate + rate) * sampleTime) / 2000;
   prev_rate = rate;
   // Keep our angle between 0-359 degrees
-  if (angle < 0)
-    angle += 360;
-  else if (angle >= 360)
-    angle -= 360;
+  if (angulo < 0)
+    angulo += 360;
+  else if (angulo >= 360)
+    angulo -= 360;
 }
 
 // Las primeras dos funciones controlan un motor, el primer paramatro recibido es la
@@ -336,12 +385,12 @@ void forwardPID(int base){
     }
     //CASO 1: NO HAY PARED DERECHA
     else if ( medidaD < wallDetectD ){
-       errorPForward = 2*(calOffsetI - medidaI);
+       errorPForward = (calOffsetI - medidaI);
        errorDForward = errorPForward - oldErrorForward;
     }
     //CASO 2: NO HAY PARED IZQUIERDA
     else if ( medidaI < wallDetectI ){
-       errorPForward = 2*(medidaD - calOffsetD);
+       errorPForward = (medidaD - calOffsetD);
        errorDForward = errorPForward - oldErrorForward;
     }
     // CASO 3: NO HAY PAREDES
@@ -352,12 +401,61 @@ void forwardPID(int base){
     PWM_D(pwmD_baseM - base + (int)errorTotalForward,FORWARD);
 }
 
+void cruceSuave(int sentido){
+  //Sentido -> 0 horario
+  //Sentido -> 1 antihorario
+  //Establecer el angulo de gyro
+  int cruce = 0;
+  leergyro();
+  if(sentido==0)
+    anguloDeseado = angulo - 90; 
+  else  
+    anguloDeseado = angulo + 90; 
+  // Mantener el angulo entre 0-359 grados
+  if (anguloDeseado < 0)
+    anguloDeseado += 360;
+  else if (anguloDeseado >= 360)
+     anguloDeseado -= 360;
+ 
+  while(!cruce){
+    leergyro();
+    errorPcruce = anguloDeseado - angulo;
+    enviarWifi();
+    if(errorPcruce > 180)
+    errorPcruce -= 360;
+    else if(errorPcruce < -180)
+    errorPcruce += 360;
+    
+    errorDcruce = errorPcruce - oldErrorPcruce;
+    
+    errorTotalCruce = KpCruce * errorPcruce + KdCruce * errorDcruce;
+    oldErrorPcruce = errorPcruce;   
+    PWM_I(pwmI_baseM - 100 - (int)errorTotalCruce,!sentido);
+    PWM_D(pwmD_baseM - 100 + (int)errorTotalCruce,sentido);
+
+    if(errorPcruce == 0){
+      cruce = 1;
+    }
+  }
+  digitalWrite(LED2,HIGH);
+  delay(500);
+  digitalWrite(LED2,LOW);
+  
+}
+
 void frenar(){
   PWM_I(pwmI_baseM + 300,BACKWARD);
   PWM_D(pwmD_baseM + 300,BACKWARD);
   delay(200);
   PWM_I(0,FORWARD);
   PWM_D(0,FORWARD);
-  
-    
+}
+
+void enviarWifi(){
+  while (Serial6.available() > 0) {
+    // read the incoming byte:
+    selector =  Serial6.read();
+  }
+  enviarSerial(selectorDato(selector - 48),6);
+  enviarSerial(selectorDato(selector - 48),1);
 }
