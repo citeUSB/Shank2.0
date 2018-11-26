@@ -11,18 +11,19 @@
 #include <LSM303.h>
 #include <Wire.h>
 #include <L3G.h>
+LSM303::vector<int16_t> running_min = {32767, 32767, 32767}, running_max = {-32768, -32768, -32768};
 ///////////////////////////// VARIABLES GENERALES //////////////////////////////////////
 #define LED PB_0
 #define Dist_casilla 168
-#define Dist_casilla_A 186 
+#define Dist_casilla_A 186
 // Constante mm/ticks = 8.22 mm/ticks - 8.10mm/ticks - 8.57mm/ticks - 8.75mmm/ticks => 8.41mm/ticks
 float mmxticks = 8.41;
 int estado = 1;
 int pwm = 20;
 char buffer[9];
-int serial;  
+int serial;
 int prueba_leds;
-int RESET = 0;    
+int RESET = 0;
 int i;
 int N;
 ////////////////////////// VARIABLES SENSORES INFRAROJOS ////////////////////////////////
@@ -47,7 +48,7 @@ int calibracionF=0;          //Constante calibracion frontal
 ////////////////////////////// VARIABLES ENCODERS ///////////////////////////////////////
 #define encA PF_0//PC_6                            //Encoder izquierdo fase A
 #define encB PF_1//PC_5                            //Encoder izquierdo fase B
-volatile long ticksEncA = 0;                //Ticks de la fase A del encoder izquierdo 
+volatile long ticksEncA = 0;                //Ticks de la fase A del encoder izquierdo
 volatile long ticksEncB = 0;                //Ticks de la fase B del encoder izquierdo
 /////////////////////////////////////////////////////////////////////////////////////////
 
@@ -60,7 +61,7 @@ int Pared_DiI;
 
 /////////////////////////// Variables GYRO /////////////////////////////////
 L3G gyro;
-int sampleNum = 5;
+int sampleNum = 100;
 int dc_offset = 0;
 double noise = 0;
 unsigned long time;
@@ -73,13 +74,17 @@ int temp;
 
 /////////////////////////// Variables ACELEROMETRO /////////////////////////////////
 LSM303 compass;
-LSM303::vector<int16_t> running_min = {32767, 32767, 32767}, running_max = {-32768, -32768, -32768};
+//LSM303::vector<int16_t> running_min = {32767, 32767, 32767}, running_max = {-32768, -32768, -32768};
 
-//--------------------------- Setup ACELEROMETRO -----------------------------------
-void acelConfig(){
-  compass.init();
-  compass.enableDefault();
-  }
+int compass_offset = 0;
+float aceleracionZ = 0;
+float aceleracionZprevia = 0;
+float velocidadZ = 0;
+float velocidadZprevia = 0;
+float distanciaZ = 0;
+float distanciaZprevia = 0;
+float ruidoAceleracion = 0;
+
 
 ////////////////////////////// VARIABLES MOTORES ///////////////////////////////////////
 #define GPIO_PF2_M1PWM6         0x00050805
@@ -122,15 +127,15 @@ void loop() {
   }
   enviarSerial(selectorDato(selector - 48),6);
   enviarSerial(selectorDato(selector - 48),1);
-  leergyro();
-  compass.read();
-    
+  //leergyro();
+
+  calcularAcelerometro();
   delay(10);
 }
 //********************************** Setup IR *******************
 void ledsConfig(){
   analogReadResolution(12);// ajuste ADC en 12 bits
-  pinMode(emisor1, OUTPUT); 
+  pinMode(emisor1, OUTPUT);
   pinMode(emisor3, OUTPUT);
   pinMode(emisor4, OUTPUT);
   pinMode(emisor6, OUTPUT);
@@ -146,7 +151,7 @@ void gyroConfig(){
     dc_offset+=(int)gyro.g.x;
   }
   dc_offset=dc_offset/sampleNum;
-  
+
   for(int n=0;n<sampleNum;n++){
   gyro.read();
   if((int)gyro.g.x-dc_offset>noise)
@@ -162,7 +167,7 @@ void encodersConfig() {
   pinMode(encA, INPUT);
   pinMode(encB, INPUT);
   attachInterrupt(encA, encSumaA, CHANGE);    // Interrupcion del canal derecho fase A
-  
+
 }
 int medir(int n){
   int medicion=0;
@@ -170,17 +175,17 @@ int medir(int n){
   int offsetOn = 0;  // medida con los led prendidos
   int offsetOff = 0; // medida con los led apagados
   switch(n){
-    case 1: E=emisor1; R=receptor1; break; 
+    case 1: E=emisor1; R=receptor1; break;
     case 3: E=emisor3; R=receptor3; break;
     case 4: E=emisor4; R=receptor4; break;
-    case 6: E=emisor6; R=receptor6; break; 
+    case 6: E=emisor6; R=receptor6; break;
   }
   digitalWrite(E,HIGH);// encendido emisor
   delayMicroseconds(40);
   offsetOn = analogRead(R);  // lectura ADC
   digitalWrite(E,LOW);    // apagado emisor
   delayMicroseconds(100);
-  offsetOff = analogRead(R); // lectura ADC 
+  offsetOff = analogRead(R); // lectura ADC
   medicion = offsetOn - offsetOff;
   return(medicion);
 }
@@ -188,14 +193,13 @@ int medir(int n){
 int selectorDato(int selector){
   int dato=0;
   switch(selector){
-    case 1: dato=compass.a.x; break;
-    case 3: dato=compass.a.z; break;
-    case 4: dato=compass.a.y; break;
-    //case 5: dato=compass.a.x; break;
+    case 1: dato=aceleracionZ; break;
+    case 3: dato=velocidadZ; break;
+    case 4: dato=distanciaZ; break;
     case 7: dato=(int)angle;     break;
     case 8: dato=(int)ticksEncA; break;
     case 9: dato=(int)ticksEncB; break;
-    
+
     default: dato=13; break;
     //case 7: dato=gyro;                 //Gyro
     //case 8: dato=paredes;              //Actualizar paredes
@@ -205,7 +209,7 @@ int selectorDato(int selector){
 
 void leergyro(){
   sampleTime = millis() - time;
-  time = millis(); 
+  time = millis();
   gyro.read();
   rate=((int)gyro.g.x-dc_offset)/100;
 
@@ -218,6 +222,45 @@ void leergyro(){
     angle -= 360;
 }
 
+void calcularAcelerometro(){
+  //Calibracion
+  compass.read();
+  int deltat = millis() - time;
+  time = millis();
+  aceleracionZ = ((int)(compass.a.z >> 4)-compass_offset) *9.8/1024;
+  aceleracionZ = 0.6*aceleracionZ+0.4*aceleracionZprevia;
+  if(aceleracionZ >= ruidoAceleracion || aceleracionZ <= -ruidoAceleracion) {
+    velocidadZ += aceleracionZ*deltat;
+    velocidadZ = 0.6*velocidadZ+0.4*velocidadZprevia;
+    distanciaZ += velocidadZ*deltat;
+    distanciaZ = 0.6*distanciaZ+0.4*distanciaZprevia; 
+    }//angle += ((double)(prev_rate + rate) * sampleTime) / 2000;
+    aceleracionZprevia = aceleracionZ;
+    velocidadZprevia = velocidadZ;
+    distanciaZprevia = distanciaZ; 
+  //prev_rate = rate;
+  // Keep our angle between 0-359 degrees
+}
+
+void acelConfig(){
+  compass.init();
+  compass.enableDefault();
+
+  for(int n=0;n<sampleNum;n++){
+    compass.read();
+    compass_offset+=(int)(compass.a.z >> 4);
+  }
+  compass_offset=compass_offset/sampleNum;
+
+  for(int n=0;n<sampleNum;n++){
+  compass.read();
+  if((int)(compass.a.z >> 4)-compass_offset>ruidoAceleracion)
+     ruidoAceleracion = (int)(compass.a.z >> 4)-compass_offset;
+  else if((int)gyro.g.x-dc_offset<-ruidoAceleracion)
+     ruidoAceleracion = -(int)(compass.a.z >> 4)-compass_offset;
+  }
+  ruidoAceleracion = ruidoAceleracion*9.8/1024;
+}
 
 //------------------------------- ENCODERS ---------------------------------------------
 void encSumaA() {
@@ -230,13 +273,13 @@ void encSumaB() {
 void enviarSerial(int dato, int serial){
   char buffer[5];
   for(int i=0;i<4;i++){
-    buffer[i]=dato>>i*8;  
+    buffer[i]=dato>>i*8;
   }
   buffer[4]=0xFF;
   for(int i=0;i<5;i++){
     if(serial==1)
       Serial.write(buffer[i]);
-    else 
+    else
       Serial6.write(buffer[i]);
   }
 }
