@@ -13,15 +13,15 @@
 ///////////////////////////// VARIABLES GENERALES //////////////////////////////////////
 #define LED PB_0
 #define Dist_casilla 168
-#define Dist_casilla_A 186 
+#define Dist_casilla_A 186
 // Constante mm/ticks = 8.22 mm/ticks - 8.10mm/ticks - 8.57mm/ticks - 8.75mmm/ticks => 8.41mm/ticks
 float mmxticks = 8.41;
 int estado = 1;
 int pwm = 20;
 char buffer[9];
-int serial;  
+int serial;
 int prueba_leds;
-int RESET = 0;    
+int RESET = 0;
 int i;
 ////////////////////////// VARIABLES SENSORES INFRAROJOS ////////////////////////////////
 //emisores
@@ -45,7 +45,7 @@ int medidaDelanteraD;
 ////////////////////////////// VARIABLES ENCODERS ///////////////////////////////////////
 #define encA PC_6                            //Encoder izquierdo fase A
 #define encB PC_5                            //Encoder izquierdo fase B
-volatile long ticksEncA = 0;                //Ticks de la fase A del encoder izquierdo 
+volatile long ticksEncA = 0;                //Ticks de la fase A del encoder izquierdo
 volatile long ticksEncB = 0;                //Ticks de la fase B del encoder izquierdo
 /////////////////////////////////////////////////////////////////////////////////////////
 
@@ -76,6 +76,20 @@ int prev_rate = 0;
 double angulo = 0;
 int temp;
 int anguloDeseado = 0;
+
+/////////////////////////// Variables Acelerometro ////////////////////////////////
+LSM303 compass;
+//LSM303::vector<int16_t> running_min = {32767, 32767, 32767}, running_max = {-32768, -32768, -32768};
+
+int compass_offset = 0;
+float aceleracionZ = 0;
+float aceleracionZprevia = 0;
+float velocidadZ = 0;
+float velocidadZprevia = 0;
+float distanciaZ = 0;
+float distanciaZprevia = 0;
+float ruidoAceleracion = 0;
+
 ////////////////////////////// VARIABLES MOTORES ///////////////////////////////////////
 #define GPIO_PF2_M1PWM6         0x00050805
 #define GPIO_PF3_M1PWM7         0x00050C05
@@ -90,7 +104,7 @@ int anguloDeseado = 0;
 #define pwmD_baseM 780
 
 //////////////////////////////// VARIABLES CONTROLADORES ////////////////////////////////
-double KpForward = 0.8; /*constante propocional 0.9*/ 
+double KpForward = 0.8; /*constante propocional 0.9*/
 double KdForward = 1; /*constante integradora 0.4*/
 float errorPForward, errorDForward, oldErrorForward;
 float errorTotalForward;
@@ -121,18 +135,10 @@ void setup() {
   pinMode(LED1,OUTPUT);
   pinMode(LED2,OUTPUT);
 
-  leergyro();
-  anguloDeseado = angulo + 90; 
-  // Mantener el angulo entre 0-359 grados
-  if (anguloDeseado < 0)
-    anguloDeseado += 360;
-  else if (anguloDeseado >= 360)
-     anguloDeseado -= 360;
-  
-  digitalWrite(LED1,HIGH);
-  delay(1000);
-  digitalWrite(LED1,LOW);
-  delay(1000);  
+  calOffsetD = medir(3);
+  calOffsetI = medir(4);
+  calOffsetID = calOffsetD - calOffsetI;
+
 }
 
 void loop() {
@@ -143,11 +149,11 @@ void loop() {
     errorPcruce -= 360;
   else if(errorPcruce < -180)
     errorPcruce += 360;
-    
+
   errorDcruce = errorPcruce - oldErrorPcruce;
-    
+
   errorTotalCruce = KpCruce * errorPcruce + KdCruce * errorDcruce;
-  oldErrorPcruce = errorPcruce;   
+  oldErrorPcruce = errorPcruce;
   PWM_I(pwmI_baseM - (int)errorTotalCruce,0);
   PWM_D(pwmD_baseM - 100 + (int)errorTotalCruce,1);
   if(errorPcruce < 1){
@@ -168,29 +174,26 @@ void loop() {
       }
     }
   }
+  enviarSerial(selectorDato(selector - 48),6);
+  enviarSerial(selectorDato(selector - 48),1);
+  //leergyro();
 
-  digitalWrite(LED1,HIGH);
-  delay(50);
-  digitalWrite(LED1,LOW);
-  delay(50);
- /*medidaDelanteraI = medir(6);
+  medidaDelanteraI = medir(6);
   medidaDelanteraD = medir(1);
 
   if(medidaDelanteraI > wallDetectDelanteraI && medidaDelanteraD > wallDetectDelanteraD ){
-    frenar();
-    while(true);
-  }else{
-    fowardNPasos(0,100);
-  }*/
- 
-  //cruceSuave(0);
-  //cruceSuave(1);
-  //delay(2000);
+      frenar();
+      while(true);
+    }else{
+      fowardNPasos(0,0);
+    }
+
+  delay(10);
 }
 //********************************** Setup IR *******************
 void ledsConfig(){
   analogReadResolution(12);// ajuste ADC en 12 bits
-  pinMode(emisor1, OUTPUT); 
+  pinMode(emisor1, OUTPUT);
   pinMode(emisor3, OUTPUT);
   pinMode(emisor4, OUTPUT);
   pinMode(emisor6, OUTPUT);
@@ -209,7 +212,7 @@ void gyroConfig(){
     dc_offset+=(int)gyro.g.x;
   }
   dc_offset=dc_offset/sampleNum;
-  
+
   for(int n=0;n<sampleNum;n++){
   gyro.read();
   if((int)gyro.g.x-dc_offset>noise)
@@ -227,17 +230,17 @@ int medir(int n){
   int offsetOn = 0;  // medida con los led prendidos
   int offsetOff = 0; // medida con los led apagados
   switch(n){
-    case 1: E=emisor1; R=receptor1; break; 
+    case 1: E=emisor1; R=receptor1; break;
     case 3: E=emisor3; R=receptor3; break;
     case 4: E=emisor4; R=receptor4; break;
-    case 6: E=emisor6; R=receptor6; break; 
+    case 6: E=emisor6; R=receptor6; break;
   }
   digitalWrite(E,HIGH);// encendido emisor
   delayMicroseconds(40);
   offsetOn = analogRead(R);  // lectura ADC
   digitalWrite(E,LOW);    // apagado emisor
   delayMicroseconds(100);
-  offsetOff = analogRead(R); // lectura ADC 
+  offsetOff = analogRead(R); // lectura ADC
   medicion = offsetOn - offsetOff;
   return(medicion);
 }
@@ -245,7 +248,7 @@ int medir(int n){
 int selectorDato(int selector){
   int dato=0;
   switch(selector){
-    case 1: dato=medir(1); break; 
+    case 1: dato=medir(1); break;
     case 3: dato=medir(3); break;
     case 4: dato=medir(4); break;
     case 6: dato=medir(6); break;
@@ -261,7 +264,7 @@ int selectorDato(int selector){
 
 void leergyro(){
   sampleTime = millis() - time;
-  time = millis(); 
+  time = millis();
   gyro.read();
   rate=((int)gyro.g.x-dc_offset)/100;
 
@@ -356,13 +359,13 @@ void GEN_PWM(int GEN, int OUT,int OUT_BITS, int vel){
 void enviarSerial(int dato, int serial){
   char buffer[5];
   for(int i=0;i<4;i++){
-    buffer[i]=dato>>i*8;  
+    buffer[i]=dato>>i*8;
   }
   buffer[4]=0xFF;
   for(int i=0;i<5;i++){
     if(serial==1)
       Serial.write(buffer[i]);
-    else 
+    else
       Serial6.write(buffer[i]);
   }
 }
@@ -372,12 +375,12 @@ void enviarSerial(int dato, int serial){
 void fowardNPasos(int cantidadPasos, int baseVel){
   //while(Ticks_Enc_Der_A <= ((cantidadPasos * Dist_casilla)/mmxticks)){
     medidaD = medir(3);
-    medidaI = medir(4); 
+    medidaI = medir(4);
     forwardPID(baseVel);
   //}
 }
 
-void forwardPID(int base){  
+void forwardPID(int base){
     //CASO 0: HAY DOS PAREDES
     if (medidaD > wallDetectD && medidaI > wallDetectI ){
        errorPForward = medidaD - medidaI - calOffsetID;
@@ -394,7 +397,7 @@ void forwardPID(int base){
        errorDForward = errorPForward - oldErrorForward;
     }
     // CASO 3: NO HAY PAREDES
-    
+
     errorTotalForward = KpForward * errorPForward + KdForward * errorDForward;
     oldErrorForward = errorPForward;
     PWM_I(pwmI_baseM - base - (int)errorTotalForward,FORWARD);
@@ -408,15 +411,15 @@ void cruceSuave(int sentido){
   int cruce = 0;
   leergyro();
   if(sentido==0)
-    anguloDeseado = angulo - 90; 
-  else  
-    anguloDeseado = angulo + 90; 
+    anguloDeseado = angulo - 90;
+  else
+    anguloDeseado = angulo + 90;
   // Mantener el angulo entre 0-359 grados
   if (anguloDeseado < 0)
     anguloDeseado += 360;
   else if (anguloDeseado >= 360)
      anguloDeseado -= 360;
- 
+
   while(!cruce){
     leergyro();
     errorPcruce = anguloDeseado - angulo;
@@ -425,11 +428,11 @@ void cruceSuave(int sentido){
     errorPcruce -= 360;
     else if(errorPcruce < -180)
     errorPcruce += 360;
-    
+
     errorDcruce = errorPcruce - oldErrorPcruce;
-    
+
     errorTotalCruce = KpCruce * errorPcruce + KdCruce * errorDcruce;
-    oldErrorPcruce = errorPcruce;   
+    oldErrorPcruce = errorPcruce;
     PWM_I(pwmI_baseM - 100 - (int)errorTotalCruce,!sentido);
     PWM_D(pwmD_baseM - 100 + (int)errorTotalCruce,sentido);
 
@@ -440,13 +443,14 @@ void cruceSuave(int sentido){
   digitalWrite(LED2,HIGH);
   delay(500);
   digitalWrite(LED2,LOW);
-  
+
 }
 
 void frenar(){
   PWM_I(pwmI_baseM + 300,BACKWARD);
   PWM_D(pwmD_baseM + 300,BACKWARD);
   delay(200);
+
   PWM_I(0,FORWARD);
   PWM_D(0,FORWARD);
 }
@@ -458,4 +462,56 @@ void enviarWifi(){
   }
   enviarSerial(selectorDato(selector - 48),6);
   enviarSerial(selectorDato(selector - 48),1);
+}
+
+void caminarMientrasHayPared(){
+  medidaD = medir(3);
+  medidaI = medir(4);
+  if ( medidaD > wallDetectD || medidaI > wallDetectI){
+    forwardPID(baseVel);
+  }
+  else{
+    return;
+  }
+
+}
+
+void calcularAcelerometro(){
+  //Calibracion
+  compass.read();
+  int deltat = millis() - time;
+  time = millis();
+  aceleracionZ = ((int)(compass.a.z >> 4)-compass_offset) *9.8/1024;
+  aceleracionZ = 0.6*aceleracionZ+0.4*aceleracionZprevia;
+  if(aceleracionZ >= ruidoAceleracion || aceleracionZ <= -ruidoAceleracion) {
+    velocidadZ += aceleracionZ*deltat;
+    velocidadZ = 0.6*velocidadZ+0.4*velocidadZprevia;
+    distanciaZ += velocidadZ*deltat;
+    distanciaZ = 0.6*distanciaZ+0.4*distanciaZprevia;
+    }//angle += ((double)(prev_rate + rate) * sampleTime) / 2000;
+    aceleracionZprevia = aceleracionZ;
+    velocidadZprevia = velocidadZ;
+    distanciaZprevia = distanciaZ;
+  //prev_rate = rate;
+  // Keep our angle between 0-359 degrees
+}
+
+void acelConfig(){
+  compass.init();
+  compass.enableDefault();
+
+  for(int n=0;n<sampleNum;n++){
+    compass.read();
+    compass_offset+=(int)(compass.a.z >> 4);
+  }
+  compass_offset=compass_offset/sampleNum;
+
+  for(int n=0;n<sampleNum;n++){
+  compass.read();
+  if((int)(compass.a.z >> 4)-compass_offset>ruidoAceleracion)
+     ruidoAceleracion = (int)(compass.a.z >> 4)-compass_offset;
+  else if((int)gyro.g.x-dc_offset<-ruidoAceleracion)
+     ruidoAceleracion = -(int)(compass.a.z >> 4)-compass_offset;
+  }
+  ruidoAceleracion = ruidoAceleracion*9.8/1024;
 }
