@@ -8,6 +8,7 @@
 #include "driverlib/uart.h"
 #include "driverlib/pwm.h"
 #include "driverlib/qei.h"
+#include <LSM303.h>
 #include <Wire.h>
 #include <L3G.h>
 ///////////////////////////// VARIABLES GENERALES //////////////////////////////////////
@@ -61,12 +62,12 @@ int wallDetectI = 1300;
 int calOffsetD = 2690;
 int calOffsetI = 2200;
 int calOffsetID = 590;
-int wallDetectDelanteraD = 950;
-int wallDetectDelanteraI = 600;
+int wallDetectDelanteraD = 1800;
+int wallDetectDelanteraI = 1200;
 
 /////////////////////////// Variables GYRO /////////////////////////////////
 L3G gyro;
-int sampleNum = 5;
+int sampleNum = 1000;
 int dc_offset = 0;
 double noise = 0;
 unsigned long time;
@@ -89,6 +90,8 @@ float velocidadZprevia = 0;
 float distanciaZ = 0;
 float distanciaZprevia = 0;
 float ruidoAceleracion = 0;
+float distanciaRecorrida = 0;
+int contador = 0;
 
 ////////////////////////////// VARIABLES MOTORES ///////////////////////////////////////
 #define GPIO_PF2_M1PWM6         0x00050805
@@ -132,64 +135,47 @@ void setup() {
   ledsConfig();
   gyroConfig();
   motorConfig();
+  acelConfig();
   pinMode(LED1,OUTPUT);
   pinMode(LED2,OUTPUT);
 
   calOffsetD = medir(3);
   calOffsetI = medir(4);
   calOffsetID = calOffsetD - calOffsetI;
-
+  
+  PWM_D(1500,0);
 }
 
 void loop() {
-  leergyro();
-  errorPcruce = anguloDeseado - angulo;
-  enviarWifi();
-  if(errorPcruce > 180)
-    errorPcruce -= 360;
-  else if(errorPcruce < -180)
-    errorPcruce += 360;
-
-  errorDcruce = errorPcruce - oldErrorPcruce;
-
-  errorTotalCruce = KpCruce * errorPcruce + KdCruce * errorDcruce;
-  oldErrorPcruce = errorPcruce;
-  PWM_I(pwmI_baseM - (int)errorTotalCruce,0);
-  PWM_D(pwmD_baseM - 100 + (int)errorTotalCruce,1);
-  if(errorPcruce < 1){
-    PWM_I(0,0);
-    PWM_D(0,1);
-    digitalWrite(LED2,HIGH);
-    delay(400);
-    digitalWrite(LED2,LOW);
-    while(1){
-      medidaDelanteraI = medir(6);
-      medidaDelanteraD = medir(1);
-      if(medidaDelanteraI > wallDetectDelanteraI && medidaDelanteraD > wallDetectDelanteraD ){
-        frenar();
-        while(1);
-      }
-      else{
-        fowardNPasos(0,100);
-      }
-    }
-  }
-  enviarSerial(selectorDato(selector - 48),6);
-  enviarSerial(selectorDato(selector - 48),1);
-  //leergyro();
-
+  /*
+  //NO BORRAR, solo comentar (avamza y se detiene cuando encuentra pared
   medidaDelanteraI = medir(6);
   medidaDelanteraD = medir(1);
 
   if(medidaDelanteraI > wallDetectDelanteraI && medidaDelanteraD > wallDetectDelanteraD ){
-      frenar();
-      while(true);
-    }else{
-      fowardNPasos(0,0);
-    }
+      newFrenado(200);
+      medidaD = medir(3);
+      medidaI = medir(4);
 
-  delay(10);
+      if (medidaD > wallDetectD){//hay pared derecha
+        girarAngulo(90);
+      }
+      else if (medidaI > wallDetectI){//hay pared izquierda
+        girarAngulo(-90);
+      }
+      else{
+        while(1);
+      }
+   }
+   else{
+      fowardNPasos(0,0);
+   }
+   
+   //enviarWifi();
+   delay(10);*/
 }
+
+
 //********************************** Setup IR *******************
 void ledsConfig(){
   analogReadResolution(12);// ajuste ADC en 12 bits
@@ -252,9 +238,9 @@ int selectorDato(int selector){
     case 3: dato=medir(3); break;
     case 4: dato=medir(4); break;
     case 6: dato=medir(6); break;
-    case 7: dato=(int)angulo;     break;
-    case 8: dato=(int)errorPcruce; break;
-    case 9: dato=(int)errorPcruce; break;
+    case 7: dato=(int)velocidadZ;     break;
+    case 8: dato=(int)distanciaZ; break;
+    case 9: dato=(int)contador; break;
     default: dato=13; break;
     //case 7: dato=gyro;                 //Gyro
     //case 8: dato=paredes;              //Actualizar paredes
@@ -465,15 +451,28 @@ void enviarWifi(){
 }
 
 void caminarMientrasHayPared(){
+  enviarWifi();
+  calcularAcelerometro();
   medidaD = medir(3);
   medidaI = medir(4);
-  if ( medidaD > wallDetectD || medidaI > wallDetectI){
-    forwardPID(baseVel);
+  if(distanciaZ <= 46000 && contador < 3){
+    fowardNPasos(0,0);    
   }
+  /*if (medidaD > wallDetectD || medidaI > wallDetectI ){
+    fowardNPasos(0,0);
+  }*/
   else{
-    return;
+    frenar();
+    aceleracionZ = 0;
+    aceleracionZprevia = 0;
+    velocidadZ = 0;
+    velocidadZprevia = 0;
+    distanciaZ = 0;
+    distanciaZprevia = 0;
+    ruidoAceleracion = 0;
+    distanciaRecorrida = 0;
+    contador += 1;
   }
-
 }
 
 void calcularAcelerometro(){
@@ -481,6 +480,7 @@ void calcularAcelerometro(){
   compass.read();
   int deltat = millis() - time;
   time = millis();
+  float temp;
   aceleracionZ = ((int)(compass.a.z >> 4)-compass_offset) *9.8/1024;
   aceleracionZ = 0.6*aceleracionZ+0.4*aceleracionZprevia;
   if(aceleracionZ >= ruidoAceleracion || aceleracionZ <= -ruidoAceleracion) {
@@ -514,4 +514,119 @@ void acelConfig(){
      ruidoAceleracion = -(int)(compass.a.z >> 4)-compass_offset;
   }
   ruidoAceleracion = ruidoAceleracion*9.8/1024;
+}
+
+/////////////////////Controlador de frenado//////////////////////
+double KpFrenado = 0.8;
+double KdFrenado = 1;
+float errorPFrenado, errorDFrenado, oldErrorFrenado;
+float errorTotalFrenado;
+
+
+void frenarPID(){
+    //CASO 0: HAY DOS PAREDES
+    if (medidaD > wallDetectD && medidaI > wallDetectI ){
+       errorPFrenado = medidaD - medidaI - calOffsetID;
+       errorDFrenado = errorPFrenado - oldErrorFrenado;
+    }
+    //CASO 1: NO HAY PARED DERECHA
+    else if ( medidaD < wallDetectD ){
+       errorPFrenado = 2*(calOffsetI - medidaI);
+       errorDFrenado = errorPFrenado - oldErrorFrenado;
+    }
+    //CASO 2: NO HAY PARED IZQUIERDA
+    else if ( medidaI < wallDetectI ){
+       errorPFrenado = 2*(medidaD - calOffsetD);
+       errorDFrenado = errorPFrenado - oldErrorFrenado;
+    }
+    // CASO 3: NO HAY PAREDES
+
+    errorTotalFrenado = KpFrenado * errorPFrenado + KdFrenado * errorDFrenado;
+    oldErrorFrenado = errorPFrenado;
+    PWM_I(pwmI_baseM + 300 + (int)errorTotalFrenado,BACKWARD);
+    PWM_D(pwmD_baseM + 300 - (int)errorTotalFrenado,BACKWARD);
+}
+
+void newFrenado(int milli){
+
+  int timeCount = 0;
+  while (1) {
+    medidaD = medir(3);
+    medidaI = medir(4);
+    frenarPID();
+
+    if (timeCount >= milli){
+      break;
+    }
+    delay(10);
+    timeCount += 10;
+  }
+  PWM_I(0,BACKWARD);
+  PWM_D(0,BACKWARD);
+  while (1);//TO ROMOVE
+}
+
+///////////////////controlador de alineacion/////////////////////
+float KpAlineacion = 5;
+float KdAlineacion = 0;
+float errorPAlineacion, errorDAlineacion, oldErrorAlineacion;
+float errorTotalAlineacion;
+float zeroValueAlineacion;
+// calcular zeroValueAlineacion = medidaDelanteraI - medidaDelanteraD;
+
+void AlineacionFrontal(){
+  int baseSpeed = 1000;
+  medidaDelanteraI = medir(6);
+  medidaDelanteraD = medir(1);
+  errorTotalAlineacion = 1000;//valor inicial para que entre al loop
+  zeroValueAlineacion = medidaDelanteraI - medidaDelanteraD;
+
+  while (abs(errorTotalAlineacion) < 50) {
+    medidaDelanteraI = medir(6);
+    medidaDelanteraD = medir(1);
+
+    errorPAlineacion = medidaDelanteraI - medidaDelanteraD - zeroValueAlineacion;
+
+    errorTotalAlineacion = KpAlineacion * errorPAlineacion;
+
+    if (errorTotalAlineacion > 0)
+    {
+      PWM_I(pwmI_baseM * errorTotalAlineacion,FORWARD);
+      PWM_D(pwmD_baseM * errorTotalAlineacion,BACKWARD);
+    }
+    else
+    {
+      PWM_I(pwmI_baseM * errorTotalAlineacion,BACKWARD);
+      PWM_D(pwmD_baseM * errorTotalAlineacion,FORWARD);
+    }
+  }
+}
+
+void girarAngulo(int anguloDeseado){
+  leergyro();
+  errorPcruce = anguloDeseado - angulo;
+  while(errorPcruce > 10){
+    digitalWrite(LED2,HIGH);
+    delay(10);
+    digitalWrite(LED2,LOW);
+    leergyro();
+    errorPcruce = anguloDeseado - angulo;
+    enviarWifi();
+    
+    if(errorPcruce > 180)
+      errorPcruce -= 360;
+    else if(errorPcruce < -180)
+      errorPcruce += 360;
+  
+    errorDcruce = errorPcruce - oldErrorPcruce;
+    
+    errorTotalCruce = KpCruce * errorPcruce + KdCruce * errorDcruce;
+    oldErrorPcruce = errorPcruce;
+  
+    PWM_I(pwmI_baseM + 600 - (int)errorTotalCruce,0);
+    PWM_D(pwmD_baseM  - 100 + (int)errorTotalCruce,1);
+  
+  }
+  PWM_I(0,0);
+  PWM_D(0,1);  
 }
