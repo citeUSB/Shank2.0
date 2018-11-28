@@ -126,6 +126,25 @@ int LED2 = PA_3;
 int inicio=0;
 int selector = 89;
 
+void ledsConfig();
+void gyroConfig();
+void motorConfig();
+int medir(int n);
+int selectorDato(int selector);
+void leergyro();
+void PWM_D(int velocidadD, int sentidoD);
+void PWM_I(int velocidadI, int sentidoI);
+void motorConfig();
+void GEN_PWM(int GEN, int OUT,int OUT_BITS, int vel);
+void enviarSerial(int dato, int serial);
+void fowardNPasos(int cantidadPasos, int baseVel);
+void forwardPID(int base);
+void enviarWifi();
+void caminarMientrasHayPared();
+void calcularAcelerometro();
+void acelConfig();
+void girarAngulo(int sentido, int maxTimeMillis);
+void alinearFrenar(int maxTimeMillis, int distanciaDeseadaI, int distanciaDeseadaD);
 
 
 void setup() {
@@ -152,20 +171,25 @@ void setup() {
 }
 
 void loop() {
-  /*digitalWrite(LED2,HIGH);
-  PWM_D(pwmD_baseM,FORWARD);
-  delay(500);
-  digitalWrite(LED2,LOW);
-  PWM_D(0,FORWARD);
-  delay(500);*/
+  //digitalWrite(LED2,HIGH);
+  //PWM_D(pwmD_baseM,FORWARD);
+  //delay(500);
+  //digitalWrite(LED2,LOW);
+  //PWM_D(0,FORWARD);
+  //delay(500);
 
   
   //NO BORRAR, solo comentar (avamza y se detiene cuando encuentra pared
-  medidaDelanteraI = medir(6);
+  /*medidaDelanteraI = medir(6);
   medidaDelanteraD = medir(1);
 
-  if(medidaDelanteraI > wallDetectDelanteraI-1000 && medidaDelanteraD > wallDetectDelanteraD-1000 ){
-      alinearFrenar(100,wallDetectDelanteraI,wallDetectDelanteraD);
+  if(medidaDelanteraI > 400 && medidaDelanteraD > 400 ){
+      alinearFrenar(1000,detenerParedI,detenerParedD);
+      //CRUZAR
+  }
+  else{
+    fowardNPasos(0,100);
+  }
       //while(1){};
       /*newFrenado(200);
       digitalWrite(LED1,HIGH);
@@ -183,20 +207,23 @@ void loop() {
       }
       else{
         while(1);
-      }*/
-   }
-   else if(medidaDelanteraI > wallDetectDelanteraI && medidaDelanteraD > wallDetectDelanteraD)
-    alinearFrenar(100,2400,2400);
-   else{
-      fowardNPasos(0,0);
-   }
+      }
+   }*/
    
-   //PWM_I(pwmI_baseM,FORWARD);
-   //PWM_D(pwmD_baseM,FORWARD);
-   
-   //enviarWifi();
-   //girarAngulo(0);
-   delay(10);
+  
+  girarAngulo(0,1000);
+  //enviarWifi();
+  //leergyro();
+    if (angulo <= 90){
+  digitalWrite(LED1,HIGH);
+    delay(10);
+  }else{
+    digitalWrite(LED1,LOW);
+    angulo = 0;
+    rate = 0;
+    prev_rate = 0;
+    delay(1000);
+  }
 }
 
 
@@ -262,8 +289,8 @@ int selectorDato(int selector){
     case 3: dato=medir(3); break;
     case 4: dato=medir(4); break;
     case 6: dato=medir(6); break;
-    case 7: dato=(int)velocidadZ;     break;
-    case 8: dato=(int)distanciaZ; break;
+    case 7: dato=(int)angulo;     break;
+    case 8: dato=(int)errorPcruce; break;
     case 9: dato=(int)contador; break;
     default: dato=14; break;
     //case 7: dato=gyro;                 //Gyro
@@ -358,13 +385,11 @@ void motorConfig() {
 }
 
 
-
 void GEN_PWM(int GEN, int OUT,int OUT_BITS, int vel){
   PWMGenEnable(PWM1_BASE, GEN);
   PWMPulseWidthSet(PWM1_BASE, OUT, vel);
   PWMOutputState(PWM1_BASE, OUT_BITS, true);
 }
-
 
 void enviarSerial(int dato, int serial){
   char buffer[5];
@@ -456,15 +481,6 @@ void cruceSuave(int sentido){
 
 }
 
-void frenar(){
-  PWM_I(pwmI_baseM + 300,BACKWARD);
-  PWM_D(pwmD_baseM + 300,BACKWARD);
-  delay(200);
-
-  PWM_I(0,FORWARD);
-  PWM_D(0,FORWARD);
-}
-
 void enviarWifi(){
   while (Serial6.available() > 0) {
     // read the incoming byte:
@@ -473,6 +489,7 @@ void enviarWifi(){
   enviarSerial(selectorDato(selector - 48),6);
   enviarSerial(selectorDato(selector - 48),1);
 }
+
 
 void caminarMientrasHayPared(){
   enviarWifi();
@@ -486,7 +503,7 @@ void caminarMientrasHayPared(){
     fowardNPasos(0,0);
   }*/
   else{
-    frenar();
+    //frenar();
     aceleracionZ = 0;
     aceleracionZprevia = 0;
     velocidadZ = 0;
@@ -541,104 +558,79 @@ void acelConfig(){
 }
 
 ////////////////////Controlador de alineacion (distancia) frontal/////////////////////
-int detenerParedI = 2400;
-int detenerParedD = 2400;
+int detenerParedI = 2200;
+int detenerParedD = 2200;
+int distancia;
+int distanciaAnterior;
 float detenerPared = ( detenerParedI + detenerParedD ) /2;
-double kpDetenerse = 2;
-double kdDetenerse = 0.9;
+double kpDetenerse = 100;
+double kdDetenerse = 0;
+double kpVel = 1;
+double kdVel = 0;
+double kpDis = 10;
+double kdDis = 0;
 float errorHayparedI, errorHayparedD, oldErrorHayparedI, oldErrorHayparedD;
+float errorVel;
+float errorDistancia;
 int velFrenadoI, velFrenadoD;
+int distanciaParedI, distanciaParedD;
 
 
 
 void alinearFrenar(int maxTimeMillis, int distanciaDeseadaI, int distanciaDeseadaD){
   int timeCount = 0;
+  distanciaAnterior = 0;
+  distancia = 0;
+  velFrenadoI = pwmI_baseM;
+  velFrenadoD = pwmD_baseM;
   detenerParedI = distanciaDeseadaI;
   detenerParedD = distanciaDeseadaD;
   while(1){
+    distanciaParedI = medir(6);
+    distanciaParedD = medir(1);
+    distancia = (distanciaParedI + distanciaParedD)/2;
+    errorDistancia = distancia - distanciaAnterior;
+    //Error de diferencia de velocidad
+    errorVel = distanciaParedI-distanciaParedD;    
     //Cuanto falta para la pared
-    errorHayparedI = (detenerParedI - medir(6));
-    velFrenadoI = pwmI_baseM + errorHayparedI*kpDetenerse + (errorHayparedI - oldErrorHayparedI)*kdDetenerse;
-    if(errorHayparedI<0){
-      if(velFrenadoI < 0){
-        PWM_I(0,FORWARD);
-      }
-      else{
-        PWM_I(velFrenadoI+300,BACKWARD);
-      }
-    }
-    else{
+    errorHayparedI = (detenerParedI - distanciaParedI);
+    velFrenadoI += errorHayparedI*kpDetenerse + (errorHayparedI - oldErrorHayparedI)*kdDetenerse - errorVel*kpVel - errorVel*kdVel;
+    if(velFrenadoI > 0){            // Si estoy antes de la referencia avanzo reduciendo la velocidad
       PWM_I(velFrenadoI,FORWARD);
     }
+    else{                           // Si me pase de la referencia retrocedo
+      PWM_I(abs(velFrenadoI)+errorDistancia*kpDis,BACKWARD);
+    }  
+    oldErrorHayparedI = errorHayparedI;    
+
     
-    oldErrorHayparedI = errorHayparedI;
-    errorHayparedD = detenerParedD - medir(1);
-    velFrenadoD = pwmD_baseM + errorHayparedD*kpDetenerse + (errorHayparedD - oldErrorHayparedD)*kdDetenerse;
-    if(errorHayparedD<0){
-      if(velFrenadoD < 0){
-        PWM_D(0,FORWARD);
-      }
-      else{
-        PWM_D(velFrenadoD + 300,BACKWARD);
-      }
-    }
-    else{
+    errorHayparedD = detenerParedD - distanciaParedD;
+    velFrenadoD += errorHayparedD*kpDetenerse + (errorHayparedD - oldErrorHayparedD)*kdDetenerse + errorVel*kpVel + errorVel*kdVel;
+    if(velFrenadoD > 0){                  // Si estoy antes de la referencia avanzo reduciendo la velocidad
       PWM_D(velFrenadoD,FORWARD);
     }
+    else{
+      PWM_D(abs(velFrenadoD)+errorDistancia*kpDis,BACKWARD);   // Si me pase de la referencia retrocedo
+    }
     oldErrorHayparedD = errorHayparedD;
-    
+
+    distanciaAnterior = distancia;
     delay(10);
     timeCount += 10;
-    if(errorHayparedD < 15 && errorHayparedI < 15 && timeCount > maxTimeMillis){
+    if(errorHayparedD < 40 && errorHayparedI < 40 && timeCount > maxTimeMillis){
       break;
     }
   }
 }
 
-
-
 void girarAngulo(int sentido, int maxTimeMillis){
-  leergyro();
-  
-  if(sentido == 0){
-    anguloDeseado = 90 - angulo;
-  }
-
-  else if(sentido == 1){
-      anguloDeseado = -90 - angulo;
-  }
-
-  int timerx = 0;
-  
-  errorPcruce = anguloDeseado - angulo;
-  while(1){
-    digitalWrite(LED2,HIGH);
-    delay(10);
-    digitalWrite(LED2,LOW);
     leergyro();
-    errorPcruce = anguloDeseado - angulo;
-    enviarWifi();
-    
-    if(errorPcruce > 180)
-      errorPcruce -= 360;
-    else if(errorPcruce < -180)
-      errorPcruce += 360;
-  
-    errorDcruce = errorPcruce - oldErrorPcruce;
-    
-    errorTotalCruce = KpCruce * errorPcruce + KdCruce * errorDcruce;
-    oldErrorPcruce = errorPcruce;
-  
-    PWM_I(pwmI_baseM + 600 - (int)errorTotalCruce,0);
-    PWM_D(pwmD_baseM  + 600 + (int)errorTotalCruce,1);
-
-    timerx += 10;
-
-    if (timerx > maxTimeMillis){
-        break;
+    if (sentido == 0){
+      PWM_I(500  /*+ (int)errorTotalCruce*/,0);
+      PWM_D(500 /*+ (int)errorTotalCruce*/,1);
       }
-  }
-  
-  PWM_I(0,0);
-  PWM_D(0,1);  
+    else{
+      PWM_I(500  /*+ (int)errorTotalCruce*/,1);
+      PWM_D(500  /*+ (int)errorTotalCruce*/,0);
+      }
 }
