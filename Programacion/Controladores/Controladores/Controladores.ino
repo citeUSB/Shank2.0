@@ -62,8 +62,8 @@ int wallDetectI = 1300;
 int calOffsetD = 2690;
 int calOffsetI = 2200;
 int calOffsetID = 590;
-int wallDetectDelanteraD = 1800;
-int wallDetectDelanteraI = 1200;
+int wallDetectDelanteraD = 1500;
+int wallDetectDelanteraI = 1400;
 
 /////////////////////////// Variables GYRO /////////////////////////////////
 L3G gyro;
@@ -103,8 +103,8 @@ int contador = 0;
 #define FORWARD 1
 #define BACKWARD 0
 
-#define pwmI_baseM 1080
-#define pwmD_baseM 780
+#define pwmI_baseM 880//1080
+#define pwmD_baseM 580//780
 
 //////////////////////////////// VARIABLES CONTROLADORES ////////////////////////////////
 double KpForward = 0.8; /*constante propocional 0.9*/
@@ -112,8 +112,8 @@ double KdForward = 1; /*constante integradora 0.4*/
 float errorPForward, errorDForward, oldErrorForward;
 float errorTotalForward;
 
-float KpCruce = 1;
-float KdCruce = 0;
+float KpCruce = 0.8;
+float KdCruce = 0.5;
 float errorDcruce = 0;
 float errorPcruce = 0;
 float errorTotalCruce = 0;
@@ -127,7 +127,9 @@ int inicio=0;
 int selector = 89;
 
 
+
 void setup() {
+  delay(1000);
   Serial.begin(115200);
   Serial6.begin(115200);
   Wire.begin();
@@ -135,44 +137,66 @@ void setup() {
   ledsConfig();
   gyroConfig();
   motorConfig();
-  acelConfig();
+  //acelConfig();
   pinMode(LED1,OUTPUT);
   pinMode(LED2,OUTPUT);
 
   calOffsetD = medir(3);
   calOffsetI = medir(4);
   calOffsetID = calOffsetD - calOffsetI;
-  
-  PWM_D(1500,0);
+
+  digitalWrite(LED1,HIGH);
+  delay(200);
+  digitalWrite(LED1,LOW);
+  delay(200);
 }
 
 void loop() {
-  /*
+  /*digitalWrite(LED2,HIGH);
+  PWM_D(pwmD_baseM,FORWARD);
+  delay(500);
+  digitalWrite(LED2,LOW);
+  PWM_D(0,FORWARD);
+  delay(500);*/
+
+  
   //NO BORRAR, solo comentar (avamza y se detiene cuando encuentra pared
   medidaDelanteraI = medir(6);
   medidaDelanteraD = medir(1);
 
-  if(medidaDelanteraI > wallDetectDelanteraI && medidaDelanteraD > wallDetectDelanteraD ){
-      newFrenado(200);
+  if(medidaDelanteraI > wallDetectDelanteraI-1000 && medidaDelanteraD > wallDetectDelanteraD-1000 ){
+      alinearFrenar(100,wallDetectDelanteraI,wallDetectDelanteraD);
+      //while(1){};
+      /*newFrenado(200);
+      digitalWrite(LED1,HIGH);
+      delay(2000);
+      digitalWrite(LED1,LOW);
       medidaD = medir(3);
       medidaI = medir(4);
-
+      
+      
       if (medidaD > wallDetectD){//hay pared derecha
-        girarAngulo(90);
+        girarAngulo(0,1000);
       }
       else if (medidaI > wallDetectI){//hay pared izquierda
-        girarAngulo(-90);
+        girarAngulo(1,1000);
       }
       else{
         while(1);
-      }
+      }*/
    }
+   else if(medidaDelanteraI > wallDetectDelanteraI && medidaDelanteraD > wallDetectDelanteraD)
+    alinearFrenar(100,2400,2400);
    else{
       fowardNPasos(0,0);
    }
    
+   //PWM_I(pwmI_baseM,FORWARD);
+   //PWM_D(pwmD_baseM,FORWARD);
+   
    //enviarWifi();
-   delay(10);*/
+   //girarAngulo(0);
+   delay(10);
 }
 
 
@@ -241,7 +265,7 @@ int selectorDato(int selector){
     case 7: dato=(int)velocidadZ;     break;
     case 8: dato=(int)distanciaZ; break;
     case 9: dato=(int)contador; break;
-    default: dato=13; break;
+    default: dato=14; break;
     //case 7: dato=gyro;                 //Gyro
     //case 8: dato=paredes;              //Actualizar paredes
   }
@@ -516,96 +540,78 @@ void acelConfig(){
   ruidoAceleracion = ruidoAceleracion*9.8/1024;
 }
 
-/////////////////////Controlador de frenado//////////////////////
-double KpFrenado = 0.8;
-double KdFrenado = 1;
-float errorPFrenado, errorDFrenado, oldErrorFrenado;
-float errorTotalFrenado;
+////////////////////Controlador de alineacion (distancia) frontal/////////////////////
+int detenerParedI = 2400;
+int detenerParedD = 2400;
+float detenerPared = ( detenerParedI + detenerParedD ) /2;
+double kpDetenerse = 2;
+double kdDetenerse = 0.9;
+float errorHayparedI, errorHayparedD, oldErrorHayparedI, oldErrorHayparedD;
+int velFrenadoI, velFrenadoD;
 
 
-void frenarPID(){
-    //CASO 0: HAY DOS PAREDES
-    if (medidaD > wallDetectD && medidaI > wallDetectI ){
-       errorPFrenado = medidaD - medidaI - calOffsetID;
-       errorDFrenado = errorPFrenado - oldErrorFrenado;
-    }
-    //CASO 1: NO HAY PARED DERECHA
-    else if ( medidaD < wallDetectD ){
-       errorPFrenado = 2*(calOffsetI - medidaI);
-       errorDFrenado = errorPFrenado - oldErrorFrenado;
-    }
-    //CASO 2: NO HAY PARED IZQUIERDA
-    else if ( medidaI < wallDetectI ){
-       errorPFrenado = 2*(medidaD - calOffsetD);
-       errorDFrenado = errorPFrenado - oldErrorFrenado;
-    }
-    // CASO 3: NO HAY PAREDES
 
-    errorTotalFrenado = KpFrenado * errorPFrenado + KdFrenado * errorDFrenado;
-    oldErrorFrenado = errorPFrenado;
-    PWM_I(pwmI_baseM + 300 + (int)errorTotalFrenado,BACKWARD);
-    PWM_D(pwmD_baseM + 300 - (int)errorTotalFrenado,BACKWARD);
-}
-
-void newFrenado(int milli){
-
+void alinearFrenar(int maxTimeMillis, int distanciaDeseadaI, int distanciaDeseadaD){
   int timeCount = 0;
-  while (1) {
-    medidaD = medir(3);
-    medidaI = medir(4);
-    frenarPID();
-
-    if (timeCount >= milli){
-      break;
+  detenerParedI = distanciaDeseadaI;
+  detenerParedD = distanciaDeseadaD;
+  while(1){
+    //Cuanto falta para la pared
+    errorHayparedI = (detenerParedI - medir(6));
+    velFrenadoI = pwmI_baseM + errorHayparedI*kpDetenerse + (errorHayparedI - oldErrorHayparedI)*kdDetenerse;
+    if(errorHayparedI<0){
+      if(velFrenadoI < 0){
+        PWM_I(0,FORWARD);
+      }
+      else{
+        PWM_I(velFrenadoI+300,BACKWARD);
+      }
     }
+    else{
+      PWM_I(velFrenadoI,FORWARD);
+    }
+    
+    oldErrorHayparedI = errorHayparedI;
+    errorHayparedD = detenerParedD - medir(1);
+    velFrenadoD = pwmD_baseM + errorHayparedD*kpDetenerse + (errorHayparedD - oldErrorHayparedD)*kdDetenerse;
+    if(errorHayparedD<0){
+      if(velFrenadoD < 0){
+        PWM_D(0,FORWARD);
+      }
+      else{
+        PWM_D(velFrenadoD + 300,BACKWARD);
+      }
+    }
+    else{
+      PWM_D(velFrenadoD,FORWARD);
+    }
+    oldErrorHayparedD = errorHayparedD;
+    
     delay(10);
     timeCount += 10;
-  }
-  PWM_I(0,BACKWARD);
-  PWM_D(0,BACKWARD);
-  while (1);//TO ROMOVE
-}
-
-///////////////////controlador de alineacion/////////////////////
-float KpAlineacion = 5;
-float KdAlineacion = 0;
-float errorPAlineacion, errorDAlineacion, oldErrorAlineacion;
-float errorTotalAlineacion;
-float zeroValueAlineacion;
-// calcular zeroValueAlineacion = medidaDelanteraI - medidaDelanteraD;
-
-void AlineacionFrontal(){
-  int baseSpeed = 1000;
-  medidaDelanteraI = medir(6);
-  medidaDelanteraD = medir(1);
-  errorTotalAlineacion = 1000;//valor inicial para que entre al loop
-  zeroValueAlineacion = medidaDelanteraI - medidaDelanteraD;
-
-  while (abs(errorTotalAlineacion) < 50) {
-    medidaDelanteraI = medir(6);
-    medidaDelanteraD = medir(1);
-
-    errorPAlineacion = medidaDelanteraI - medidaDelanteraD - zeroValueAlineacion;
-
-    errorTotalAlineacion = KpAlineacion * errorPAlineacion;
-
-    if (errorTotalAlineacion > 0)
-    {
-      PWM_I(pwmI_baseM * errorTotalAlineacion,FORWARD);
-      PWM_D(pwmD_baseM * errorTotalAlineacion,BACKWARD);
-    }
-    else
-    {
-      PWM_I(pwmI_baseM * errorTotalAlineacion,BACKWARD);
-      PWM_D(pwmD_baseM * errorTotalAlineacion,FORWARD);
+    if(errorHayparedD < 15 && errorHayparedI < 15 && timeCount > maxTimeMillis){
+      break;
     }
   }
 }
 
-void girarAngulo(int anguloDeseado){
+
+
+void girarAngulo(int sentido, int maxTimeMillis){
   leergyro();
+  
+  if(sentido == 0){
+    anguloDeseado = 90 - angulo;
+  }
+
+  else if(sentido == 1){
+      anguloDeseado = -90 - angulo;
+  }
+
+  int timerx = 0;
+  
   errorPcruce = anguloDeseado - angulo;
-  while(errorPcruce > 10){
+  while(1){
     digitalWrite(LED2,HIGH);
     delay(10);
     digitalWrite(LED2,LOW);
@@ -624,9 +630,15 @@ void girarAngulo(int anguloDeseado){
     oldErrorPcruce = errorPcruce;
   
     PWM_I(pwmI_baseM + 600 - (int)errorTotalCruce,0);
-    PWM_D(pwmD_baseM  - 100 + (int)errorTotalCruce,1);
-  
+    PWM_D(pwmD_baseM  + 600 + (int)errorTotalCruce,1);
+
+    timerx += 10;
+
+    if (timerx > maxTimeMillis){
+        break;
+      }
   }
+  
   PWM_I(0,0);
   PWM_D(0,1);  
 }
