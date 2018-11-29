@@ -103,8 +103,8 @@ int contador = 0;
 #define FORWARD 1
 #define BACKWARD 0
 
-#define pwmI_baseM 880//1080
-#define pwmD_baseM 580//780
+#define pwmI_baseM 1300//880//1080
+#define pwmD_baseM 1000//580//780
 
 //////////////////////////////// VARIABLES CONTROLADORES ////////////////////////////////
 double KpForward = 0.8; /*constante propocional 0.9*/
@@ -113,7 +113,7 @@ float errorPForward, errorDForward, oldErrorForward;
 float errorTotalForward;
 
 float KpCruce = 0.8;
-float KdCruce = 0.5;
+float KdCruce = 1;
 float errorDcruce = 0;
 float errorPcruce = 0;
 float errorTotalCruce = 0;
@@ -212,18 +212,10 @@ void loop() {
    
   
   girarAngulo(0,1000);
+  delay(3000);
   //enviarWifi();
   //leergyro();
-    if (angulo <= 90){
-  digitalWrite(LED1,HIGH);
-    delay(10);
-  }else{
-    digitalWrite(LED1,LOW);
-    angulo = 0;
-    rate = 0;
-    prev_rate = 0;
-    delay(1000);
-  }
+    
 }
 
 
@@ -304,7 +296,6 @@ void leergyro(){
   time = millis();
   gyro.read();
   rate=((int)gyro.g.x-dc_offset)/100;
-
   if(rate >= noise || rate <= -noise) angulo += ((double)(prev_rate + rate) * sampleTime) / 2000;
   prev_rate = rate;
   // Keep our angle between 0-359 degrees
@@ -625,12 +616,70 @@ void alinearFrenar(int maxTimeMillis, int distanciaDeseadaI, int distanciaDesead
 
 void girarAngulo(int sentido, int maxTimeMillis){
     leergyro();
-    if (sentido == 0){
-      PWM_I(500  /*+ (int)errorTotalCruce*/,0);
-      PWM_D(500 /*+ (int)errorTotalCruce*/,1);
+
+    int timeCount = 0;
+    int timeZero = millis();
+     if (sentido == 0){
+        PWM_I(pwmI_baseM + 100,0);
+        PWM_D(pwmD_baseM ,1);
       }
+      else{
+        PWM_I(pwmI_baseM ,1);
+        PWM_D(pwmD_baseM + 100,0);
+      }
+      delay(300);
+    while(angulo <= 90 || angulo >= 270  || timeCount < maxTimeMillis){
+      
+      if (sentido == 0){
+        errorPcruce = 90 - angulo;
+        errorDcruce = errorPcruce - oldErrorPcruce;
+
+        errorTotalCruce = KpCruce * errorPcruce + KdCruce * errorDcruce;
+
+        if (errorTotalCruce > 0){
+          PWM_I(pwmI_baseM + (int)errorTotalCruce +100,0);
+          PWM_D(pwmD_baseM + (int)errorTotalCruce,1);
+        }
+        else{
+          PWM_I(pwmI_baseM  + (int)errorTotalCruce ,1);
+          PWM_D(pwmD_baseM + (int)errorTotalCruce + 100,0);
+        }
+      }
+      else{
+        angulo = angulo == 0 ? 360 : angulo;
+        errorPcruce = angulo - 270;
+        errorDcruce = errorPcruce - oldErrorPcruce;
+
+        errorTotalCruce = KpCruce * errorPcruce + KdCruce * errorDcruce;
+        
+        if (errorTotalCruce > 0){
+          PWM_I(pwmI_baseM  + (int)errorTotalCruce,1);
+          PWM_D(pwmD_baseM +(int)errorTotalCruce + 100,0);
+        }
+        else{
+          PWM_I(pwmI_baseM + (int)errorTotalCruce + 100,0);
+          PWM_D(pwmD_baseM + (int)errorTotalCruce,1);
+        }
+      }
+      digitalWrite(LED1,HIGH);
+      leergyro();
+      delay(10);
+      timeCount = millis() - timeZero; 
+    }
+    digitalWrite(LED1,LOW);
+    angulo = 0;
+    rate = 0;
+    prev_rate = 0;
+    time = 0;
+    /*if (sentido == 0){
+      PWM_I(pwmI_baseM+500 ,1);
+      PWM_D(pwmD_baseM+500 ,0);
+    }
     else{
-      PWM_I(500  /*+ (int)errorTotalCruce*/,1);
-      PWM_D(500  /*+ (int)errorTotalCruce*/,0);
-      }
+      PWM_I(pwmI_baseM+500, 0);
+      PWM_D(pwmD_baseM+500, 1);
+    }
+    delay(20);*/
+    PWM_I(0  /*+ (int)errorTotalCruce*/,1);
+    PWM_D(0 /*+ (int)errorTotalCruce*/,0);
 }
