@@ -15,7 +15,7 @@
 #define LED PB_0
 #define Dist_casilla 168
 #define Dist_casilla_A 186
-int ticksPorCasilla = 83;
+int ticksPorCasilla = 92;
 int estado = 1;
 int pwm = 20;
 char buffer[9];
