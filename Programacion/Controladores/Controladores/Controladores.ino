@@ -111,7 +111,12 @@ double KdForward = 1; /*constante integradora 0.4*/
 float errorPForward, errorDForward, oldErrorForward;
 float errorTotalForward;
 
-
+float KpCruce = 20;
+float KdCruce = 1;
+float errorDcruce = 0;
+float errorPcruce = 0;
+float errorTotalCruce = 0;
+float oldErrorPcruce = 0;
 /////////////////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////// Otras Variables//////////////////////////////
@@ -173,11 +178,9 @@ void loop() {
   //PWM_D(0,FORWARD);
   //delay(500);
 
-
-  enviarWifi();
   //leergyro();
   //fowardNPasos(1,300);
-  girarAngulo(0,100);
+  //girarAngulo(1,100);
   delay(3000);
 }
 
@@ -411,7 +414,7 @@ void forwardPID(int base){
     PWM_I(pwmI_baseM - base - (int)errorTotalForward,FORWARD);
     PWM_D(pwmD_baseM - base + (int)errorTotalForward,FORWARD);
 }
-/*
+
 void cruceSuave(int sentido){
   //Sentido -> 0 horario
   //Sentido -> 1 antihorario
@@ -451,7 +454,8 @@ void cruceSuave(int sentido){
   digitalWrite(LED2,HIGH);
   delay(500);
   digitalWrite(LED2,LOW);
-}*/
+
+}
 
 void enviarWifi(){
   while (Serial6.available() > 0) {
@@ -595,78 +599,78 @@ void alinearFrenar(int maxTimeMillis, int distanciaDeseadaI, int distanciaDesead
   }
 }
 
-float KpCruce = 30;// Madera 22
-float KdCruce = 0.2;
-float errorDcruce = 0;
-float errorPcruce = 0;
-float errorTotalCruce = 0;
-float oldErrorPcruce = 0;
-
 void girarAngulo(int sentido, int maxTimeMillis){
     leergyro();
     int tempi = 0;
-    int inicial = 350;//Madera 250
+    int inicial = 350;//350 madera
     int timeCount = 0;
     int timeZero = millis();
-     if (sentido == 0){
+     /*if (sentido == 0){
         PWM_I(pwmI_baseM + inicial,0);
         PWM_D(pwmD_baseM + inicial ,1);
       }
       else{
         PWM_I(pwmI_baseM + inicial,1);
         PWM_D(pwmD_baseM + inicial,0);
-      }
-      delay(50);
-      while(angulo <= 75 || angulo >= 285 || timeCount < maxTimeMillis){
+      }*/
+      delay(10);
+      while(angulo <= 90 || angulo >= 270 || timeCount < maxTimeMillis){
         if (sentido == 0){
-          errorPcruce = 90 - angulo;
+          errorPcruce = -90 + angulo;
           errorDcruce = errorPcruce - oldErrorPcruce;
   
           errorTotalCruce = (KpCruce * errorPcruce) + (KdCruce * errorDcruce);
   
-          if (errorTotalCruce > 0){
-            PWM_I( (int)errorTotalCruce - tempi,0);//pwmI_baseM
-            PWM_D( (int)errorTotalCruce - tempi,1);//pwmD_baseM
+          /*if (errorTotalCruce > 0){
+            PWM_I(pwmI_baseM + (int)abs(errorTotalCruce) - tempi,0);
+            PWM_D(pwmD_baseM + (int)abs(errorTotalCruce) - tempi,1);
           }
           else{
-            PWM_I( (int)errorTotalCruce - tempi ,1);
-            PWM_D( (int)errorTotalCruce - tempi,0);
-          }
+            PWM_I(pwmI_baseM  + (int)abs(errorTotalCruce) - tempi ,1);
+            PWM_D(pwmD_baseM + (int)abs(errorTotalCruce) - tempi,0);
+          }*/
         }
         else{
           angulo = angulo == 0 ? 360 : angulo;
-          errorPcruce = angulo - 270;
+          errorPcruce = -angulo + 270;
           errorDcruce = errorPcruce - oldErrorPcruce;
   
           errorTotalCruce = KpCruce * errorPcruce + KdCruce * errorDcruce;
   
-          if (errorTotalCruce > 0){
-            PWM_I( (int)errorTotalCruce - tempi,1);
-            PWM_D( (int)errorTotalCruce - tempi,0);
+          /*if (errorTotalCruce > 0){
+            PWM_I(pwmI_baseM  + (int)abs(errorTotalCruce) - tempi,1);
+            PWM_D(pwmD_baseM + (int)abs(errorTotalCruce) - tempi,0);
           }
           else{
-            PWM_I( (int)errorTotalCruce - tempi,0);
-            PWM_D( (int)errorTotalCruce - tempi,1);
-          }
+            PWM_I(pwmI_baseM + (int)abs(errorTotalCruce) - tempi,0);
+            PWM_D(pwmD_baseM + (int)abs(errorTotalCruce) - tempi,1);
+          }*/
       }
-      digitalWrite(LED1,HIGH);
       leergyro();
       delay(10);
       timeCount = millis() - timeZero;
+
+      if (sentido == 0){
+        digitalWrite(LED1,HIGH);
+      }
+      else{
+        digitalWrite(LED2,HIGH);
+      }
     }
     digitalWrite(LED1,LOW);
+    digitalWrite(LED2,LOW);
     angulo = 0;
     rate = 0;
     prev_rate = 0;
     time = 0;
-    if (sentido == 0){
+    /*if (sentido == 0){
       PWM_I(pwmI_baseM+500 ,FORWARD);
       PWM_D(pwmD_baseM+500 ,BACKWARD);
     }
     else{
       PWM_I(pwmI_baseM+500, BACKWARD);
       PWM_D(pwmD_baseM+500, FORWARD);
-    }
+    }*/
     delay(20);
     PWM_I(0  /*+ (int)errorTotalCruce*/,1);
     PWM_D(0 /*+ (int)errorTotalCruce*/,0);
