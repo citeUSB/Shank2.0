@@ -1,6 +1,8 @@
-
 struct instruction
 {
-  float desiredPos;
-  float desiredHeading;
+  int casillas;
+  byte angulo;
+  byte ang_sig;
+  float giro;
+  
 };

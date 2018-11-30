@@ -15,7 +15,7 @@
 #define LED PB_0
 #define Dist_casilla 168
 #define Dist_casilla_A 186
-int ticksPorCasilla = 92;
+int ticksPorCasilla = 85;
 int estado = 1;
 int pwm = 20;
 char buffer[9];
@@ -111,12 +111,6 @@ double KdForward = 1; /*constante integradora 0.4*/
 float errorPForward, errorDForward, oldErrorForward;
 float errorTotalForward;
 
-float KpCruce = 20;
-float KdCruce = 1;
-float errorDcruce = 0;
-float errorPcruce = 0;
-float errorTotalCruce = 0;
-float oldErrorPcruce = 0;
 /////////////////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////// Otras Variables//////////////////////////////
@@ -154,20 +148,20 @@ void alinearFrenar(int maxTimeMillis, int distanciaDeseadaI, int distanciaDesead
 
 //Coordenadas Ejes Globales
 
-#define X 4
-#define Y 4
+#define X 6
+#define Y 6
 
 coord inicio = {0,0};
 
 //Cardinales
-byte cardinalGlobal = 1;
+byte cardinalGlobal = 4;
 
 //Cardinales N,S,E,W
 byte cardinales[] = { 1,2,4,8 };
 
 
 //Instrucciones de navegacion
-QueueList <int> navegacion;
+QueueList <instruction> navegacion;
 
 /*Enumerstor de las instrucciones de navegacion
 8 = avanzar casilla
@@ -227,11 +221,13 @@ void setup() {
   calOffsetI = medir(4);
   calOffsetID = calOffsetD - calOffsetI;
 
+  iniciar_maze();
+
   digitalWrite(LED1,HIGH);
   delay(200);
   digitalWrite(LED1,LOW);
   delay(200);
-  iniciar_maze();
+  
 }
 
 //****** Setup Encoders ********
@@ -240,7 +236,6 @@ int encCount = 0;
 void encodersConfig() {
   pinMode(enc, INPUT);
   attachInterrupt(enc, encSuma, CHANGE);    // Interrupcion del canal del encoder
-
 
 }
 
@@ -443,26 +438,42 @@ void fowardNPasos(int cantidadPasos, int baseVel){
 
 void forwardPID(int base){
     //CASO 0: HAY DOS PAREDES
-    if (medidaD > wallDetectD && medidaI > wallDetectI ){
+    if (medidaD > wallDetectD -100 && medidaI > wallDetectI-100 ){
        errorPForward = medidaD - medidaI - calOffsetID;
        errorDForward = errorPForward - oldErrorForward;
+
+       errorTotalForward = KpForward * errorPForward + KdForward * errorDForward;
+       oldErrorForward = errorPForward;
+       PWM_I(pwmI_baseM - base - (int)errorTotalForward,FORWARD);
+       PWM_D(pwmD_baseM - base + (int)errorTotalForward,FORWARD);
     }
     //CASO 1: NO HAY PARED DERECHA
-    else if ( medidaD < wallDetectD ){
+    else if ( medidaD < wallDetectD-100 && medidaI > wallDetectI-100){
        errorPForward = (calOffsetI - medidaI);
        errorDForward = errorPForward - oldErrorForward;
+
+       errorTotalForward = KpForward * errorPForward + KdForward * errorDForward;
+       oldErrorForward = errorPForward;
+       PWM_I(pwmI_baseM - base - (int)errorTotalForward,FORWARD);
+       PWM_D(pwmD_baseM - base + (int)errorTotalForward,FORWARD);
     }
     //CASO 2: NO HAY PARED IZQUIERDA
-    else if ( medidaI < wallDetectI ){
+    else if ( medidaI < wallDetectI-100 && medidaD > wallDetectD -100){
        errorPForward = (medidaD - calOffsetD);
        errorDForward = errorPForward - oldErrorForward;
+       
+       errorTotalForward = KpForward * errorPForward + KdForward * errorDForward;
+       oldErrorForward = errorPForward;
+       PWM_I(pwmI_baseM - base - (int)errorTotalForward,FORWARD);
+       PWM_D(pwmD_baseM - base + (int)errorTotalForward,FORWARD);
     }
     // CASO 3: NO HAY PAREDES
+    else{
+      PWM_I(1300,FORWARD);
+      PWM_D(1300,FORWARD);
+    }
 
-    errorTotalForward = KpForward * errorPForward + KdForward * errorDForward;
-    oldErrorForward = errorPForward;
-    PWM_I(pwmI_baseM - base - (int)errorTotalForward,FORWARD);
-    PWM_D(pwmD_baseM - base + (int)errorTotalForward,FORWARD);
+    
 }
 
 void enviarWifi(){
@@ -473,53 +484,60 @@ void enviarWifi(){
   enviarSerial(selectorDato(selector - 48),6);
   enviarSerial(selectorDato(selector - 48),1);
 }
+//////////////////////////////
+float KpCruce = 24;
+float KdCruce = 0.1;
+float errorDcruce = 0;
+float errorPcruce = 0;
+float errorTotalCruce = 0;
+float oldErrorPcruce = 0;
 
 void girarAngulo(int sentido, int maxTimeMillis){
     leergyro();
     int tempi = 0;
-    int inicial = 350;//350 madera
+    int inicial = 500;//350 madera
     int timeCount = 0;
     int timeZero = millis();
-     /*if (sentido == 0){
+     if (sentido == 0){
         PWM_I(pwmI_baseM + inicial,0);
         PWM_D(pwmD_baseM + inicial ,1);
       }
       else{
         PWM_I(pwmI_baseM + inicial,1);
         PWM_D(pwmD_baseM + inicial,0);
-      }*/
-      delay(10);
-      while(angulo <= 90 || angulo >= 270 || timeCount < maxTimeMillis){
+      }
+      delay(50);
+      while(angulo <= 60 || angulo >= 295 || timeCount < maxTimeMillis){
         if (sentido == 0){
-          errorPcruce = -90 + angulo;
+          errorPcruce = 90 - angulo;
           errorDcruce = errorPcruce - oldErrorPcruce;
   
           errorTotalCruce = (KpCruce * errorPcruce) + (KdCruce * errorDcruce);
   
-          /*if (errorTotalCruce > 0){
-            PWM_I(pwmI_baseM + (int)abs(errorTotalCruce) - tempi,0);
-            PWM_D(pwmD_baseM + (int)abs(errorTotalCruce) - tempi,1);
+          if (errorTotalCruce > 0){
+            PWM_I((int)abs(errorTotalCruce) - tempi,0);
+            PWM_D((int)abs(errorTotalCruce) - tempi,1);
           }
           else{
-            PWM_I(pwmI_baseM  + (int)abs(errorTotalCruce) - tempi ,1);
-            PWM_D(pwmD_baseM + (int)abs(errorTotalCruce) - tempi,0);
-          }*/
+            PWM_I((int)abs(errorTotalCruce) - tempi ,1);
+            PWM_D((int)abs(errorTotalCruce) - tempi,0);
+          }
         }
         else{
           angulo = angulo == 0 ? 360 : angulo;
-          errorPcruce = -angulo + 270;
+          errorPcruce = angulo - 270;
           errorDcruce = errorPcruce - oldErrorPcruce;
   
           errorTotalCruce = KpCruce * errorPcruce + KdCruce * errorDcruce;
   
-          /*if (errorTotalCruce > 0){
-            PWM_I(pwmI_baseM  + (int)abs(errorTotalCruce) - tempi,1);
-            PWM_D(pwmD_baseM + (int)abs(errorTotalCruce) - tempi,0);
+          if (errorTotalCruce > 0){
+            PWM_I((int)abs(errorTotalCruce) - tempi,1);
+            PWM_D((int)abs(errorTotalCruce) - tempi,0);
           }
           else{
-            PWM_I(pwmI_baseM + (int)abs(errorTotalCruce) - tempi,0);
-            PWM_D(pwmD_baseM + (int)abs(errorTotalCruce) - tempi,1);
-          }*/
+            PWM_I((int)abs(errorTotalCruce) - tempi,0);
+            PWM_D((int)abs(errorTotalCruce) - tempi,1);
+          }
       }
       leergyro();
       delay(10);
@@ -538,17 +556,18 @@ void girarAngulo(int sentido, int maxTimeMillis){
     rate = 0;
     prev_rate = 0;
     time = 0;
-    /*if (sentido == 0){
+    if (sentido == 0){
       PWM_I(pwmI_baseM+500 ,FORWARD);
       PWM_D(pwmD_baseM+500 ,BACKWARD);
     }
     else{
       PWM_I(pwmI_baseM+500, BACKWARD);
       PWM_D(pwmD_baseM+500, FORWARD);
-    }*/
+    }
     delay(20);
     PWM_I(0  /*+ (int)errorTotalCruce*/,1);
     PWM_D(0 /*+ (int)errorTotalCruce*/,0);
+    encCount = 0;
 }
 
 
@@ -700,7 +719,7 @@ byte Haypared() {
     //Si hay pared al frente
     //Senseores frente
     Serial.println("Sensor frente");
-    if (medir(1)>wallDetectDelanteraD) {
+    if ((medir(1) + medir(6))/2 > (wallDetectDelanteraD + wallDetectDelanteraD )/2) {
       //Norte
       norte = 1;
     }
@@ -726,7 +745,7 @@ byte Haypared() {
     //Si hay pared al frente
     //Senseores frente
     Serial.println("Sensor frente");
-    if (medir(1)>wallDetectDelanteraD) {
+    if ((medir(1) + medir(6))/2 > (wallDetectDelanteraD + wallDetectDelanteraD )/2) {
       //Sur
       sur = 2;
     }
@@ -752,7 +771,7 @@ byte Haypared() {
     //Si hay pared al frente
     //Senseores frente
     Serial.println("Sensor frente");
-    if (medir(1)>wallDetectDelanteraD) {
+    if ((medir(1) + medir(6))/2 > (wallDetectDelanteraD + wallDetectDelanteraD )/2) {
       //Este
       este = 4;
     }
@@ -778,7 +797,7 @@ byte Haypared() {
     //Si hay pared al frente
     //Senseores frente
     Serial.println("Sensor frente");
-    if (medir(1)>wallDetectDelanteraD) {
+    if ((medir(1) + medir(6))/2 > (wallDetectDelanteraD + wallDetectDelanteraD )/2) {
       //Oeste
       oeste = 8;
     }
@@ -864,31 +883,6 @@ void actualizar_coord(coord coordenada, byte pared) {
   }
 }
 
-void cruzarCardinal(byte sigCardinal){
-  switch(cardinalGlobal){
-    case 1://N
-      switch(sigCardinal){
-        
-      }
-      break;
-    case 4://E
-      switch(sigCardinal){
-        
-      }
-      break;
-    case 2://S
-      switch(sigCardinal){
-        
-      }
-      break; 
-    case 8://W
-      switch(sigCardinal){
-        
-      }
-      break;
-  }
-}
-
 
 // ##### Flood Fill ####
 
@@ -917,15 +911,16 @@ void flood_fill(coord destino[], coord actual, bool movimiento) {
     Serial.println();
 
     if (movimiento) {
-    ////////////////////CRUZAR HACIA EL CARDINAL/////////////////////////////////!!!!!!!!!!!
-    //////////////////AVANZAR SIG CASILLA//////////////////////////////////////////////////
-      /*
-      crear_instrucciones(actual, sig_cardinal);
-      ejercutar_instrucciones(cola);
-      */
+      //crear_instrucciones(actual, sig_cardinal);
+
+      navegacion.push(crear_movimiento(coord_actual, sig_coordenada, sig_cardinal));
+      
+      // pop de la instrccion creada2
+      
+      ejecutar_instrucciones(navegacion.pop());
+       
     }
     //Actualizar el valor para las siguientes entradas del loop
-    //coord_actual = sig_coordenada;
     cardinal = sig_cardinal;
     coord_actual = sig_coordenada;
     if (movimiento) {
@@ -1131,8 +1126,8 @@ void reiniciar_maze(){
 
 
 void loop() {
-  printMazedistancia();
-  coord meta[] = { { 2,2},{ 2,3 },{ 3,2 },{ 3,3 } };       ////////////////////////////MODIFICAR PARA OTROS SIZES
+  //printMazedistancia();
+  coord meta[] = { { (int)X/2,(int)Y/2},{ (int)X/2,(int)Y/2 + 1 },{ (int)X/2 + 1, (int)Y/2 },{(int)X/2 + 1,(int)Y/2 + 1  } };       ////////////////////////////MODIFICAR PARA OTROS SIZES
   //Flood fill
   flood_fill(meta, globalCoord, true);
   Serial.println("Llegue al centro, Inicio Retorno");
@@ -1140,11 +1135,103 @@ void loop() {
   coord inicio[] = {{0,0}};
   retorno(inicio[0], globalCoord);
   
-  printMazedistancia();
+  //printMazedistancia();
   flood_fill(inicio, globalCoord, true);
   Serial.println("Termino fase de exploracion");
-  reflood(meta);                                                           //MOSCAAA
+  //reflood(meta);  
+  flood_fill(meta, globalCoord, true);
   Serial.println("Comienza reflood");
   
   while(1);
+}
+
+/////////////////////////////////////EDITAR/////////////////////////
+void girar(float angulo){
+  
+  if (angulo== -90){
+    girarAngulo(0, 500);
+
+  }
+  else if (angulo== 90){
+    girarAngulo(1, 500);
+
+  }
+  else if (angulo == 180){
+    girarAngulo(1, 250);
+    girarAngulo(1, 250);
+
+  }
+  
+}
+
+
+instruction crear_movimiento(coord coordActual, coord sig_coord, byte sig_cardinal){
+  int casillas = 0;
+  float giro =0;
+  switch(sig_cardinal){
+    case 1:
+      if(cardinalGlobal==4){
+        giro = -90.0;
+      }
+      if(cardinalGlobal==8){
+        giro = 90.0;
+      }
+      if(cardinalGlobal==2){
+        giro = 180.0;
+      }
+      break;
+    case 2:
+      if(cardinalGlobal==4){
+        giro = 90.0;
+      }
+      if(cardinalGlobal==8){
+        giro = -90.0;
+      }
+      if(cardinalGlobal==1){
+        giro = 180.0;
+      }
+      break;
+    case 4:
+      if(cardinalGlobal==1){
+        giro = 90.0;
+      }
+      if(cardinalGlobal==2){
+        giro = -90.0;
+      }
+      if(cardinalGlobal==8){
+        giro = 180.0;
+      }
+      break;
+    case 8:
+      if(cardinalGlobal==1){
+        giro = -90.0;
+      }
+      if(cardinalGlobal==2){
+        giro = 90.0;
+      }
+      if(cardinalGlobal==4){
+        giro = 180.0;
+      }
+      break;
+  }
+  
+  if(coordActual.x != sig_coord.x){
+    casillas = abs(coordActual.x - sig_coord.x);
+  }
+  
+  else if(coordActual.y != sig_coord.y){
+    casillas = abs(coordActual.y - sig_coord.y);
+  }
+
+  instruction movimiento;
+  movimiento.casillas = casillas;
+  movimiento.giro = giro;
+  return movimiento;
+}
+
+void ejecutar_instrucciones(instruction mov){
+  girar(mov.giro);
+  //delay(3000);
+  fowardNPasos(mov.casillas, 300);
+  //delay(3000);
 }
