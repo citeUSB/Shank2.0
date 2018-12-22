@@ -15,6 +15,7 @@ void loop() {
   }*/
   Serial1.readBytesUntil(0xFF,buffer,4);
   medicion = ((uint32_t)buffer[0])|((uint32_t)buffer[1]<<8)|((uint32_t)buffer[2]<<16)|((uint32_t)buffer[3]<<24);
+  Serial1.write('6');
   Serial.print("Medicion: ");
   Serial.println(medicion); 
 }

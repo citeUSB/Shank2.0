@@ -39,25 +39,30 @@ int LED2 = PA_3;
 int inicio=0;
 
 void setup() {
+  Serial.begin(115200);
   Serial6.begin(115200);
-  LEDS();   
+  ledsConfig();   
   pinMode(LED1,OUTPUT);
   pinMode(LED2,OUTPUT);
 }
 
 void loop() {
-  ////////Calibracion Constantes Pared //////////////////////////////////////////
-  int dato=(medir(6));
-  
-  enviarSerial6(dato);
-  if (dato>1000)
-    digitalWrite(LED1,HIGH);
-  else
-    digitalWrite(LED1,LOW);
-  delay(500);
+  int selector;
+  while (Serial6.available() > 0) {
+    // read the incoming byte:
+    selector =  Serial6.read();
+  }
+  enviarSerial(selectorDato(selector - 48),6);
+  enviarSerial(selectorDato(selector - 48),1);
+  digitalWrite(LED1,LOW);
+  digitalWrite(LED2,LOW);
+  delay(300);
+  digitalWrite(LED1,HIGH);
+  digitalWrite(LED2,HIGH);
+  delay(300);
 }
 
-void LEDS(){
+void ledsConfig(){
   analogReadResolution(12);// ajuste ADC en 12 bits
   pinMode(emisor1, OUTPUT); 
   pinMode(emisor3, OUTPUT);
@@ -86,13 +91,30 @@ int medir(int n){
   return(medicion);
 }
 
-void enviarSerial6(int dato){
+int selectorDato(int selector){
+  int dato=0;
+  switch(selector){
+    case 1: dato=medir(1); break; 
+    case 3: dato=medir(3); break;
+    case 4: dato=medir(4); break;
+    case 6: dato=medir(6); break;
+    default: dato=13; break;
+    //case 7: dato=gyro;                 //Gyro
+    //case 8: dato=paredes;              //Actualizar paredes
+  }
+  return(dato);
+}
+
+void enviarSerial(int dato, int serial){
   char buffer[5];
   for(int i=0;i<4;i++){
     buffer[i]=dato>>i*8;  
   }
   buffer[4]=0xFF;
   for(int i=0;i<5;i++){
-    Serial6.write(buffer[i]);
+    if(serial==1)
+      Serial.write(buffer[i]);
+    else 
+      Serial6.write(buffer[i]);
   }
 }
